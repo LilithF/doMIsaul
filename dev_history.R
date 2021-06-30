@@ -46,7 +46,7 @@ install()
 # build()  # construit le targz
 goodpractice::goodpractice()
 
-
+use_github()
 
 
 
