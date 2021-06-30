@@ -6,6 +6,7 @@ library(devtools)
 # use_r("Allocation_Distance")
 # use_r("CH_index_functions")
 # use_build_ignore("dev_history.R")
+# use_build_ignore("R/temp.R")
 # use_r("CritCF_index_functions")
 #### use_r("CVE1_basic")  # ex ne marche pas
 #### use_r("CVE2_VandVH")  # ex à faire
@@ -18,12 +19,12 @@ library(devtools)
 ####  use_r("MultiCons")    # EXample à faire
 # use_r("my_jack")   # ATT nom changé (. en _)
 # use_r("ncvsurv_modified_functions")
-use_r("objective_clustering")
-use_r("pareto")
-use_r("partition_generation")  # ATT nom changé ( _ ; maj)
-use_r("seMIsup.cox")
-use_r("temp")
-use_r("unsupMI")
+# use_r("objective_clustering")
+# use_r("pareto")
+# use_r("partition_generation")  # ATT nom changé ( _ ; maj)
+####  use_r("seMIsupcox")     # Example à faire
+# use_r("temp")
+####  use_r("unsupMI")    # Example à faire
 
 
 

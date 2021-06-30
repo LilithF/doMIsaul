@@ -18,7 +18,8 @@
 #' @import NbClust
 #'
 #' @examples
-#' partition_generation(iris[, 1:4], LOG = F, clust.algo = c("km", "hc"), k.crit = "ch")
+#' partition_generation(iris[, 1:4], LOG = FALSE,
+#'                      clust.algo = c("km", "hc"), k.crit = "ch")
 partition_generation <- function(data, LOG, clust.algo, k.crit){
 
   if("mclust" %in% clust.algo) {

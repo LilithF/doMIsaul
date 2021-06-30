@@ -25,6 +25,7 @@ Description: Algorithms for (i) unsupervised learning for dataset with
     multiple imputation and consensus clustering in the latter case.
 License: GPL (>= 3)
 Imports: 
+    aricode,
     arules,
     cluster,
     clusterCrit,

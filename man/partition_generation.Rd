@@ -28,5 +28,6 @@ Generates a partition using clust.algo algorithm, with k.crit for selecting
 the number of clusters
 }
 \examples{
-partition_generation(iris[, 1:4], LOG = F, clust.algo = c("km", "hc"), k.crit = "ch")
+partition_generation(iris[, 1:4], LOG = FALSE,
+                     clust.algo = c("km", "hc"), k.crit = "ch")
 }

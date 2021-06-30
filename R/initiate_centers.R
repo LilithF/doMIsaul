@@ -21,7 +21,8 @@
 #' @importFrom dplyr sample_n
 #'
 #' @examples
-#' Cent.init <- initiate_centers(data = iris[, 1:4], N = 10, k = sample(c(2:7), 10, replace = T))
+#' Cent.init <- initiate_centers(data = iris[, 1:4], N = 10,
+#'                               k = sample(c(2:7), 10, replace = TRUE))
 initiate_centers <- function(data, N = 1000, t = 1, k,
                              algorithms = NULL, seeds.N = NULL){
   # Generates N sets of centers from data

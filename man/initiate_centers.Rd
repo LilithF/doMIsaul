@@ -34,5 +34,6 @@ initialzation.
 Initiate centers for clustering allgorithm
 }
 \examples{
-Cent.init <- initiate_centers(data = iris[, 1:4], N = 10, k = sample(c(2:7), 10, replace = T))
+Cent.init <- initiate_centers(data = iris[, 1:4], N = 10,
+                              k = sample(c(2:7), 10, replace = TRUE))
 }
