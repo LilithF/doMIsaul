@@ -1,11 +1,11 @@
 #' Exctract the cluster centers coordinates
 #'
-#' @param data dataframe (\code{n\times p})
+#' @param data dataframe (\code{n * p})
 #' @param Cluster vector (\code{n}) of cluster allocation
 #' @param centPos Cluster: center is defined by mean ("colMeans") or median
 #' of the cluster
 #'
-#' @return matrix (\code{k\times p}) with center coordinates
+#' @return matrix (\code{k * p}) with center coordinates
 #' @examples
 #' doMIsaul:::exctract_center_position(iris[, 1:4],
 #'                                     as.numeric(iris[, 5]),

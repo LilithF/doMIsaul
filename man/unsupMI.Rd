@@ -4,9 +4,9 @@
 \alias{unsupMI}
 \title{Unsupervised learning for incomplete dataset}
 \usage{
-unsupMI(data, log.data = F, algo = "km", k.crit =
-  "ch", comb.cons = F, plot.cons = F, return.detail = F, not.to.use =
-   c("time", "status"))
+unsupMI(data, log.data = FALSE, algo = "km", k.crit = "ch",
+   comb.cons = FALSE, plot.cons = FALSE, return.detail = FALSE,
+   not.to.use = c("time", "status"))
 }
 \arguments{
 \item{data}{list of the imupted datasets (if present, columns names "time"

@@ -3,9 +3,9 @@
 #' Unsupervised clustering for multiply imputed datasets unsing MultiCons
 #' consensus (Faucheux et al. 2020 procedure)
 #'
-#' @usage unsupMI(data, log.data = F, algo = "km", k.crit =
-#'   "ch", comb.cons = F, plot.cons = F, return.detail = F, not.to.use =
-#'    c("time", "status"))
+#' @usage unsupMI(data, log.data = FALSE, algo = "km", k.crit = "ch",
+#'    comb.cons = FALSE, plot.cons = FALSE, return.detail = FALSE,
+#'    not.to.use = c("time", "status"))
 #'
 #' @param data list of the imupted datasets (if present, columns names "time"
 #'   and "status" will be discared)

@@ -7,7 +7,7 @@
 exctract_center_position(data, Cluster, centPos)
 }
 \arguments{
-\item{data}{dataframe (\code{n\times p})}
+\item{data}{dataframe (\code{n * p})}
 
 \item{Cluster}{vector (\code{n}) of cluster allocation}
 
@@ -15,7 +15,7 @@ exctract_center_position(data, Cluster, centPos)
 of the cluster}
 }
 \value{
-matrix (\code{k\times p}) with center coordinates
+matrix (\code{k * p}) with center coordinates
 }
 \description{
 Exctract the cluster centers coordinates
