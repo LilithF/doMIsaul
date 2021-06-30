@@ -21,5 +21,5 @@ estimator with wrapper for warnings handling
 }
 \examples{
 part <- data.frame(x= as.numeric(iris[, 5]))
-CVE_basic(list(data = iris[, 1:4], partition = part, nfolds = 10))
+# CVE_basic(list(data = iris[, 1:4], partition = part, nfolds = 10))
 }

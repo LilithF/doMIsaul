@@ -26,13 +26,17 @@ Description: Algorithms for (i) unsupervised learning for dataset with
 License: GPL (>= 3)
 Imports: 
     clusterCrit,
+    clusteval,
     dplyr,
     glmnet,
     Gmedian,
     mclust,
     mice,
     NbClust,
-    stats
+    ncvreg,
+    parallel,
+    stats,
+    utils
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)

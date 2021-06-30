@@ -19,8 +19,8 @@
 #' @export
 #'
 #' @examples
-#' DB <- XXX
-#' MImpute_surv(DB, 10)
+#' # DB <- XXX
+#' # MImpute_surv(DB, 10)
 MImpute_surv <- function(data, mi.m, time.status.names = c("time", "status"),
                          return.midsObject = FALSE){
 
@@ -50,7 +50,7 @@ MImpute_surv <- function(data, mi.m, time.status.names = c("time", "status"),
   if(return.midsObject){
     imp2 <- mice::complete(res, "long", include = T)
     imp2 <- imp2[, !colnames(imp2) %in% "HO"]
-    mids.obj <- as.mids(imp2)
+    mids.obj <- mice::as.mids(imp2)
 
     return(list(
       imputed.data = imp,

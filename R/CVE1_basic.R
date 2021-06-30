@@ -6,7 +6,7 @@
 #'
 #' @return numeric, cross-validation error
 #' @examples part <- data.frame(x= as.numeric(iris[, 5]))
-#' CVE1_basic(iris[, 1:4],part, 10)
+#' # doMIsaul:::CVE1_basic(iris[, 1:4],part, 10)
 CVE1_basic <- function(data, partition, nfolds = 10){
   X <- model.matrix(~ part, data.frame(part = factor(partition[, 1])))
 
@@ -32,8 +32,9 @@ CVE1_basic <- function(data, partition, nfolds = 10){
 #'   CV)
 #'
 #' @return numeric, cross-validation error
+#' @export
 #' @examples part <- data.frame(x= as.numeric(iris[, 5]))
-#' CVE_basic(list(data = iris[, 1:4], partition = part, nfolds = 10))
+#' # CVE_basic(list(data = iris[, 1:4], partition = part, nfolds = 10))
 CVE_basic <- function(x){
   r <- withCallingHandlers({
     error_text <- NA

@@ -21,5 +21,5 @@ Cross-valitation for cox regression using the basic approach
 }
 \examples{
 part <- data.frame(x= as.numeric(iris[, 5]))
-CVE1_basic(iris[, 1:4],part, 10)
+# doMIsaul:::CVE1_basic(iris[, 1:4],part, 10)
 }

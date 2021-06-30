@@ -13,11 +13,11 @@ library(devtools)
 # use_r("exctract_center_position")      # ATT nom changé (. en _ ; maj)
 #### use_r("glmnet_modified_function")  # ex à faire ?
 # use_r("initiate_centers")  # ATT nom changé (. en _ ; maj)
-####  use_r("MIclust_mpool") # ATT nom changé (. en _ ; maj)   ++ example a refaire
+####  use_r("MIclust_mpool") # ATT nom changé (. en _ ; maj)   ++ example a refaire je suis pas en MI  la.
 # use_r("MImpute_surv")   # ATT nom changé (. en _ ; maj)   ++ example a finir qd fonciton de simu
 use_r("MultiCons")
-use_r("my.jack")
-use_r("ncvsurv_modified_functions")
+# use_r("my_jack")   # ATT nom changé (. en _)
+# use_r("ncvsurv_modified_functions")
 use_r("objective_clustering")
 use_r("pareto")
 use_r("partition_generation")  # ATT nom changé ( _ ; maj)
@@ -38,5 +38,7 @@ use_tidy_description()
 attachment::att_amend_desc()
 
 
-
+## Moins régulièrement ###
 check()
+# et si fonctionne :
+install()

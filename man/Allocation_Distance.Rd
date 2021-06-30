@@ -18,5 +18,5 @@ List with distances to center and allocation matrix
 Allocation Distance
 }
 \examples{
-Allocation_Distance(iris[, 1:4], iris[c(1,5, 10), 1:4])
+doMIsaul:::Allocation_Distance(iris[, 1:4], iris[c(1,5, 10), 1:4])
 }

@@ -5,7 +5,7 @@
 #' @param centPos Cluster: center is defined by mean ("colMeans") or median of the cluster
 #'
 #' @return matrix (k*p) with center coordinates
-#' @examples exctract_center_position(iris[, 1:4], as.numeric(iris[, 5]), "colMeans")
+#' @examples doMIsaul:::exctract_center_position(iris[, 1:4], as.numeric(iris[, 5]), "colMeans")
 exctract_center_position <- function (data, Cluster, centPos){
   # Exctracts cluster centers from a clustering result
 

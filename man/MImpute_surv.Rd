@@ -33,6 +33,6 @@ survival data. The Nelson Aalen estiamtor is calculated and used as predictor
 in the impuation, Time is not used as predictor.
 }
 \examples{
-DB <- XXX
-MImpute_surv(DB, 10)
+# DB <- XXX
+# MImpute_surv(DB, 10)
 }

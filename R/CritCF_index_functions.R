@@ -10,7 +10,7 @@
 #'
 #' @return A list containing the selected number of clusters, the CritCF values
 #'   and the best partition.
-#' @examples CritCF.sel(iris[, 1:4], 2, 9, "kmeans", "euclidean")
+#' @examples doMIsaul:::CritCF.sel(iris[, 1:4], 2, 9, "kmeans", "euclidean")
 CritCF.sel <- function(data, min.nc, max.nc, method, distance){
 
   alls <- lapply(min.nc:max.nc, CritCF,
@@ -41,7 +41,7 @@ CritCF.sel <- function(data, min.nc, max.nc, method, distance){
 #' @param distance distance between the observations (either euclidean or manhattan).
 #'
 #' @return a list, containing the criterion value and the partition
-#' @examples CritCF(iris[, 1:4], 5, "hc", "euclidean")
+#' @examples doMIsaul:::CritCF(iris[, 1:4], 5, "hc", "euclidean")
 CritCF <- function(data, k, method, distance){
 
   if("mclust" %in% method) {

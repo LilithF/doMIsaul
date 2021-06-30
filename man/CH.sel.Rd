@@ -23,5 +23,5 @@ the best partition.
 Wrapper to estimate the best number of clusters according to CH index
 }
 \examples{
- CH.sel(iris[, 1:4], 2, 5, "kmed")
+ doMIsaul:::CH.sel(iris[, 1:4], 2, 5, "kmed")
 }

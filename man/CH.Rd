@@ -22,5 +22,5 @@ Computes CH index for the selected number of clusters and clustering
 algorithm
 }
 \examples{
-CH(iris[, 1:4], 5, "kmed")
+doMIsaul:::CH(iris[, 1:4], 5, "kmed")
 }

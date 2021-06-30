@@ -24,5 +24,5 @@ Computes CritCF index for the selected number of clusters and clustering
 algorithm
 }
 \examples{
-CritCF(iris[, 1:4], 5, "hc", "euclidean")
+doMIsaul:::CritCF(iris[, 1:4], 5, "hc", "euclidean")
 }

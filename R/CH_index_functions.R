@@ -9,7 +9,7 @@
 #'
 #' @return A list containing the selected number of clusters, the CH values and
 #'   the best partition.
-#' @examples  CH.sel(iris[, 1:4], 2, 5, "kmed")
+#' @examples  doMIsaul:::CH.sel(iris[, 1:4], 2, 5, "kmed")
 CH.sel <- function(data, min.nc, max.nc, method){
 
   alls <- lapply(min.nc:max.nc, CH,
@@ -38,7 +38,7 @@ CH.sel <- function(data, min.nc, max.nc, method){
 #'   know is "kmed" for K-medians clsutering.
 #'
 #' @return a list, containing the criterion value and the partition
-#' @examples CH(iris[, 1:4], 5, "kmed")
+#' @examples doMIsaul:::CH(iris[, 1:4], 5, "kmed")
 CH <- function(data, k, method){
   set.seed(1)
   if (method == "kmed"){

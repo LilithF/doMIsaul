@@ -20,5 +20,5 @@ matrix (k*p) with center coordinates
 Exctract the cluster centers coordinates
 }
 \examples{
-exctract_center_position(iris[, 1:4], as.numeric(iris[, 5]), "colMeans")
+doMIsaul:::exctract_center_position(iris[, 1:4], as.numeric(iris[, 5]), "colMeans")
 }

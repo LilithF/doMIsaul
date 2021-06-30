@@ -25,6 +25,7 @@ CVE_LinearPred <- function(data, partition, nfolds = 10) {
 #'   CV)
 #'
 #' @return numeric, cross-validation error
+#' @export
 CVE_LP <- function(x){
   r <- withCallingHandlers({
     error_text <- NA

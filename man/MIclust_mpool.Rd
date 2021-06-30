@@ -26,5 +26,5 @@ Performs Multicons from a list of partitions
 }
 \examples{
 list.partitions <- partition_generation(iris[, 1:4], LOG = F, clust.algo = c("km", "hc"), k.crit = "ch")
-MIclust_mpool(list.partitions, F, F)
+# MIclust_mpool(list.partitions, F, F)
 }

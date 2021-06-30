@@ -6,7 +6,7 @@
 #' @param Xr Center coordinates
 #'
 #' @return List with distances to center and allocation matrix
-#' @examples Allocation_Distance(iris[, 1:4], iris[c(1,5, 10), 1:4])
+#' @examples doMIsaul:::Allocation_Distance(iris[, 1:4], iris[c(1,5, 10), 1:4])
 Allocation_Distance <- function(Z, Xr){
 
   Dis <- matrix(0, nrow = nrow(Z), ncol = nrow(Xr))

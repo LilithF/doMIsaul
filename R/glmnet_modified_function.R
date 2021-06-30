@@ -112,8 +112,8 @@ my.cv.glmnet <- function (x, y, weights, offset = NULL, lambda = NULL,
   if (keep)
     out = c(out, list(fit.preval = cvstuff$fit.preval, foldid = foldid))
   lamin = if (cvname == "AUC")
-    getmin(lambda, -cvm, cvsd)
-  else getmin(lambda, cvm, cvsd)
+    glmnet:::getmin(lambda, -cvm, cvsd)
+  else glmnet:::getmin(lambda, cvm, cvsd)
   obj = c(out, as.list(lamin))
   class(obj) = "cv.glmnet"
   obj

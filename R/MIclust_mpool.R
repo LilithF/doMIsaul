@@ -14,8 +14,10 @@
 #' @return a data frame with ncol = number of algorithms (+1 if comb.cons ==
 #'   T), containing the consensus partitions
 #' @examples
-#' list.partitions <- partition_generation(iris[, 1:4], LOG = F, clust.algo = c("km", "hc"), k.crit = "ch")
-#' MIclust_mpool(list.partitions, F, F)
+#' list.partitions <- partition_generation(iris[, 1:4], LOG = F,
+#'                                         clust.algo = c("km", "hc"),
+#'                                         k.crit = "ch")
+#' # MIclust_mpool(list.partitions, F, F)
 MIclust_mpool <- function(list.part, comb.cons, plot.MIclust = F) {
   algo <- colnames(list.part[[1]])
 
@@ -39,7 +41,7 @@ MIclust_mpool <- function(list.part, comb.cons, plot.MIclust = F) {
 
                                    colnames(db.part) <- paste0("X", 1:ncol(db.part))
 
-                                   db.part <- my.jack(db.part)
+                                   db.part <- my_jack(db.part)
 
                                    if (is.logical(db.part)) {
                                      if (db.part) {

@@ -25,5 +25,5 @@ and the best partition.
 Wrapper to estimate the best number of clusters according to CritCF index
 }
 \examples{
-CritCF.sel(iris[, 1:4], 2, 9, "kmeans", "euclidean")
+doMIsaul:::CritCF.sel(iris[, 1:4], 2, 9, "kmeans", "euclidean")
 }

@@ -55,11 +55,11 @@ initiate_centers <- function(data, N = 1000, t = 1, k,
         switch(algorithms[i],
                kmed = Gmedian::kGmedian(data, ncenters = n.centers[i], nstart = 1, nstartkmeans = 1,
                                         iter.max = 1)$centers,
-               hclust.mean = Exctract.center.position(
+               hclust.mean = exctract_center_position(
                  data,
                  cutree(hclust(dist(data)), k = n.centers[i]),
                  "colMeans"),
-               hclust.med = Exctract.center.position(
+               hclust.med = exctract_center_position(
                  data,
                  cutree(hclust(dist(data)), k = n.centers[i]),
                  "colMed"),
