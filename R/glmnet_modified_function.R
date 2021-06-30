@@ -18,6 +18,7 @@
 #' @param ... See \code{glmnet:::cv.glmnet}.
 #'
 #' @import glmnet
+#' @importFrom glmnet glmnet-internal
 my.cv.glmnet <- function (x, y, weights, offset = NULL, lambda = NULL,
                           type.measure = c("mse", "deviance", "class", "auc", "mae"),
                           nfolds = 10, foldid, alignment = c("lambda", "fraction"),
@@ -112,8 +113,8 @@ my.cv.glmnet <- function (x, y, weights, offset = NULL, lambda = NULL,
   if (keep)
     out = c(out, list(fit.preval = cvstuff$fit.preval, foldid = foldid))
   lamin = if (cvname == "AUC")
-    glmnet:::getmin(lambda, -cvm, cvsd)
-  else glmnet:::getmin(lambda, cvm, cvsd)
+    getmin(lambda, -cvm, cvsd)
+  else getmin(lambda, cvm, cvsd)
   obj = c(out, as.list(lamin))
   class(obj) = "cv.glmnet"
   obj

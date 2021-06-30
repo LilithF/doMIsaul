@@ -41,14 +41,14 @@ unsupMI <- function(data, log.data = F, algo = "km", k.crit = "ch", comb.cons = 
   names.use <- setdiff(colnames(data[[1]]), not.to.use)
 
   Partition.list <- lapply(1:length(data), function(i){
-    PartitionGeneration(data = data[[i]][,  names.use],
+    partition_generation(data = data[[i]][,  names.use],
                         LOG = log.data, clust.algo = algo, k.crit = k.crit)
   })
 
   if(length(data) == 1){
     my.part <- Partition.list[[1]]
   } else {
-    my.part <- MIClust.mpool(
+    my.part <- MIclust_mpool(
       list.part = Partition.list,
       plot.MIclust = plot.cons,
       comb.cons = ifelse(length(algo) > 1, comb.cons, F))

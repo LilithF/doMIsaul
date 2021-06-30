@@ -43,3 +43,4 @@ attachment::att_amend_desc()
 check()
 # et si fonctionne :
 install()
+# build()  # construit le targz

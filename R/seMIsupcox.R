@@ -6,15 +6,15 @@
 #'
 #' @param Impute boolean. Default is FALSE to indicate that the user performed
 #'   the imputation and provides the imputed data. If TRUE, the imputation will
-#'   be performed within the call using the MImpute.surv() function. Note that
+#'   be performed within the call using the MImpute_surv() function. Note that
 #'   if Impute is TRUE, center.init is also forced to TRUE as the center
 #'   coordinates may depend on the imputation.
 #' @param Impute.m Used only if Impute is TRUE ; number of imputations to
 #'   perform
 #' @param center.init Either a User supplied List of dataframe containing the
 #'   cluster centers coordinates (for exemple as obtained with
-#'   Initiate.centers(), OR TRUE to initiate the centers within the call of the
-#'   function (performed with Initiate.centers()). Note that if TRUE a random
+#'   initiate_centers(), OR TRUE to initiate the centers within the call of the
+#'   function (performed with initiate_centers()). Note that if TRUE a random
 #'   initialisation will be performed. For a finner tunning of the center
 #'   initialization the user should generate and provide the list of centers
 #'   coordinates.
@@ -57,7 +57,7 @@ seMIsupcox <- function(Impute = FALSE, Impute.m = 5,
                         plot.cons = F, return.detail = F) {
 
   if(Impute){
-    data.imp <-  MImpute.surv(data = X[[1]], mi.m = Impute.m)
+    data.imp <-  MImpute_surv(data = X[[1]], mi.m = Impute.m)
     X <- data.imp
     center.init <- TRUE
   }
@@ -73,7 +73,7 @@ seMIsupcox <- function(Impute = FALSE, Impute.m = 5,
     seeds.t <- runif(N) * 10^9
 
     Centers <-   sapply(1:mi.m, function(mi.i) {
-      Initiate.centers(
+      initiate_centers(
         data = X[[mi.i]][, sel.col],
         N = N,
         t = 1,

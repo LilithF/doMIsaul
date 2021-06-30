@@ -23,7 +23,7 @@ seMIsupcox(
 \arguments{
 \item{Impute}{boolean. Default is FALSE to indicate that the user performed
 the imputation and provides the imputed data. If TRUE, the imputation will
-be performed within the call using the MImpute.surv() function. Note that
+be performed within the call using the MImpute_surv() function. Note that
 if Impute is TRUE, center.init is also forced to TRUE as the center
 coordinates may depend on the imputation.}
 
@@ -32,8 +32,8 @@ perform}
 
 \item{center.init}{Either a User supplied List of dataframe containing the
 cluster centers coordinates (for exemple as obtained with
-Initiate.centers(), OR TRUE to initiate the centers within the call of the
-function (performed with Initiate.centers()). Note that if TRUE a random
+initiate_centers(), OR TRUE to initiate the centers within the call of the
+function (performed with initiate_centers()). Note that if TRUE a random
 initialisation will be performed. For a finner tunning of the center
 initialization the user should generate and provide the list of centers
 coordinates.}
