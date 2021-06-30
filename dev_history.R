@@ -12,15 +12,15 @@ library(devtools)
 #### use_r("CVE3_LinearPred") # ex à faire
 # use_r("exctract_center_position")      # ATT nom changé (. en _ ; maj)
 #### use_r("glmnet_modified_function")  # ex à faire ?
-use_r("Initiate.centers")
-use_r("MIClust.mpool")
-use_r("MImpute.surv")
+# use_r("initiate_centers")  # ATT nom changé (. en _ ; maj)
+####  use_r("MIclust_mpool") # ATT nom changé (. en _ ; maj)   ++ example a refaire
+# use_r("MImpute_surv")   # ATT nom changé (. en _ ; maj)   ++ example a finir qd fonciton de simu
 use_r("MultiCons")
 use_r("my.jack")
 use_r("ncvsurv_modified_functions")
 use_r("objective_clustering")
 use_r("pareto")
-use_r("PartitionGeneration")
+use_r("partition_generation")  # ATT nom changé ( _ ; maj)
 use_r("seMIsup.cox")
 use_r("temp")
 use_r("unsupMI")
@@ -36,3 +36,7 @@ load_all()
 document()
 use_tidy_description()
 attachment::att_amend_desc()
+
+
+
+check()

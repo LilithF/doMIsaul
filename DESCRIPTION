@@ -26,9 +26,12 @@ Description: Algorithms for (i) unsupervised learning for dataset with
 License: GPL (>= 3)
 Imports: 
     clusterCrit,
+    dplyr,
     glmnet,
     Gmedian,
     mclust,
+    mice,
+    NbClust,
     stats
 Encoding: UTF-8
 LazyData: true
