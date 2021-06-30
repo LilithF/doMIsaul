@@ -14,8 +14,8 @@ library(devtools)
 #### use_r("glmnet_modified_function")  # ex à faire ?
 # use_r("initiate_centers")  # ATT nom changé (. en _ ; maj)
 ####  use_r("MIclust_mpool") # ATT nom changé (. en _ ; maj)   ++ example a refaire je suis pas en MI  la.
-# use_r("MImpute_surv")   # ATT nom changé (. en _ ; maj)   ++ example a finir qd fonciton de simu
-use_r("MultiCons")
+####  use_r("MImpute_surv")   # ATT nom changé (. en _ ; maj)   ++ example a finir qd fonciton de simu
+####  use_r("MultiCons")    # EXample à faire
 # use_r("my_jack")   # ATT nom changé (. en _)
 # use_r("ncvsurv_modified_functions")
 use_r("objective_clustering")

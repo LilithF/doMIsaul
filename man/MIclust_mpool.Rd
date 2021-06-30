@@ -4,7 +4,7 @@
 \alias{MIclust_mpool}
 \title{Multicons wrapper for imputed datasets}
 \usage{
-MIClust.mpool(list.part, comb.cons, plot.MIclust = F)
+MIclust_mpool(list.part, comb.cons, plot.MIclust = F)
 }
 \arguments{
 \item{list.part}{list of partitions with one element of the list corresponds
@@ -25,6 +25,8 @@ T), containing the consensus partitions
 Performs Multicons from a list of partitions
 }
 \examples{
-list.partitions <- partition_generation(iris[, 1:4], LOG = F, clust.algo = c("km", "hc"), k.crit = "ch")
+list.partitions <- partition_generation(iris[, 1:4], LOG = FALSE,
+                                        clust.algo = c("km", "hc"),
+                                        k.crit = "ch")
 # MIclust_mpool(list.partitions, F, F)
 }

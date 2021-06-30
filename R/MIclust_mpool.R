@@ -2,7 +2,7 @@
 #'
 #' Performs Multicons from a list of partitions
 #'
-#' @usage MIClust.mpool(list.part, comb.cons, plot.MIclust = F)
+#' @usage MIclust_mpool(list.part, comb.cons, plot.MIclust = F)
 #' @param list.part list of partitions with one element of the list corresponds
 #'   to the results of one imputed dataset. If more than one algorithm were
 #'   tester, each element if the list is a dataframe, as obtained by
@@ -14,7 +14,7 @@
 #' @return a data frame with ncol = number of algorithms (+1 if comb.cons ==
 #'   T), containing the consensus partitions
 #' @examples
-#' list.partitions <- partition_generation(iris[, 1:4], LOG = F,
+#' list.partitions <- partition_generation(iris[, 1:4], LOG = FALSE,
 #'                                         clust.algo = c("km", "hc"),
 #'                                         k.crit = "ch")
 #' # MIclust_mpool(list.partitions, F, F)

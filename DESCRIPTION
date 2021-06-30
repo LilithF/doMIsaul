@@ -25,18 +25,28 @@ Description: Algorithms for (i) unsupervised learning for dataset with
     multiple imputation and consensus clustering in the latter case.
 License: GPL (>= 3)
 Imports: 
+    arules,
+    cluster,
     clusterCrit,
     clusteval,
+    dbscan,
     dplyr,
+    e1071,
     glmnet,
     Gmedian,
+    graphics,
+    igraph,
     mclust,
+    methods,
     mice,
     NbClust,
     ncvreg,
     parallel,
+    RColorBrewer,
+    scales,
     stats,
-    utils
+    utils,
+    withr
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
