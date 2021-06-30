@@ -35,8 +35,9 @@
 #'
 #' @examples
 #' # unsupMI()
-unsupMI <- function(data, log.data = F, algo = "km", k.crit = "ch", comb.cons = F,
-                    plot.cons = F, return.detail = F, not.to.use = c("time", "status")){
+unsupMI <- function(data, log.data = FALSE, algo = "km", k.crit = "ch",
+                    comb.cons = FALSE, plot.cons = FALSE, return.detail = FALSE,
+                    not.to.use = c("time", "status")){
 
   names.use <- setdiff(colnames(data[[1]]), not.to.use)
 
@@ -51,7 +52,7 @@ unsupMI <- function(data, log.data = F, algo = "km", k.crit = "ch", comb.cons = 
     my.part <- MIclust_mpool(
       list.part = Partition.list,
       plot.MIclust = plot.cons,
-      comb.cons = ifelse(length(algo) > 1, comb.cons, F))
+      comb.cons = ifelse(length(algo) > 1, comb.cons, FALSE))
   }
 
   if(return.detail){

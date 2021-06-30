@@ -1,6 +1,7 @@
 #' Allocation Distance
 #'
-# Auxiliary function to allocate data points into clusters from Khorshidi et al., 2019
+# Auxiliary function to allocate data points into clusters from
+#'  Khorshidi et al., 2019
 #'
 #' @param Z dataset
 #' @param Xr Center coordinates
@@ -25,7 +26,8 @@ Allocation_Distance <- function(Z, Xr){
       min.dist[n, sample(which(min.dist[n, ]), 1)] <- FALSE
     }
   }
-  Amat[min.dist] <- 1 # assign each point to the cluster with the highest probability
+  Amat[min.dist] <- 1 # assign each point to the cluster with
+                      # the highest probability
   Amat[!min.dist] <- 0 # remove points from clusters with lower probabilites
   return(list(Distance = Dis, Allocation = Amat))
 }

@@ -18,7 +18,7 @@ my.ncvsurv(
   convex = TRUE,
   dfmax = p,
   penalty.factor = rep(1, ncol(X)),
-  warn = T,
+  warn = TRUE,
   returnX,
   ...
 )

@@ -16,8 +16,8 @@ seMIsupcox(
   nfolds,
   save.path = NULL,
   Unsup.Sup.relImp = list(relImp.55 = c(0.5, 0.5)),
-  plot.cons = F,
-  return.detail = F
+  plot.cons = FALSE,
+  return.detail = FALSE
 )
 }
 \arguments{
@@ -39,18 +39,19 @@ initialization the user should generate and provide the list of centers
 coordinates.}
 
 \item{center.init.N}{Used only if center.init is TRUE. The number to
-initialisation to produce. Default to 500.}
+initialization to produce. Default to 500.}
 
 \item{center.init.Ks}{Used only if center.init is TRUE. Vector of number of
-clusters to generate for the initialisation. Default to 2 to 7 clusters.}
+clusters to generate for the initialization. Default to 2 to 7 clusters.}
 
 \item{X}{Data, in the form of a list of data.frame(s). The list should be one
 length 1 if data are complete or if Impute is TRUE, of should be a list of
-imputed dataframes if data are incomplete. If columns named "\code{time}" and
-"\code{status}" are present they will be discared for the clustering.}
+imputed dataframes if data are incomplete. If columns named "\code{time}"
+and "\code{status}" are present they will be discarded for the clustering.}
 
 \item{CVE.fun}{string indicating how to calculate the cross validation error
-: \code{LP} for linear predictior, \code{VandVH for Verweij} and Van Houwelingen estmator
+: \code{LP} for linear predictor, \code{VandVH for Verweij} and Van
+Houwelingen estimator
 and \code{basic} for the basic approach.}
 
 \item{Y}{Passed to CVE.fun, Outcome data: should be dataframe or matrix with
@@ -61,14 +62,14 @@ and \code{basic} for the basic approach.}
 \item{save.path}{Path indicating where objectives values for each iteration
 should be saved. If null the values are not saved.}
 
-\item{Unsup.Sup.relImp}{List of wieghts for the unsupervised and supervised
-objectives for the pareto optimal solution. Default is to use only one set
-of weigths : same weight.}
+\item{Unsup.Sup.relImp}{List of weights for the unsupervised and supervised
+objectives for the Pareto optimal solution. Default is to use only one set
+of weights : same weight.}
 
 \item{plot.cons}{Logical. Should the consensus tree be plotted?}
 
 \item{return.detail}{logical. Should the detail of imputation specific
-partition be returned, in the supplument to the final consensus partition?}
+partition be returned, in supplement to the final consensus partition?}
 }
 \value{
 A vector containing the final cluster IDs

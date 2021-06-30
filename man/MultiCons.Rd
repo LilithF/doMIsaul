@@ -6,15 +6,15 @@
 \usage{
 MultiCons(
   DB,
-  Clust_entry = F,
+  Clust_entry = FALSE,
   Clustering_selection = c("kmeans", "pam", "OPTICS", "agghc", "AGNES", "DIANA",
     "MCLUST", "CMeans", "FANNY", "BaggedClust"),
   num_algo = 10,
   maxClust = 10,
   sim.indice = "jaccard",
-  returnAll = F,
-  Plot = T,
-  verbose = F
+  returnAll = FALSE,
+  Plot = TRUE,
+  verbose = FALSE
 )
 }
 \arguments{
@@ -22,7 +22,8 @@ MultiCons(
 
 \item{Clust_entry}{Is DB partitions (T) or data (F).}
 
-\item{Clustering_selection}{If DB is data, clustering algorithm to select among. Must be included in default value.}
+\item{Clustering_selection}{If DB is data, clustering algorithm to select
+among. Must be included in default value.}
 
 \item{num_algo}{Number of clustering algorithms to perform.}
 

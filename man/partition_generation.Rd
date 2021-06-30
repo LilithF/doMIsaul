@@ -13,7 +13,8 @@ partition_generation(data, LOG, clust.algo, k.crit)
 applying clustering algorithms?}
 
 \item{clust.algo}{vector of strings: name of clsutering algorithms to use
-(use "km" for k-means, "kmed" for K-medians, "hc" for hclust and/or "mclust" for mclust).}
+(use "km" for k-means, "kmed" for K-medians, "hc" for hclust and/or
+"mclust" for mclust).}
 
 \item{k.crit}{string. Criterion to select the optimal number of clusters (for
 each imputed dataset). Use "ch" for Calinski and Harabasz criterion (not

@@ -4,7 +4,8 @@
 #'
 #' @param data dataframe for which the number of cluster should be estimated.
 #' @param min.nc interger strictly higher than 1 : minimum number of clusters.
-#' @param max.nc interger (higher than \code{min.nc}) : maximum number of clusters.
+#' @param max.nc interger (higher than \code{min.nc}) : maximum number of
+#' clusters.
 #' @param method Clustering algorithm to use.
 #'
 #' @return A list containing the selected number of clusters, the CH values and
@@ -16,7 +17,7 @@ CH.sel <- function(data, min.nc, max.nc, method){
                  data = data, method = method)
   res <- sapply(alls, function(i){
     i[["CH"]]
-  })
+  }, simplify = TRUE, USE.NAMES = TRUE)
   MAX <- max(res)
   K <- (min.nc:max.nc)[which(res == MAX)[1]]
   names(res) <- paste("k =", min.nc:max.nc)

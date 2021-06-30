@@ -6,7 +6,8 @@
 #' @param min.nc interger strictly higher than 1 : minimum number of clusters.
 #' @param max.nc interger (higher than min.nc) : maximum number of clusters.
 #' @param method clustering algorithm to use.
-#' @param distance distance between the observations (either euclidean or manhattan).
+#' @param distance distance between the observations (either euclidean or
+#' manhattan).
 #'
 #' @return A list containing the selected number of clusters, the CritCF values
 #'   and the best partition.
@@ -17,7 +18,7 @@ CritCF.sel <- function(data, min.nc, max.nc, method, distance){
                  data = data, method = method, distance = distance)
   res <- sapply(alls, function(i){
     i[["CritCF"]]
-  })
+  }, simplify = TRUE, USE.NAMES = TRUE)
   MAX <- max(res)
   K <- (min.nc:max.nc)[which(res == MAX)[1]]
   names(res) <- paste("k =", min.nc:max.nc)
@@ -38,14 +39,15 @@ CritCF.sel <- function(data, min.nc, max.nc, method, distance){
 #' @param k integer, number of clusters.
 #' @param method string, clustering algorithm to use. Available values are
 #'  kmeans, hc (for hclust) or mclust.
-#' @param distance distance between the observations (either euclidean or manhattan).
+#' @param distance distance between the observations (either euclidean or
+#' manhattan).
 #'
 #' @return a list, containing the criterion value and the partition
 #' @examples doMIsaul:::CritCF(iris[, 1:4], 5, "hc", "euclidean")
 CritCF <- function(data, k, method, distance){
 
   if("mclust" %in% method) {
-    requireNamespace("mclust", quietly = F)
+    requireNamespace("mclust", quietly = FALSE)
   }
 
   p <- ncol(data)
@@ -60,18 +62,18 @@ CritCF <- function(data, k, method, distance){
     Classif <- switch(
       method,
       hc = stats::cutree(stats::hclust(dist(data, method = distance)), k = k),
-      mclust = mclust::Mclust(data, G = k, verbose = F)$classification
+      mclust = mclust::Mclust(data, G = k, verbose = FALSE)$classification
     )
     Centres <- data.frame(t(sapply(1:k, function(i){
       colMeans(data[Classif == i, ])
-    }
+    }, simplify = TRUE, USE.NAMES = TRUE
     )))
     Card <- as.vector(table(Classif))
   }
 
   Data.Center <- colMeans(data)
   Centres.2 <- (abs(Centres - matrix(
-    rep(Data.Center, k), byrow = T, nrow = k)
+    rep(Data.Center, k), byrow = TRUE, nrow = k)
   )) ^ power
   B <- sum(Card * ( (rowSums(Centres.2)) ^ (1 / power)))
   data.2 <- (abs(data - Centres[Classif, ])) ^ power

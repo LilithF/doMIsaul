@@ -44,3 +44,9 @@ check()
 # et si fonctionne :
 install()
 # build()  # construit le targz
+goodpractice::g
+
+
+
+
+

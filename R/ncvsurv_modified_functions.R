@@ -47,7 +47,8 @@ mylossncvsurv <- function (y, eta, total = TRUE){
 #' @import ncvreg
 
 my.cv.ncvsurv <- function (X, y, ..., cluster, nfolds = 10, seed, fold,
-                           se = c("quick", "bootstrap"), returnY = FALSE, trace = FALSE){
+                           se = c("quick", "bootstrap"), returnY = FALSE,
+                           trace = FALSE){
   se <- match.arg(se)
   fit.args <- list(...)
   fit.args$X <- X
@@ -94,7 +95,8 @@ my.cv.ncvsurv <- function (X, y, ..., cluster, nfolds = 10, seed, fold,
                                        "y", "cv.args"), envir = environment())
     parallel::clusterCall(cluster, function() requireNamespace(ncvreg))
     fold.results <- parallel::parLapply(cl = cluster, X = 1:nfolds,
-                                        fun = ncvreg:::cvf.surv, XX = X, y = y, fold = fold, cv.args = cv.args)
+                                        fun = ncvreg:::cvf.surv, XX = X, y = y,
+                                        fold = fold, cv.args = cv.args)
   }
   for (i in 1:nfolds) {
     if (!missing(cluster)) {
@@ -158,9 +160,10 @@ my.cv.ncvsurv <- function (X, y, ..., cluster, nfolds = 10, seed, fold,
 #'
 my.ncvsurv <- function (X, y, penalty = c("MCP", "SCAD", "lasso"),
                         gamma = switch(penalty, SCAD = 3.7, 3), alpha = 1,
-                        lambda.min = ifelse(n > p, 0.001, 0.05), nlambda = 100, lambda,
-                        eps = 1e-5, max.iter = 10000, convex = TRUE, dfmax = p,
-                        penalty.factor = rep(1, ncol(X)), warn = T, returnX, ...){
+                        lambda.min = ifelse(n > p, 0.001, 0.05), nlambda = 100,
+                        lambda, eps = 1e-5, max.iter = 10000, convex = TRUE,
+                        dfmax = p, penalty.factor = rep(1, ncol(X)),
+                        warn = TRUE, returnX, ...){
   penalty <- match.arg(penalty)
   if (!inherits(X, "matrix")) {
     tmp <- try(X <- model.matrix(~0 + ., data = X), silent = TRUE)
@@ -248,10 +251,11 @@ my.ncvsurv <- function (X, y, penalty = c("MCP", "SCAD", "lasso"),
   else colnames(X)
   dimnames(beta) <- list(varnames, ncvreg:::lamNames(lambda))
   val <- structure(list(beta = beta, iter = iter, lambda = lambda,
-                        penalty = penalty, gamma = gamma, alpha = alpha, convex.min = convex.min,
-                        loss = loss, penalty.factor = penalty.factor, n = n,
-                        time = yy, fail = Delta, order = tOrder), class = c("ncvsurv",
-                                                                            "ncvreg"))
+                        penalty = penalty, gamma = gamma, alpha = alpha,
+                        convex.min = convex.min, loss = loss,
+                        penalty.factor = penalty.factor, n = n, time = yy,
+                        fail = Delta, order = tOrder),
+                   class = c("ncvsurv", "ncvreg"))
   val$Eta <- sweep(Eta, 2, offset, "-")
   if (missing(returnX)) {
     if (utils::object.size(XX) > 1e+08) {

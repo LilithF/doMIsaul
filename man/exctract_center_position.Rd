@@ -7,18 +7,21 @@
 exctract_center_position(data, Cluster, centPos)
 }
 \arguments{
-\item{data}{dataframe (n*p)}
+\item{data}{dataframe (\code{n\times p})}
 
-\item{Cluster}{vector (n) of cluster allocation}
+\item{Cluster}{vector (\code{n}) of cluster allocation}
 
-\item{centPos}{Cluster: center is defined by mean ("colMeans") or median of the cluster}
+\item{centPos}{Cluster: center is defined by mean ("colMeans") or median
+of the cluster}
 }
 \value{
-matrix (k*p) with center coordinates
+matrix (\code{k\times p}) with center coordinates
 }
 \description{
 Exctract the cluster centers coordinates
 }
 \examples{
-doMIsaul:::exctract_center_position(iris[, 1:4], as.numeric(iris[, 5]), "colMeans")
+doMIsaul:::exctract_center_position(iris[, 1:4],
+                                    as.numeric(iris[, 5]),
+                                    "colMeans")
 }

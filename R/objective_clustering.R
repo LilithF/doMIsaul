@@ -8,7 +8,8 @@
 #'
 #' @return matrix
 #' @examples
-#' allocation <- doMIsaul:::Allocation_Distance(iris[, 1:4], iris[c(1,5, 10), 1:4])
+#' allocation <- doMIsaul:::Allocation_Distance(iris[, 1:4],
+#'                                              iris[c(1,5, 10), 1:4])
 #' doMIsaul:::objective_clustering(allocation)
 objective_clustering <- function(Alloc_Dist){
   tmp <- Alloc_Dist$Allocation * Alloc_Dist$Distance
@@ -19,6 +20,6 @@ objective_clustering <- function(Alloc_Dist){
       FUN = function(x) {
         length(x[x != 0])
       }
-    ), na.rm = T)
+    ), na.rm = TRUE)
   return(A)
 }

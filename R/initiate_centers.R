@@ -38,7 +38,7 @@ initiate_centers <- function(data, N = 1000, t = 1, k,
 
     list.centers.alea <- lapply(1:n.alea, function(i){
       set.seed(Seeds[i])
-      sample_n(data, size = n.centers[i], replace = F)
+      sample_n(data, size = n.centers[i], replace = FALSE)
     })
 
   } else {
@@ -54,7 +54,8 @@ initiate_centers <- function(data, N = 1000, t = 1, k,
       set.seed(Seeds[i])
       data.frame(
         switch(algorithms[i],
-               kmed = Gmedian::kGmedian(data, ncenters = n.centers[i], nstart = 1, nstartkmeans = 1,
+               kmed = Gmedian::kGmedian(data, ncenters = n.centers[i],
+                                        nstart = 1, nstartkmeans = 1,
                                         iter.max = 1)$centers,
                hclust.mean = exctract_center_position(
                  data,

@@ -19,27 +19,28 @@
 #'   initialization the user should generate and provide the list of centers
 #'   coordinates.
 #' @param center.init.N Used only if center.init is TRUE. The number to
-#'   initialisation to produce. Default to 500.
+#'   initialization to produce. Default to 500.
 #' @param center.init.Ks Used only if center.init is TRUE. Vector of number of
-#'   clusters to generate for the initialisation. Default to 2 to 7 clusters.
+#'   clusters to generate for the initialization. Default to 2 to 7 clusters.
 #' @param X Data, in the form of a list of data.frame(s). The list should be one
 #'   length 1 if data are complete or if Impute is TRUE, of should be a list of
-#'   imputed dataframes if data are incomplete. If columns named "\code{time}" and
-#'   "\code{status}" are present they will be discared for the clustering.
+#'   imputed dataframes if data are incomplete. If columns named "\code{time}"
+#'   and "\code{status}" are present they will be discarded for the clustering.
 #' @param CVE.fun string indicating how to calculate the cross validation error
-#'   : \code{LP} for linear predictior, \code{VandVH for Verweij} and Van Houwelingen estmator
+#'   : \code{LP} for linear predictor, \code{VandVH for Verweij} and Van
+#'   Houwelingen estimator
 #'   and \code{basic} for the basic approach.
 #' @param Y Passed to CVE.fun, Outcome data: should be dataframe or matrix with
 #'   2 columns: "time" and "status".
 #' @param nfolds Number of folds for cross-validation.
 #' @param save.path Path indicating where objectives values for each iteration
 #'   should be saved. If null the values are not saved.
-#' @param Unsup.Sup.relImp List of wieghts for the unsupervised and supervised
-#'   objectives for the pareto optimal solution. Default is to use only one set
-#'   of weigths : same weight.
+#' @param Unsup.Sup.relImp List of weights for the unsupervised and supervised
+#'   objectives for the Pareto optimal solution. Default is to use only one set
+#'   of weights : same weight.
 #' @param plot.cons Logical. Should the consensus tree be plotted?
 #' @param return.detail logical. Should the detail of imputation specific
-#'   partition be returned, in the supplument to the final consensus partition?
+#'   partition be returned, in supplement to the final consensus partition?
 #'
 #' @return A vector containing the final cluster IDs
 #' @export
@@ -54,7 +55,7 @@ seMIsupcox <- function(Impute = FALSE, Impute.m = 5,
                         center.init.Ks = 2:7,
                         X, CVE.fun = "LP", Y, nfolds, save.path = NULL,
                         Unsup.Sup.relImp = list("relImp.55" = c(.5, .5)),
-                        plot.cons = F, return.detail = F) {
+                        plot.cons = FALSE, return.detail = FALSE) {
 
   if(Impute){
     data.imp <-  MImpute_surv(data = X[[1]], mi.m = Impute.m)
@@ -67,9 +68,11 @@ seMIsupcox <- function(Impute = FALSE, Impute.m = 5,
   p <- length(sel.col)   # number of dimensions
 
   if(is.logical(center.init)){
-    if(!center.init) stop("center.init must be either a list of center positions of TRUE")
+    if(!center.init) {
+      stop("center.init must be either a list of center positions of TRUE")
+    }
     N <- center.init.N
-    Ks <- sample(center.init.Ks, size = N, replace = T)
+    Ks <- sample(center.init.Ks, size = N, replace = TRUE)
     seeds.t <- runif(N) * 10^9
 
     Centers <-   sapply(1:mi.m, function(mi.i) {
@@ -80,7 +83,7 @@ seMIsupcox <- function(Impute = FALSE, Impute.m = 5,
         k = Ks,
         seeds.N = seeds.t
       )
-    }, USE.NAMES = T, simplify = F)
+    }, USE.NAMES = TRUE, simplify = FALSE)
 
   } else {
 
@@ -106,19 +109,24 @@ seMIsupcox <- function(Impute = FALSE, Impute.m = 5,
       clust.tmp <- kGmedian(X = X[[mi.i]][, sel.col],
                             ncenters = as.matrix(Centers[[mi.i]][[r]]),
                             nstart = 0)
-      part.tmp <- data.frame(Cl = factor(clust.tmp$cluster, levels = 1:nrow(clust.tmp$centers)),
-                             stringsAsFactors = T)
+      part.tmp <- data.frame(Cl = factor(clust.tmp$cluster,
+                                         levels = 1:nrow(clust.tmp$centers)),
+                             stringsAsFactors = TRUE)
       part <- model.matrix(~ 0 + Cl, part.tmp)
-      # Calculate Distance for objective clustering & Re-inject correct partition
+  # Calculate Distance for objective clustering & Re-inject correct partition
       a <- Allocation_Distance(X[[mi.i]][, sel.col], clust.tmp$centers)
       a$Allocation <- unname(part)
       assign(paste("MI", mi.i, ".Cl", r, sep = ""), part)
       ligne.i <- which(error.mi$center == r & error.mi$mi.i == mi.i)
       error.mi[ligne.i, 'Cluster'] <- objective_clustering(a)
 
-      CVE <- tryCatch(CVE.fun(list(partition = part.tmp, data = Y, nfolds = nfolds)),
+      CVE <- tryCatch(CVE.fun(list(partition = part.tmp,
+                                   data = Y,
+                                   nfolds = nfolds)),
                       error = function(e){
-                        CVE.fun(list(partition = part.tmp, data = Y, nfolds = nfolds))
+                        CVE.fun(list(partition = part.tmp,
+                                     data = Y,
+                                     nfolds = nfolds))
                       })
 
       error.mi[ligne.i, 'Regression'] <- CVE$value
@@ -130,7 +138,7 @@ seMIsupcox <- function(Impute = FALSE, Impute.m = 5,
       rowMeans(data.frame(sapply(1:mi.m, function(mi.i){
         as.numeric(error.mi[error.mi$center == r & error.mi$mi.i == mi.i,
                             c("Cluster", "Regression")])
-      }), stringsAsFactors = T))
+      }), stringsAsFactors = TRUE))
 
   }
   # Find pareto non optimal solutions
@@ -140,11 +148,13 @@ seMIsupcox <- function(Impute = FALSE, Impute.m = 5,
          file = paste0(save.path, "__MultiCons_all.Rdata"))
   }
   # Last select final partition set
-  optimal.final.obj <- mi.final.ojectives.values[mi.final.ojectives.values$Dominated == 0, ]
+  optimal.final.obj <-
+    mi.final.ojectives.values[mi.final.ojectives.values$Dominated == 0, ]
   # If several optimal, find the ideal
   if(nrow(optimal.final.obj)>1){
-    optimal.final.obj.sc <- data.frame(scale(optimal.final.obj[, c("Cluster", "Regression")]),
-                                       stringsAsFactors = T)
+    optimal.final.obj.sc <-
+      data.frame(scale(optimal.final.obj[, c("Cluster", "Regression")]),
+                 stringsAsFactors = TRUE)
     if(length(unique(optimal.final.obj$Cluster)) == 1) {
       optimal.final.obj.sc$Cluster <- 0
     }
@@ -160,21 +170,27 @@ seMIsupcox <- function(Impute = FALSE, Impute.m = 5,
       optimal.final.obj.relImp <- optimal.final.obj[which.max(similarities), ]
     })
   } else {
-    optimal.final.objS <- lapply(Unsup.Sup.relImp, function(x){optimal.final.obj})
+    optimal.final.objS <- lapply(Unsup.Sup.relImp, function(x){
+      optimal.final.obj
+    })
   }
   # And apply consensus to the set to get 1 final partition
   unique.list <- unique(optimal.final.objS)
   cons.partSXX <- sapply(unique.list, function(opt.obj){
     Selected.r <- opt.obj[1, "center"]
     binded.part <- data.frame(do.call(cbind, lapply(1:mi.m, function(mi.i){
-      as.character(apply(get(paste("MI", mi.i, ".Cl", Selected.r, sep = "")), 1, function(x){which.max(x)}))
-    })), stringsAsFactors = T)
+      as.character(apply(get(paste("MI", mi.i, ".Cl", Selected.r, sep = "")),
+                         1,
+                         function(x){which.max(x)}))
+    })), stringsAsFactors = TRUE)
     if(mi.m > 1){
       if(all(apply(binded.part[, -1], 2, ARI, c2 = binded.part[, 1]) == 1)){
         # If ARI = 1 between all partitions, no need of consensus function!
         concensus.part <- unname(unlist(binded.part[, 1]))
       } else {
-        concensus.part <- MultiCons(DB = binded.part, Clust_entry = T, Plot = plot.cons)$Partitions
+        concensus.part <- MultiCons(DB = binded.part,
+                                    Clust_entry = TRUE,
+                                    Plot = plot.cons)$Partitions
       }
     } else {
       concensus.part <- unname(unlist(binded.part))

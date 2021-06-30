@@ -16,7 +16,7 @@ CVE1_VandVH <- function(data, partition, nfolds = 10){
     lambda = 0,
     type.measure = "deviance",
     nfolds = nfolds,
-    grouped = T,
+    grouped = TRUE,
     thresh = 1e-5
   )$cvm
 

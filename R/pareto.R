@@ -17,7 +17,7 @@ pareto <- function(bi.objective, obj.names = c("Cluster", "Regression")){
     Dominated <- 0
     set <- setdiff(1:nrow(bi.objective), r)
     i <- 1
-    exit <- F
+    exit <- FALSE
     while (!exit) {
       rr <- set[i]
       if (bi.objective[r, obj.names[1]] > bi.objective[rr, obj.names[1]] &
@@ -25,7 +25,7 @@ pareto <- function(bi.objective, obj.names = c("Cluster", "Regression")){
         Dominated <- Dominated + 1
       }
       i <- i + 1
-      exit <- Dominated > 0 | (all.equal(rr, max(set)) == T)
+      exit <- Dominated > 0 | (all.equal(rr, max(set)) == TRUE)
     }
 
     bi.objective[r, 'Dominated'] <- Dominated

@@ -7,7 +7,8 @@
 #' @param LOG logical. Should all columns of the dataset be logged before
 #'   applying clustering algorithms?
 #' @param clust.algo vector of strings: name of clsutering algorithms to use
-#'   (use "km" for k-means, "kmed" for K-medians, "hc" for hclust and/or "mclust" for mclust).
+#'   (use "km" for k-means, "kmed" for K-medians, "hc" for hclust and/or
+#'   "mclust" for mclust).
 #' @param k.crit string. Criterion to select the optimal number of clusters (for
 #'   each imputed dataset). Use "ch" for Calinski and Harabasz criterion (not
 #'   available for mclust), "CritCF" for CriCF or bic for BIC (mclust only).
@@ -23,7 +24,7 @@
 partition_generation <- function(data, LOG, clust.algo, k.crit){
 
   if("mclust" %in% clust.algo) {
-    requireNamespace("mclust", quietly = F)
+    requireNamespace("mclust", quietly = FALSE)
   }
 
 
@@ -51,7 +52,7 @@ partition_generation <- function(data, LOG, clust.algo, k.crit){
                                   max.nc = 7, method = "kmed")$Best.partition,
                     mclust = mclust::Mclust(data.tmp,
                                             G = 1:7,
-                                            verbose = F)$classification),
+                                            verbose = FALSE)$classification),
         CritCF = switch(ALG,
                         km = CritCF.sel(data = data.tmp, min.nc = 2,
                                         max.nc = 7, method = "kmeans",
@@ -65,7 +66,7 @@ partition_generation <- function(data, LOG, clust.algo, k.crit){
         bic = switch(ALG,
                      mclust = mclust::Mclust(data.tmp,
                                              G = 1:7,
-                                             verbose = F)$classification)
+                                             verbose = FALSE)$classification)
       )
     }
     )), 2, factor))

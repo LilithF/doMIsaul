@@ -48,6 +48,6 @@ my.cv.glmnet(
 \item{...}{See \code{glmnet:::cv.glmnet}.}
 }
 \description{
-Modification of the cv.glmnet function with removal of the condition
-lenght(lamba) > 2
+Modification of the cv.glmnet function (glmnet package version 2.0-18)
+with removal of the condition lenght(lamba) > 2
 }

@@ -11,7 +11,8 @@ CH.sel(data, min.nc, max.nc, method)
 
 \item{min.nc}{interger strictly higher than 1 : minimum number of clusters.}
 
-\item{max.nc}{interger (higher than \code{min.nc}) : maximum number of clusters.}
+\item{max.nc}{interger (higher than \code{min.nc}) : maximum number of
+clusters.}
 
 \item{method}{Clustering algorithm to use.}
 }

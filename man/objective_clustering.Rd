@@ -18,6 +18,7 @@ Auxiliary function to calculate a cost function for clustering. Modified
 version of Cost_func from Khorshidi et al., 2019
 }
 \examples{
-allocation <- doMIsaul:::Allocation_Distance(iris[, 1:4], iris[c(1,5, 10), 1:4])
+allocation <- doMIsaul:::Allocation_Distance(iris[, 1:4],
+                                             iris[c(1,5, 10), 1:4])
 doMIsaul:::objective_clustering(allocation)
 }

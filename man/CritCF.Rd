@@ -14,7 +14,8 @@ CritCF(data, k, method, distance)
 \item{method}{string, clustering algorithm to use. Available values are
 kmeans, hc (for hclust) or mclust.}
 
-\item{distance}{distance between the observations (either euclidean or manhattan).}
+\item{distance}{distance between the observations (either euclidean or
+manhattan).}
 }
 \value{
 a list, containing the criterion value and the partition

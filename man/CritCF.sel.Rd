@@ -15,7 +15,8 @@ CritCF.sel(data, min.nc, max.nc, method, distance)
 
 \item{method}{clustering algorithm to use.}
 
-\item{distance}{distance between the observations (either euclidean or manhattan).}
+\item{distance}{distance between the observations (either euclidean or
+manhattan).}
 }
 \value{
 A list containing the selected number of clusters, the CritCF values

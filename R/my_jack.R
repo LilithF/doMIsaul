@@ -26,14 +26,14 @@ my_jack <- function(data, mcons.JAC.sel = 0){
                                   method = "independence")
   })
   if (prod(jac == 1) == 1) {
-    return(T)
+    return(TRUE)
   } else {
     jac <- jac > mcons.JAC.sel
     if (sum(jac) == ncol(data)) {
       a <- data
     } else {
       if (sum(jac) < 2) {
-        a <- F
+        a <- FALSE
       } else {
         to.del <- setdiff(as.vector(x1[,!jac]),
                           as.vector(x1[, jac]))

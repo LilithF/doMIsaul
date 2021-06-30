@@ -22,7 +22,8 @@
 #   # Intit ####
 #   if (simu == "new") {
 #
-#     simu.list <- dir(paste(ResDoss, where, sep = "/"), pattern = "s[[:digit:]]")
+    # simu.list <- dir(paste(ResDoss, where, sep = "/"),
+    #                  pattern = "s[[:digit:]]")
 #
 #     if (length(simu.list) < 1){
 #       f <- 1
@@ -77,8 +78,10 @@
 #     set.seed(ss[["DataSimu.Start"]])
 #     if (verbose) cat("0a. Data Generation... \n")
 #
-#     tmp <- DataSurvGeneration(n = n, means = means, covs = covs, k.latent = unlist(k.latent),
-#                               beta = beta_and_lambda[[1]], lambda = beta_and_lambda[[2]])
+    # tmp <- DataSurvGeneration(n = n, means = means, covs = covs,
+    #                           k.latent = unlist(k.latent),
+    #                           beta = beta_and_lambda[[1]],
+    #                           lambda = beta_and_lambda[[2]])
 #
 #     db <- tmp[["db"]]
 #     group <- tmp[["group"]]
@@ -86,7 +89,8 @@
 #
 #     save(db, file = paste(Dossier, "0_SimulatedData.Rdata", sep = "/"))
 #     save(group, file = paste(Dossier, "0_data_Groups.Rdata", sep = "/"))
-#     save(latent.group, file = paste(Dossier, "0_data_LatentGroups.Rdata", sep = "/"))
+    # save(latent.group, file = paste(Dossier, "0_data_LatentGroups.Rdata",
+    #                                 sep = "/"))
 #     ss[["DataSimu.End"]] <- .Random.seed
 #     save(ss, file = paste(Dossier, "Seeds.Rdata", sep = "/"))
 #
@@ -95,7 +99,7 @@
 #   if (ampute_NA){
 #     set.seed(ss[["ampute_NA.Start"]])
 #     if (verbose) cat("0b. Data amputation... \n")
-#     if (!exists("db")) load(paste(Dossier, "0_SimulatedData.Rdata", sep = "/"))
+#  if (!exists("db")) load(paste(Dossier, "0_SimulatedData.Rdata", sep = "/"))
 #
 #     db.NAS <- lapply(md.type, function(md.type.i){
 #
@@ -128,7 +132,8 @@
 #     set.seed(ss[["impute_NA.Start"]])
 #     if (verbose) cat("1. Data imputation... \n")
 #
-#     if (!exists("db.NAS")) load(paste(Dossier, "0_SimulatedData_NAs.Rdata", sep = "/"))
+    # if (!exists("db.NAS")) load(paste(Dossier, "0_SimulatedData_NAs.Rdata",
+    #                                   sep = "/"))
 #
 #     db.imputedS <- sapply(names(db.NAS), function(NA.t){
 #
@@ -159,14 +164,17 @@
 #     if (!exists("db.imputedS"))
 #       load(paste(Dossier, "1_SimulatedData_NA_Imputeds.Rdata", sep = "/"))
 #
-#     n.centers <- sample(as.numeric(names(k.list)), size = N, prob = unlist(k.list), replace = T)
+    # n.centers <- sample(as.numeric(names(k.list)), size = N,
+    #                     prob = unlist(k.list), replace = T)
 #
 #     Init.centerS <- sapply(clust.init.t, function(weight.t){
 #
-#       if (verbose) cat(paste0("...Proportion of random: ", 100 * weight.t, "%... \n"))
+      # if (verbose) cat(paste0("...Proportion of random: ", 100 *
+      #                           weight.t, "%... \n"))
 #       # Generate seeds, and algo for t!= 1
-#       seeds.t <- runif(N) * 10 ^ 9
-#       Algo.t <- sample(c("km", "hclust.mean", "hclust.med", "kmed"), N*(1-weight.t), replace = T)
+      # seeds.t <- runif(N) * 10 ^ 9
+      # Algo.t <- sample(c("km", "hclust.mean", "hclust.med", "kmed"),
+      #                  N*(1-weight.t), replace = T)
 #
 #       if (verbose) cat(paste0("......No Missing data... \n"))
 #       who <- paste0("InitiateCenters.t", weight.t, "NoNA", ".Start")

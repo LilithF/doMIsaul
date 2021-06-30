@@ -16,7 +16,8 @@ MImpute_surv(
 
 \item{mi.m}{Number of imputations to perform.}
 
-\item{time.status.names}{Names of the variables for time ans staus (in that order)}
+\item{time.status.names}{Names of the variables for time and status
+(in that order)}
 
 \item{return.midsObject}{Boolean}
 }
