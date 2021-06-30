@@ -23,7 +23,7 @@ my.cv.glmnet <-
            type.measure = c("mse", "deviance", "class", "auc", "mae"),
            nfolds = 10, foldid, alignment = c("lambda", "fraction"),
            grouped = TRUE, keep = FALSE, parallel = FALSE, ...){
-    requireNamespace("glmnet", quietly = F)
+    requireNamespace("glmnet", quietly = FALSE)
 
     getmin <- function (lambda, cvm, cvsd) {
       cvmin <- min(cvm, na.rm = TRUE)

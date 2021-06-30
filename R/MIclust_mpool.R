@@ -2,7 +2,7 @@
 #'
 #' Performs Multicons from a list of partitions
 #'
-#' @usage MIclust_mpool(list.part, comb.cons, plot.MIclust = F)
+#' @usage MIclust_mpool(list.part, comb.cons, plot.MIclust = FALSE)
 #' @param list.part list of partitions with one element of the list corresponds
 #'   to the results of one imputed dataset. If more than one algorithm were
 #'   tester, each element if the list is a dataframe, as obtained by

@@ -4,7 +4,7 @@
 \alias{MIclust_mpool}
 \title{Multicons wrapper for imputed datasets}
 \usage{
-MIclust_mpool(list.part, comb.cons, plot.MIclust = F)
+MIclust_mpool(list.part, comb.cons, plot.MIclust = FALSE)
 }
 \arguments{
 \item{list.part}{list of partitions with one element of the list corresponds

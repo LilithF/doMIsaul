@@ -138,7 +138,7 @@ seMIsupcox <- function(Impute = FALSE, Impute.m = 5,
       rowMeans(data.frame(sapply(1:mi.m, function(mi.i){
         as.numeric(error.mi[error.mi$center == r & error.mi$mi.i == mi.i,
                             c("Cluster", "Regression")])
-      }), stringsAsFactors = TRUE))
+      }, simplify = TRUE, USE.NAMES = TRUE), stringsAsFactors = TRUE))
 
   }
   # Find pareto non optimal solutions
@@ -198,15 +198,18 @@ seMIsupcox <- function(Impute = FALSE, Impute.m = 5,
 
     return(list(list(concensus.part, list(binded.part))))
 
-  })
-  binded.part <- sapply(cons.partSXX, function(x){x[[2]]})
-  cons.partS <- sapply(cons.partSXX, function(x){x[[1]]})
+  }, simplify = TRUE, USE.NAMES = TRUE)
+  binded.part <- sapply(cons.partSXX, function(x){x[[2]]},
+                        simplify = TRUE, USE.NAMES = TRUE)
+  cons.partS <- sapply(cons.partSXX, function(x){x[[1]]},
+                       simplify = TRUE, USE.NAMES = TRUE)
 
   if(length(unique.list) < length(optimal.final.objS)){
-    tt <- sapply(unique.list, function(x){x$center})
+    tt <- sapply(unique.list, function(x){x$center},
+                 simplify = TRUE, USE.NAMES = TRUE)
     what <- sapply(names(Unsup.Sup.relImp), function(x){
       which(tt == optimal.final.objS[[x]]$center)
-    })
+    }, simplify = TRUE, USE.NAMES = TRUE)
   } else {
     what <- 1:length(Unsup.Sup.relImp)
     names(what) <- names(Unsup.Sup.relImp)

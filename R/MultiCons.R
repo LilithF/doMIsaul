@@ -104,7 +104,7 @@ MultiCons <-
       Clust <-
         DB[, sapply(1:ncol(DB), function(i) {
           length(levels(DB[, i])) > 1
-        })]
+        }, simplify = TRUE, USE.NAMES = TRUE)]
       num_algo <- ncol(Clust)
     }
 
@@ -143,16 +143,17 @@ MultiCons <-
 
     #  4 Sort the FCPs in ascending order of the size of their instance list;
     FCP <-
-      lapply(order(sapply(Indiv, length)), function(i) {
-        list(FCI = which(FCI[i, ] == T), Indiv = Indiv[[i]])
-      })
+      lapply(order(sapply(Indiv, length, simplify = TRUE, USE.NAMES = TRUE)),
+             function(i) {
+               list(FCI = which(FCI[i, ] == TRUE), Indiv = Indiv[[i]])
+             })
 
     #  5 BiClust <- {instance sets of FCPs built from numalgo base clusters};
     Sel <-
       unlist(sapply(1:length(FCP), function(i) {
         if (length(FCP[[i]][[1]]) == num_algo)
           return(i)
-      }))
+      }, simplify = TRUE, USE.NAMES = TRUE))
     BiClust <- lapply(Sel, function(i) {
       FCP[[i]][[2]]
     })
@@ -163,14 +164,13 @@ MultiCons <-
     bic <- rep(NA, n)
     sapply(1:length(BiClust), function(i) {
       bic[BiClust[[i]]] <<- i
-    })
+    }, simplify = TRUE, USE.NAMES = TRUE)
 
     distjack <-
       sum(sapply(Clust, function(x){
         clusteval::cluster_similarity(x, bic, similarity = c(sim.indice),
                                       method = "independence")
-      }
-      )) / num_algo
+      }, simplify = TRUE, USE.NAMES = TRUE)) / num_algo
 
     TSim <- distjack
 
@@ -185,7 +185,7 @@ MultiCons <-
         unlist(sapply(1:length(FCP), function(i) {
           if (length(FCP[[i]][[1]]) == DT)
             return(i)
-        }))
+        }, simplify = TRUE, USE.NAMES = TRUE))
       BiClust <- c(BiClust, lapply(Sel, function(i) {
         FCP[[i]][[2]]
       }))
@@ -213,11 +213,11 @@ MultiCons <-
       })
       lala <- sapply(BiClust, function(i) {
         paste0(i, collapse = "")
-      })
+      }, simplify = TRUE, USE.NAMES = TRUE)
       lala2 <-
         sapply(ConsVctrs[[length(ConsVctrs)]], function(i) {
           paste0(i, collapse = "")
-        })
+        }, simplify = TRUE, USE.NAMES = TRUE)
       if (length(lala2) == length(lala) & all(lala2 %in% lala)) {
         ST[length(ConsVctrs)] <- ST[length(ConsVctrs)] + 1
         ST <- ST[-length(ST)]
@@ -227,14 +227,14 @@ MultiCons <-
         bic <- rep(NA, n)
         sapply(1:length(BiClust), function(i) {
           bic[BiClust[[i]]] <<- i
-        })
+        }, simplify = TRUE, USE.NAMES = TRUE)
         distjack <-
           sum(sapply(Clust, function(x) {
             clusteval::cluster_similarity(x,
                                           bic,
                                           similarity = c(sim.indice),
                                           method = "independence")
-          }
+          }, simplify = TRUE, USE.NAMES = TRUE
           )) / num_algo
         TSim <- c(TSim, distjack)
       }
@@ -245,7 +245,7 @@ MultiCons <-
     L <- length(ConsVctrs)
     names(ConsVctrs) <- LETTERS[1:L]
     taille <- lapply(1:L, function(i) {
-      sapply(ConsVctrs[[i]], length)
+      sapply(ConsVctrs[[i]], length, simplify = TRUE, USE.NAMES = TRUE)
     })
     lapply(1:L, function(i) {
       names(ConsVctrs[[i]]) <<-
@@ -255,11 +255,12 @@ MultiCons <-
     if (Plot) {
       Mat <- do.call(rbind, lapply(1:(L - 1), function(i){
         vers <- sapply(ConsVctrs[[i]], function(clust){
-          names(ConsVctrs[[i + 1]])[which(sapply(ConsVctrs[[i + 1]],
-                                                 function(a){
-                                                   any(clust %in% a)
-                                                 }))]
-        })
+          names(ConsVctrs[[i + 1]])[which(
+            sapply(ConsVctrs[[i + 1]],
+                   function(a){
+                     any(clust %in% a)
+                   }, simplify = TRUE, USE.NAMES = TRUE))]
+        }, simplify = TRUE, USE.NAMES = TRUE)
         cbind(names(ConsVctrs[[i]]), vers)
       }))
       df <- data.frame(Mat)
@@ -273,13 +274,13 @@ MultiCons <-
           as.numeric(sapply(
             Mat[grepl(LETTERS[L], Mat[, 2]), 2], function(x) {
               substr(x, 2, 2)
-            }))
+            }, simplify = TRUE, USE.NAMES = TRUE))
         )]
       names(ts) <- NULL
       igraph::V(df_graph)$color <-
         unlist(sapply(1:L, function(i) {
           rep(palettes[i], length(taille[[i]]))
-        }))
+        }, simplify = TRUE, USE.NAMES = TRUE))
       igraph::V(df_graph)$size <- scales::rescale(ts, to = c(10, 20))
       igraph::V(df_graph)$frame.color <- rep("white", length(ts))
       igraph::V(df_graph)$label <- ts
@@ -315,7 +316,7 @@ MultiCons <-
       bic <- rep(NA, n)
       sapply(1:length(ConsVctrs[[i]]), function(j) {
         bic[ConsVctrs[[i]][[j]]] <<- j
-      })
+      }, simplify = TRUE, USE.NAMES = TRUE)
       list(
         Performances = c(
           DT = DTs[i],
