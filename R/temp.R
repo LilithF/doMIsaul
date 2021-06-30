@@ -22,8 +22,8 @@
 #   # Intit ####
 #   if (simu == "new") {
 #
-    # simu.list <- dir(paste(ResDoss, where, sep = "/"),
-    #                  pattern = "s[[:digit:]]")
+# simu.list <- dir(paste(ResDoss, where, sep = "/"),
+#                  pattern = "s[[:digit:]]")
 #
 #     if (length(simu.list) < 1){
 #       f <- 1

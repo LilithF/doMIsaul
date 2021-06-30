@@ -14,7 +14,7 @@ library(devtools)
 # use_r("exctract_center_position")      # ATT nom changé (. en _ ; maj)
 #### use_r("glmnet_modified_function")  # ex à faire ?
 # use_r("initiate_centers")  # ATT nom changé (. en _ ; maj)
-####  use_r("MIclust_mpool") # ATT nom changé (. en _ ; maj)   ++ example a refaire je suis pas en MI  la.
+# use_r("MIclust_mpool") # ATT nom changé (. en _ ; maj)
 ####  use_r("MImpute_surv")   # ATT nom changé (. en _ ; maj)   ++ example a finir qd fonciton de simu
 ####  use_r("MultiCons")    # EXample à faire
 # use_r("my_jack")   # ATT nom changé (. en _)
@@ -26,7 +26,8 @@ library(devtools)
 # use_r("temp")
 ####  use_r("unsupMI")    # Example à faire
 
-
+# use_github()
+use_testthat()
 
 
 
@@ -46,7 +47,6 @@ install()
 # build()  # construit le targz
 goodpractice::goodpractice()
 
-use_github()
 
 
 
