@@ -1,18 +1,18 @@
-#' Multicons wrapper for imputed datasets
+#' \code{Multicons} wrapper for imputed datasets
 #'
-#' Performs Multicons from a list of partitions
+#' Performs \code{Multicons} from a list of partitions
 #'
 #' @usage MIclust_mpool(list.part, comb.cons, plot.MIclust = FALSE)
 #' @param list.part list of partitions with one element of the list corresponds
 #'   to the results of one imputed dataset. If more than one algorithm were
 #'   tester, each element if the list is a dataframe, as obtained by
-#'   partition_generation()
-#' @param plot.MIclust should Multicons tree be plotted?
-#' @param comb.cons logical. Forced to FALSE if \code{length(algo)<2}. Use
-#'   \code{TRUE} to perform an additional consensus from all partitions
+#'   \code{partition_generation()}.
+#' @param plot.MIclust should \code{Multicons} tree be plotted?
+#' @param comb.cons logical. Forced to \code{FALSE} if \code{length(algo)<2}.
+#'   Use \code{TRUE} to perform an additional consensus from all partitions.
 #'
-#' @return a data frame with ncol = number of algorithms (+1 if comb.cons ==
-#'   T), containing the consensus partitions
+#' @return a data frame with \code{ncol} = number of algorithms (+1 if
+#'   \code{comb.cons == T}), containing the consensus partitions.
 #' @examples
 #' list.partitions <- list(
 #'         partition_generation(iris[, 1:4], LOG = FALSE,

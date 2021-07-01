@@ -1,10 +1,10 @@
-#' Semisupervsised learning for a right censored endpoint
+#' Semisupervised learning for a right censored endpoint
 #'
 #' @description MultiCons consensus based method for MI-SemiSup clustering
 #'   Clustering. The final partition is a consensus of the Pareto-optimal
 #'   solutions.
 #'
-#' @param Impute boolean. Default is FALSE to indicate that the user performed
+#' @param Impute Boolean. Default is FALSE to indicate that the user performed
 #'   the imputation and provides the imputed data. If TRUE, the imputation will
 #'   be performed within the call using the MImpute_surv() function. Note that
 #'   if Impute is TRUE, center.init is also forced to TRUE as the center
@@ -12,12 +12,12 @@
 #' @param Impute.m Used only if Impute is TRUE ; number of imputations to
 #'   perform
 #' @param center.init Either a User supplied List of dataframe containing the
-#'   cluster centers coordinates (for exemple as obtained with
-#'   initiate_centers(), OR TRUE to initiate the centers within the call of the
-#'   function (performed with initiate_centers()). Note that if TRUE a random
-#'   initialisation will be performed. For a finner tunning of the center
-#'   initialization the user should generate and provide the list of centers
-#'   coordinates.
+#'   cluster centers coordinates (for example as obtained with
+#'   initiate_centers(), Or \code{TRUE} to initiate the centers within the call
+#'   of the function (performed with \code{initiate_centers()}). Note that if
+#'   \code{TRUE} a random initialization will be performed. For a finer tuning
+#'   of the center initialization the user should generate and provide the list
+#'   of centers coordinates.
 #' @param center.init.N Used only if center.init is TRUE. The number to
 #'   initialization to produce. Default to 500.
 #' @param center.init.Ks Used only if center.init is TRUE. Vector of number of
@@ -27,9 +27,8 @@
 #'   imputed dataframes if data are incomplete. If columns named "\code{time}"
 #'   and "\code{status}" are present they will be discarded for the clustering.
 #' @param CVE.fun string indicating how to calculate the cross validation error
-#'   : \code{LP} for linear predictor, \code{VandVH for Verweij} and Van
-#'   Houwelingen estimator
-#'   and \code{basic} for the basic approach.
+#'   : \code{LP} for linear predictor, \code{VandVH} for Verweij and Van
+#'   Houwelingen estimator and \code{basic} for the basic approach.
 #' @param Y Passed to CVE.fun, Outcome data: should be dataframe or matrix with
 #'   2 columns: "time" and "status".
 #' @param nfolds Number of folds for cross-validation.
@@ -49,7 +48,30 @@
 #' @importFrom stats model.matrix
 #'
 #' @examples
-#' #seMIsupcox()
+#' data(cancer, package = "survival")
+#' cancer$status <- cancer$status - 1
+#' cancer <- cancer[, -1]
+#' ## With imputation included
+#' res <- seMIsupcox(X = list(cancer), Y = cancer[, c("time", "status")],
+#'                   Impute = TRUE, Impute.m = 3, center.init = TRUE,
+#'                   nfold = 10)
+#'
+#' ### With imputation and center initialization not included
+#' ## 1 imputation
+#' cancer.imp <- MImpute_surv(cancer, 3)
+#' ## 2 Center initialization
+#' N <- 100
+#' center.number <- sample(2:6, size = N, replace = TRUE)
+#' the.seeds <- runif(N) * 10^9
+#' sel.col <- which(!colnames(cancer) %in% c("time", "status"))
+#' inits <- sapply(1:length(cancer.imp), function(mi.i) {
+#'  initiate_centers(data = cancer.imp[[mi.i]][, sel.col],
+#'                   N = N, t = 1, k = center.number,
+#'                   seeds.N = the.seeds)},
+#'                 USE.NAMES = TRUE, simplify = FALSE)
+#' ## 3 learning
+#' res <- seMIsupcox(X = cancer.imp, Y = cancer[, c("time", "status")],
+#'                   center.init = inits, nfold = 10)
 seMIsupcox <- function(Impute = FALSE, Impute.m = 5,
                         center.init = TRUE, center.init.N = 500,
                         center.init.Ks = 2:7,

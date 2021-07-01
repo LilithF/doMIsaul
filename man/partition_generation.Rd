@@ -12,7 +12,7 @@ partition_generation(data, LOG, clust.algo, k.crit)
 \item{LOG}{logical. Should all columns of the dataset be logged before
 applying clustering algorithms?}
 
-\item{clust.algo}{vector of strings: name of clsutering algorithms to use
+\item{clust.algo}{vector of strings: name of clustering algorithms to use
 (use "km" for k-means, "kmed" for K-medians, "hc" for hclust and/or
 "mclust" for mclust).}
 
@@ -21,7 +21,7 @@ each imputed dataset). Use "ch" for Calinski and Harabasz criterion (not
 available for mclust), "CritCF" for CriCF or bic for BIC (mclust only).}
 }
 \value{
-a dataframe with one column for each algortihm in clust.algo ,
+a dataframe with one column for each algorithm in clust.algo ,
 containing the cluster IDs.
 }
 \description{

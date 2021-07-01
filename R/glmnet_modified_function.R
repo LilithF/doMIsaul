@@ -1,7 +1,8 @@
 #' Modified \code{glmnet:::cv.glmnet}.
 #'
-#' Modification of the cv.glmnet function (glmnet package version 2.0-18)
-#'  with removal of the condition lenght(lamba) > 2
+#' Modification of the \code{cv.glmnet} function (\code{glmnet}
+#'  package version 2.0-18)
+#'  with removal of the condition \code{lenght(lamba) > 2}
 #'
 #' @param x See \code{glmnet:::cv.glmnet}.
 #' @param y See \code{glmnet:::cv.glmnet}.

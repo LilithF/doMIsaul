@@ -1,25 +1,40 @@
 #' MultiCons Consensus Clustering Algorithm
 #'
 #' Performs Multicons clustering, from Al-Najdi et Al.
+#' For some reason, if you want to use \code{mclust} clustering the package
+#' needs to be loaded manually
 #'
 #' @param DB Either data or dataframe of partitions.
-#' @param Clust_entry Is DB partitions (T) or data (F).
+#' @param Clust_entry Is DB partitions (\code{TRUE}) or data (\code{FALSE}).
 #' @param Clustering_selection If DB is data, clustering algorithm to select
-#' among. Must be included in default value.
+#'   among. Must be included in default value.
 #' @param num_algo Number of clustering algorithms to perform.
 #' @param maxClust Maximum number of clusters.
 #' @param sim.indice Index for defining best partition.
-#' @param returnAll Should all partitions (T) or only the best (F) be returned.
+#' @param returnAll Should all partitions (\code{TRUE}) or only the best
+#'  (\code{FALSE}) be returned.
 #' @param Plot Should tree be plotted.
-#' @param verbose Passed on to mclust and other fucntions.
+#' @param verbose Passed on to \code{mclust} and other functions.
 #'
-#' @return A list of 2 : performances and partitions. If returnAll is TRUE, both
-#'   elements of the list contain resutlts for all lelevs of the tree, else they
-#'   only ontain the results for  the bst level of the tree.
+#' @return A list of 2: performances and partitions. If \code{returnAll} is
+#'   \code{TRUE}, both elements of the list contain results for all levels of
+#'   the tree, else they only contain the results for the best level of
+#'   the tree.
 #' @export
 #'
 #' @examples
-#' # TO DO
+#' library(mclust)
+#' ### With clustering algorithm choices
+#' MultiCons(iris[, 1:4],
+#'           Clustering_selection = c("kmeans", "pam", "DIANA", "MCLUST"),
+#'           Plot = TRUE)
+#' ### With a manual clustering entry
+#' parts <- data.frame(factor(rep(c(1,2,3), each = 50)),
+#'                     factor(rep(c(1,2,3), times = c(100, 25, 25))),
+#'                     factor(rep(c(1,2), times = c(50, 100))),
+#'                     factor(rep(c(3, 2, 1), times = c(120, 10, 20))),
+#'                     stringsAsFactors = T)
+#' MultiCons(parts, Clust_entry = T, Plot = TRUE)
 MultiCons <-
   function(DB, Clust_entry = FALSE,
            Clustering_selection = c("kmeans", "pam", "OPTICS", "agghc",
@@ -58,7 +73,6 @@ MultiCons <-
       Clust <- lapply(1:num_algo, function(i) {
 
         nclust <- max(round(stats::rnorm(1, Values[i], 2)), 2)
-
         switch(lesBaseClust[i],
                kmeans = stats::kmeans(DB, nclust)$cluster,
                pam = cluster::pam(DB, nclust)$cluster,

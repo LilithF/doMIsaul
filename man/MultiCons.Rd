@@ -20,7 +20,7 @@ MultiCons(
 \arguments{
 \item{DB}{Either data or dataframe of partitions.}
 
-\item{Clust_entry}{Is DB partitions (T) or data (F).}
+\item{Clust_entry}{Is DB partitions (\code{TRUE}) or data (\code{FALSE}).}
 
 \item{Clustering_selection}{If DB is data, clustering algorithm to select
 among. Must be included in default value.}
@@ -31,20 +31,35 @@ among. Must be included in default value.}
 
 \item{sim.indice}{Index for defining best partition.}
 
-\item{returnAll}{Should all partitions (T) or only the best (F) be returned.}
+\item{returnAll}{Should all partitions (\code{TRUE}) or only the best
+(\code{FALSE}) be returned.}
 
 \item{Plot}{Should tree be plotted.}
 
-\item{verbose}{Passed on to mclust and other fucntions.}
+\item{verbose}{Passed on to mclust and other functions.}
 }
 \value{
-A list of 2 : performances and partitions. If returnAll is TRUE, both
-elements of the list contain resutlts for all lelevs of the tree, else they
-only ontain the results for  the bst level of the tree.
+A list of 2: performances and partitions. If \code{returnAll} is
+\code{TRUE}, both elements of the list contain results for all levels of
+the tree, else they only contain the results for the best level of
+the tree.
 }
 \description{
 Performs Multicons clustering, from Al-Najdi et Al.
+For some reason, if you want to use mclust clustering the package needs
+to be loaded manually
 }
 \examples{
-# TO DO
+library(mclust)
+### With clustering algorithm choices
+MultiCons(iris[, 1:4],
+          Clustering_selection = c("kmeans", "pam", "DIANA", "MCLUST"),
+          Plot = TRUE)
+### With a manual clustering entry
+parts <- data.frame(factor(rep(c(1,2,3), each = 50)),
+                    factor(rep(c(1,2,3), times = c(100, 25, 25))),
+                    factor(rep(c(1,2), times = c(50, 100))),
+                    factor(rep(c(3, 2, 1), times = c(120, 10, 20))),
+                    stringsAsFactors = T)
+MultiCons(parts, Clust_entry = T, Plot = TRUE)
 }

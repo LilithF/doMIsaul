@@ -1,8 +1,8 @@
-#' Cross-valitation for cox regression using the basic approach
+#' Cross-validation for cox regression using the basic approach
 #'
-#' @param data data contaning columns time and status
-#' @param partition dataframe with 1 colunm
-#' @param nfolds number of fold for CV
+#' @param data data containing columns time and status.
+#' @param partition dataframe with 1 column.
+#' @param nfolds number of fold for CV.
 #'
 #' @return numeric, cross-validation error
 #' @examples
@@ -26,12 +26,12 @@ cve_basic <- function(data, partition, nfolds = 10){
 }
 
 
-#' Cross-valitation for cox regression using the basic approach
+#' Cross-validation for cox regression using the basic approach
 #' estimator with wrapper for warnings handling
 #'
-#' @param x list of 3 named elements : data (data contaning columns time and
-#'   status), partition (dataframe with 1 colunm), nfolds (number of fold for
-#'   CV)
+#' @param x list of 3 named elements : data (data containing columns time and
+#'   status), partition (dataframe with 1 column), nfolds (number of fold for
+#'   CV)?
 #'
 #' @return numeric, cross-validation error
 #' @export

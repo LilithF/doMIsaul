@@ -10,26 +10,25 @@ library(devtools)
 # use_r("CritCF_index_functions")
 # use_r("CVE1_basic")
 # use_r("CVE2_VandVH")
-#### use_r("CVE3_LinearPred") # ex à faire
-# use_r("exctract_center_position")      # ATT nom changé (. en _ ; maj)
-#### use_r("glmnet_modified_function")  # ex à faire ?
-# use_r("initiate_centers")  # ATT nom changé (. en _ ; maj)
-# use_r("MIclust_mpool") # ATT nom changé (. en _ ; maj)
-####  use_r("MImpute_surv")   # ATT nom changé (. en _ ; maj)   ++ example a finir qd fonciton de simu
-####  use_r("MultiCons")    # EXample à faire
-# use_r("my_jack")   # ATT nom changé (. en _)
+# use_r("CVE3_LinearPred")
+# use_r("exctract_center_position")
+# use_r("glmnet_modified_function")
+# use_r("initiate_centers")
+# use_r("MIclust_mpool")
+# use_r("MImpute_surv")
+# use_r("MultiCons")
+# use_r("my_jack")
 # use_r("ncvsurv_modified_functions")
 # use_r("objective_clustering")
 # use_r("pareto")
-# use_r("partition_generation")  # ATT nom changé ( _ ; maj)
-####  use_r("seMIsupcox")     # Example à faire
-# use_r("temp")
+# use_r("partition_generation")
+# use_r("seMIsupcox")
 ####  use_r("unsupMI")    # Example à faire
 
 
-# # FOR the CVE need an uptodate version of glmnet
+# # FOR the CVE need an up to date version of glmnet
 # use_package("glmnet", type = "Imports", min_version = T)
-# # FOR examaples of CVEs
+# # FOR examples of CVEs
 # use_package("survival", type = "Suggests")
 
 
@@ -39,6 +38,7 @@ library(devtools)
 
 
 
+# use_r("temp")
 
 ### Do it often ####
 load_all()

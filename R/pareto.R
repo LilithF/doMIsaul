@@ -1,13 +1,13 @@
-#' Pareto optimisation
+#' Pareto optimization
 #'
-#' Find pareto optimal and pareto non optimal solutions
+#' Find Pareto optimal and Pareto non optimal solutions
 #'
 #' @param bi.objective dataframe or matrix containing the objective values for
 #'   each case
-#' @param obj.names name of the twoobjectives - should be in
-#'   colname(bi.objetive)
+#' @param obj.names name of the two objectives (should be in
+#'   \code{colnames(bi.objetive)} )
 #'
-#' @return the entry bi.objective with an additional column "Domimanted" with 1
+#' @return the entry bi.objective with an additional column "Dominated" with 1
 #'   for non optimal solutions and 0 for optimal.
 #' @examples
 #' tab <- data.frame(A = rnorm(100, 10, 3), B = runif(100, 3,4))

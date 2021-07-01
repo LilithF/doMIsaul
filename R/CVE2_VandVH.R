@@ -1,8 +1,8 @@
-#' Cross-valitation for cox regression using Verweij and Van Houwelingen method
+#' Cross-validation for cox regression using Verweij and Van Houwelingen method
 #'
-#' @param data data contaning columns time and status
-#' @param partition dataframe with 1 colunm
-#' @param nfolds number of fold for CV
+#' @param data data containing columns time and status.
+#' @param partition dataframe with 1 column.
+#' @param nfolds number of fold for CV.
 #'
 #' @return numeric, cross-validation error
 #' data(cancer, package = "survival")
@@ -27,12 +27,12 @@ cve_VandVH <- function(data, partition, nfolds = 10){
 
 
 
-#' Cross-valitation for cox regression using Verweij and Van Houwelingen
+#' Cross-validation for cox regression using Verweij and Van Houwelingen
 #' estimator with wrapper for warnings handling
 #'
-#' @param x list of 3 named elements : data (data contaning columns time and
-#'   status), partition (dataframe with 1 colunm), nfolds (number of fold for
-#'   CV)
+#' @param x list of 3 named elements : data (data containing columns time and
+#'   status), partition (dataframe with 1 column), nfolds (number of fold for
+#'   CV).
 #'
 #' @return numeric, cross-validation error
 #' @export

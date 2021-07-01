@@ -1,11 +1,10 @@
-#' Number of cluster selection according to CH index
+#' Number of cluster selection according to \code{CH} index
 #'
-#' Wrapper to estimate the best number of clusters according to CH index
+#' Wrapper to estimate the best number of clusters according to \code{CH} index.
 #'
 #' @param data dataframe for which the number of cluster should be estimated.
-#' @param min.nc interger strictly higher than 1 : minimum number of clusters.
-#' @param max.nc interger (higher than \code{min.nc}) : maximum number of
-#' clusters.
+#' @param min.nc integer strictly higher than 1: minimum number of clusters.
+#' @param max.nc integer (\code{>min.nc}): maximum number of  clusters.
 #' @param method Clustering algorithm to use.
 #'
 #' @return A list containing the selected number of clusters, the CH values and
@@ -28,17 +27,17 @@ CH.sel <- function(data, min.nc, max.nc, method){
   )
 }
 
-#' CH index
+#' \code{CH} index
 #'
 #' Computes CH index for the selected number of clusters and clustering
-#' algorithm
+#' algorithm.
 #'
 #' @param data dataframe for which the number of cluster should be estimated.
 #' @param k integer, number of clusters.
 #' @param method string, clustering algorithm to use. Only available value for
-#'   know is "kmed" for K-medians clsutering.
+#'   know is "\code{kmed}" for \code{K-medians} clustering.
 #'
-#' @return a list, containing the criterion value and the partition
+#' @return a list, containing the criterion value and the partition.
 #' @examples doMIsaul:::CH(iris[, 1:4], 5, "kmed")
 CH <- function(data, k, method){
   set.seed(1)

@@ -26,14 +26,15 @@ If \code{return.midsObject == FALSE} a list of size mi.m, containing
 the imputed datasets. If \code{return.midsObject == TRUE} a list of 2, the
 first element (\code{imputed.data}) being the list of size mi.m as
 described in the previous sentence, the 2nd element (\code{mids.obj})
-containing the mids object as returmed by \code{mice()}
+containing the mids object as returned by \code{mice()}
 }
 \description{
 Performs imputation of the missing data using MICE for a dataset with
-survival data. The Nelson Aalen estiamtor is calculated and used as predictor
-in the impuation, Time is not used as predictor.
+survival data. The Nelson Aalen estimator is calculated and used as predictor
+in the imputation, Time is not used as predictor.
 }
 \examples{
-# DB <- XXX
-# MImpute_surv(DB, 10)
+data(cancer, package = "survival")
+cancer$status <- cancer$status - 1
+cancer.imp <- MImpute_surv(cancer, 3)
 }

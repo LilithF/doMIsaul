@@ -28,6 +28,6 @@ Allocation_Distance <- function(Z, Xr){
   }
   Amat[min.dist] <- 1 # assign each point to the cluster with
                       # the highest probability
-  Amat[!min.dist] <- 0 # remove points from clusters with lower probabilites
+  Amat[!min.dist] <- 0 # remove points from clusters with lower probabilities
   return(list(Distance = Dis, Allocation = Amat))
 }

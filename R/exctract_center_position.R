@@ -1,9 +1,9 @@
-#' Exctract the cluster centers coordinates
+#' Extract the cluster centers coordinates
 #'
-#' @param data dataframe (\code{n * p})
-#' @param Cluster vector (\code{n}) of cluster allocation
+#' @param data dataframe (\code{n * p}).
+#' @param Cluster vector (\code{n}) of cluster allocation.
 #' @param centPos Cluster: center is defined by mean ("colMeans") or median
-#' of the cluster
+#'   of the cluster.
 #'
 #' @return matrix (\code{k * p}) with center coordinates
 #' @examples
@@ -11,9 +11,7 @@
 #'                                     as.numeric(iris[, 5]),
 #'                                     "colMeans")
 exctract_center_position <- function (data, Cluster, centPos){
-  # Exctracts cluster centers from a clustering result
-
-
+  # Extracts cluster centers from a clustering result
 
   NCluster <- length(levels(as.factor(Cluster)))
   if (class(data) == "numeric") data <- as.matrix(data)

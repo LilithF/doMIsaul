@@ -1,21 +1,21 @@
-#' Initiate centers for clustering allgorithm
+#' Initiate centers for clustering algorithm
 #'
 #' @param data Dataset that clustering will be applied on
-#' @param N Integer. Number clsutering initialisation (set of centers) to
+#' @param N Integer. Number clustering initialization (set of centers) to
 #'   generate
-#' @param t Numeric beteween 0 and 1. weight coefficient between only random
+#' @param t Numeric between 0 and 1. weight coefficient between only random
 #'   centers (t=1) and only centers from clustering (t=0).
 #' @param k Vector of size N containing the number of centers for each
-#'   initialisation.
+#'   initialization.
 #' @param algorithms list of algorithm(s) (size \code{N * (1-t)} to generate
 #'   centers if t!=1, given as characters. Possible values are \code{km} for
 #'   Kmeans, \code{kmed} for Kmedians, \code{hclust.mean, hclust.med} for
-#'   hierachical clustering with mean or median position of the center.
+#'   hierarchical clustering with mean or median position of the center.
 #' @param seeds.N (optional) vector of size N containing seeds for each
-#'   initialisation.
+#'   initialization.
 #'
-#' @return list of size \code{N} containing coordiates of centers for clustering
-#'   initialzation.
+#' @return list of size \code{N} containing coordinates of centers for
+#'   clustering initialization.
 #' @export
 #' @import stats
 #' @importFrom dplyr sample_n

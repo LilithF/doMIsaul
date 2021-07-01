@@ -1,16 +1,17 @@
-#' Number of cluster selection according to CritCF index
+#' Number of cluster selection according to \code{CritCF} index
 #'
-#' Wrapper to estimate the best number of clusters according to CritCF index
+#' Wrapper to estimate the best number of clusters according to \code{CritCF}
+#'  index
 #'
 #' @param data dataframe for which the number of cluster should be estimated.
-#' @param min.nc interger strictly higher than 1 : minimum number of clusters.
-#' @param max.nc interger (higher than min.nc) : maximum number of clusters.
+#' @param min.nc integer strictly higher than 1: minimum number of clusters.
+#' @param max.nc integer (\code{>min.nc}): maximum number of clusters.
 #' @param method clustering algorithm to use.
 #' @param distance distance between the observations (either euclidean or
 #' manhattan).
 #'
-#' @return A list containing the selected number of clusters, the CritCF values
-#'   and the best partition.
+#' @return A list containing the selected number of clusters, the \code{CritCF}
+#'   values and the best partition.
 #' @examples doMIsaul:::CritCF.sel(iris[, 1:4], 2, 9, "kmeans", "euclidean")
 CritCF.sel <- function(data, min.nc, max.nc, method, distance){
 
@@ -30,15 +31,15 @@ CritCF.sel <- function(data, min.nc, max.nc, method, distance){
 }
 
 
-#' CritCF index
+#' \code{CritCF} index
 #'
-#' Computes CritCF index for the selected number of clusters and clustering
-#' algorithm
+#' Computes \code{CritCF} index for the selected number of clusters and
+#'   clustering algorithm.
 #'
 #' @param data dataframe for which the number of cluster should be estimated.
 #' @param k integer, number of clusters.
 #' @param method string, clustering algorithm to use. Available values are
-#'  kmeans, hc (for hclust) or mclust.
+#'  \code{kmeans}, \code{hc} (for \code{hclust}) or \code{mclust}.
 #' @param distance distance between the observations (either euclidean or
 #' manhattan).
 #'
