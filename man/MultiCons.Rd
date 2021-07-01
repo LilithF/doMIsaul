@@ -61,5 +61,5 @@ parts <- data.frame(factor(rep(c(1,2,3), each = 50)),
                     factor(rep(c(1,2), times = c(50, 100))),
                     factor(rep(c(3, 2, 1), times = c(120, 10, 20))),
                     stringsAsFactors = T)
-MultiCons(parts, Clust_entry = T, Plot = TRUE)
+MultiCons(parts, Clust_entry = TRUE, Plot = TRUE)
 }

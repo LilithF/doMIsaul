@@ -7,8 +7,19 @@
 #'    comb.cons = FALSE, plot.cons = FALSE, return.detail = FALSE,
 #'    not.to.use = c("time", "status"))
 #'
-#' @param data list of the imputed datasets (if present, columns names
-#'   \code{time} and \code{status} will be discard)
+#'
+#' @param Impute Default is FALSE to indicate that the user performed
+#'   the imputation and provides the imputed data. Otherwise string
+#'   ("\code{MImpute}", "\code{MImpute_surv}" or "\code{MImpute_lcens}") to
+#'   perform the imputation within the call using the \code{MImpute()},
+#'   \code{MImpute_surv()} or \code{MImpute_lcens()} function.
+#' @param Impute.m Used only if Impute is not \code{FALSE} ; number of
+#'   imputations to perform
+#' @param data Data, in the form of a list of data.frame(s). The list should be
+#'   one length 1 if data are complete or if Impute is not \code{FALSE}, it
+#'   should be a list of imputed dataframes if data are incomplete and imputed.
+#'   If columns named "\code{time}" and "\code{status}" are present they will be
+#'    discarded for the clustering.
 #' @param log.data logical. Should all columns of the dataset be logged before
 #'   applying clustering algorithms?
 #' @param algo vector of strings: name of clustering algorithms to use (use
@@ -27,6 +38,12 @@
 #' @param return.detail logical. Should the detail of imputation specific
 #'   partition be returned, in the supplement to the final consensus partition?
 #'
+#' @param cens.data.lod passed to \code{MImpute_lcens()} if
+#'   \code{Impute == MImpute_lcens}
+#' @param cens.standards passed to \code{MImpute_lcens()} if
+#'   \code{Impute == MImpute_lcens}
+#' @param cens.mice.log passed to \code{MImpute_lcens()} if
+#'   \code{Impute == MImpute_lcens}
 #'
 #' @return if \code{length(algo)>1} a vector of final cluster ID ; if
 #'   \code{length(algo)>1} a data.frame with each column being the final cluster
@@ -46,14 +63,37 @@
 #' ## 2.bis learning with several algorithms
 #' res.2 <- unsupMI(data = cancer.imp, algo = c("km", "hc"), comb.cons = TRUE,
 #'                  plot.cons = TRUE)
-unsupMI <- function(data, log.data = FALSE, algo = "km", k.crit = "ch",
+#' ## Alternative: perform imputation within
+#' res <- unsupMI(Impute = "MImpute_surv", data = list(cancer))
+unsupMI <- function(Impute = FALSE, Impute.m = 5, cens.data.lod = NULL,
+                    cens.standards = NULL, cens.mice.log = 10,
+                    data, log.data = FALSE, algo = "km", k.crit = "ch",
                     comb.cons = FALSE, plot.cons = FALSE, return.detail = FALSE,
                     not.to.use = c("time", "status")){
 
+  if(Impute == "MImpute"){
+    data.imp <-  MImpute(data = data[[1]], mi.m = Impute.m)
+    X <- data.imp
+  }
+  if(Impute == "MImpute_surv"){
+    data.imp <-  MImpute_surv(data = data[[1]], mi.m = Impute.m)
+    X <- data.imp
+  }
+  if(Impute == "MImpute_lcens"){
+    data.imp <-
+      MImpute_lcens(data = data[[1]], mi.m = Impute.m, data.lod = cens.data.lod,
+                    standards = cens.standards, mice.log = cens.mice.log)
+    X <- data.imp
+  }
+
+  if(Impute == FALSE){
+    X <- data
+  }
+
   names.use <- setdiff(colnames(data[[1]]), not.to.use)
 
-  Partition.list <- lapply(1:length(data), function(i){
-    partition_generation(data = data[[i]][,  names.use],
+  Partition.list <- lapply(1:length(X), function(i){
+    partition_generation(data = X[[i]][,  names.use],
                         LOG = log.data, clust.algo = algo, k.crit = k.crit)
   })
 

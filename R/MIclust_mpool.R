@@ -21,7 +21,7 @@
 #'         partition_generation(iris[, 1:2], LOG = FALSE,
 #'         clust.algo = c("km", "hc"),
 #'         k.crit = "ch"),
-#'         partition_generation(iris[, 2:4], LOG = F,
+#'         partition_generation(iris[, 2:4], LOG = FALSE,
 #'         clust.algo = c("km", "hc"),
 #'         k.crit = "ch"))
 #'

@@ -7,6 +7,7 @@ library(devtools)
 # use_r("CH_index_functions")
 # use_build_ignore("dev_history.R")
 # use_build_ignore("R/temp.R")
+# use_build_ignore("temp.R")
 # use_r("CritCF_index_functions")
 # use_r("CVE1_basic")
 # use_r("CVE2_VandVH")
@@ -23,14 +24,14 @@ library(devtools)
 # use_r("pareto")
 # use_r("partition_generation")
 # use_r("seMIsupcox")
-####  use_r("unsupMI")    # Example à faire
+####  use_r("unsupMI")
 # use_r("mice_imputers_censored")
+# use_r("evaluate_partition_semisup")
+# use_r("Extract_AUC")
 
 
 # # FOR the CVE need an up to date version of glmnet
 # use_package("glmnet", type = "Imports", min_version = T)
-# # FOR examples of CVEs
-# use_package("survival", type = "Suggests")
 
 
 # use_github()

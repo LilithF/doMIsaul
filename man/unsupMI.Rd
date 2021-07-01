@@ -9,8 +9,29 @@ unsupMI(data, log.data = FALSE, algo = "km", k.crit = "ch",
    not.to.use = c("time", "status"))
 }
 \arguments{
-\item{data}{list of the imputed datasets (if present, columns names
-\code{time} and \code{status} will be discard)}
+\item{Impute}{Default is FALSE to indicate that the user performed
+the imputation and provides the imputed data. Otherwise string
+("\code{MImpute}", "\code{MImpute_surv}" or "\code{MImpute_lcens}") to
+perform the imputation within the call using the \code{MImpute()},
+\code{MImpute_surv()} or \code{MImpute_lcens()} function.}
+
+\item{Impute.m}{Used only if Impute is not \code{FALSE} ; number of
+imputations to perform}
+
+\item{cens.data.lod}{passed to \code{MImpute_lcens()} if
+\code{Impute == MImpute_lcens}}
+
+\item{cens.standards}{passed to \code{MImpute_lcens()} if
+\code{Impute == MImpute_lcens}}
+
+\item{cens.mice.log}{passed to \code{MImpute_lcens()} if
+\code{Impute == MImpute_lcens}}
+
+\item{data}{Data, in the form of a list of data.frame(s). The list should be
+one length 1 if data are complete or if Impute is not \code{FALSE}, it
+should be a list of imputed dataframes if data are incomplete and imputed.
+If columns named "\code{time}" and "\code{status}" are present they will be
+discarded for the clustering.}
 
 \item{log.data}{logical. Should all columns of the dataset be logged before
 applying clustering algorithms?}
@@ -58,4 +79,6 @@ res <- unsupMI(data = cancer.imp)
 ## 2.bis learning with several algorithms
 res.2 <- unsupMI(data = cancer.imp, algo = c("km", "hc"), comb.cons = TRUE,
                  plot.cons = TRUE)
+## Alternative: perform imputation within
+res <- unsupMI(Impute = "MImpute_surv", data = list(cancer))
 }

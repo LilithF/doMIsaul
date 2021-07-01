@@ -6,7 +6,7 @@
 #'
 #' @return numeric, cross-validation error
 #' data(cancer, package = "survival")
-#' part <- data.frame(Cl= factor(cancer[, "sex"]), stringsAsFactors = T)
+#' part <- data.frame(Cl= factor(cancer[, "sex"]), stringsAsFactors = TRUE)
 #' doMIsaul:::cve_VVH(cancer,part, 10)
 cve_VVH <- function(data, partition, nfolds = 10){
 
