@@ -18,121 +18,55 @@
 #' @param ... See \code{glmnet:::cv.glmnet}.
 #'
 #' @import glmnet
-my.cv.glmnet <-
-  function(x, y, weights, offset = NULL, lambda = NULL,
-           type.measure = c("mse", "deviance", "class", "auc", "mae"),
-           nfolds = 10, foldid, alignment = c("lambda", "fraction"),
-           grouped = TRUE, keep = FALSE, parallel = FALSE, ...){
-    requireNamespace("glmnet", quietly = FALSE)
+#'
+#'
+my.cv.glmnet <- function(
+  x, y, weights = NULL, offset = NULL, lambda = NULL,
+  type.measure = c("default", "mse", "deviance","class", "auc", "mae", "C"),
+  nfolds = 10, foldid = NULL, alignment = c("lambda", "fraction"),
+  grouped = TRUE, keep = FALSE, parallel = FALSE,
+  gamma = c(0, 0.25, 0.5, 0.75, 1), relax = FALSE, trace.it = 0, ...) {
 
-    getmin <- function (lambda, cvm, cvsd) {
-      cvmin <- min(cvm, na.rm = TRUE)
-      idmin <- cvm <= cvmin
-      lambda.min <- max(lambda[idmin], na.rm = TRUE)
-      idmin <- match(lambda.min, lambda)
-      semin <- (cvm + cvsd)[idmin]
-      idmin <- cvm <= semin
-      lambda.1se <- max(lambda[idmin], na.rm = TRUE)
-      list(lambda.min = lambda.min, lambda.1se = lambda.1se)
-    }
+  requireNamespace("glmnet", quietly = FALSE)
+  type.measure = match.arg(type.measure)
+  alignment = match.arg(alignment)
 
-    if (missing(type.measure))
-      type.measure <- "default"
-    else type.measure <- match.arg(type.measure)
-    alignment <- match.arg(alignment)
-
-    if (!is.null(lambda) && alignment == "fraction") {
-      warning("fraction of path alignment not available if lambda given as argument; switched to alignment=`lambda`")
-      alignment <- "lambda"
-    }
-    N <- nrow(x)
-    if (missing(weights))
-      weights <- rep(1, N)
-    else weights <- as.double(weights)
-    y <- drop(y)
-    glmnet.call <- match.call(expand.dots = TRUE)
-    which <- match(c("type.measure", "nfolds", "foldid", "grouped","keep"),
-                   names(glmnet.call), FALSE)
-    if (any(which))
-      glmnet.call <- glmnet.call[-which]
-    glmnet.call[[1]] <- as.name("glmnet")
-    glmnet.object <- glmnet::glmnet(x, y, weights = weights, offset = offset,
-                                    lambda = lambda, ...)
-    glmnet.object$call <- glmnet.call
-    subclass <- class(glmnet.object)[[1]]
-    type.measure <- cvtype(type.measure, subclass)
-    is.offset <- glmnet.object$offset
-    if (inherits(glmnet.object, "multnet") && !glmnet.object$grouped) {
-      nz <- predict(glmnet.object, type = "nonzero")
-      nz <- sapply(nz, function(x) sapply(x, length,
-                                          simplify = TRUE, USE.NAMES = TRUE),
-                   simplify = TRUE, USE.NAMES = TRUE)
-      nz <- ceiling(apply(nz, 1, median))
-    }
-    else nz <- sapply(predict(glmnet.object, type = "nonzero"),
-                      length, simplify = TRUE, USE.NAMES = TRUE)
-    if (missing(foldid))
-      foldid <- sample(rep(seq(nfolds), length = N))
-    else nfolds <- max(foldid)
-    if (nfolds < 3)
-      stop("nfolds must be bigger than 3; nfolds=10 recommended")
-    outlist <- as.list(seq(nfolds))
-    if (parallel) {
-      outlist <- foreach(i = seq(nfolds), .packages = c("glmnet")) %dopar%
-        {
-          which <- foldid == i
-          if (length(dim(y)) > 1)
-            y_sub <- y[!which, ]
-          else y_sub <- y[!which]
-          if (is.offset)
-            offset_sub <- as.matrix(offset)[!which, ]
-          else offset_sub <- NULL
-          glmnet(x[!which, , drop = FALSE], y_sub, lambda = lambda,
-                 offset = offset_sub, weights = weights[!which],
-                 ...)
-        }
-    }
-    else {
-      for (i in seq(nfolds)) {
-        which <- foldid == i
-        if (is.matrix(y))
-          y_sub <- y[!which, ]
-        else y_sub <- y[!which]
-        if (is.offset)
-          offset_sub <- as.matrix(offset)[!which, ]
-        else offset_sub <- NULL
-        outlist[[i]] <- glmnet(x[!which, , drop = FALSE],
-                               y_sub, lambda = lambda, offset = offset_sub,
-                               weights = weights[!which], ...)
-      }
-    }
-    fun <- paste("cv", subclass, sep = ".")
-    lambda <- glmnet.object$lambda
-    cvstuff <- do.call(fun,
-                       list(outlist, lambda, x, y, weights, offset, foldid,
-                             type.measure, grouped, keep, alignment))
-    cvm <- cvstuff$cvm
-    cvsd <- cvstuff$cvsd
-    nas <- is.na(cvsd)
-    if (any(nas)) {
-      lambda <- lambda[!nas]
-      cvm <- cvm[!nas]
-      cvsd <- cvsd[!nas]
-      nz <- nz[!nas]
-    }
-    cvname <- names(cvstuff$type.measure)
-    names(cvname) <- cvstuff$type.measure
-    out <- list(lambda = lambda, cvm = cvm, cvsd = cvsd, cvup = cvm + cvsd,
-                cvlo = cvm - cvsd, nzero = nz, name = cvname,
-                glmnet.fit = glmnet.object)
-    if (keep)
-      out <- c(out, list(fit.preval = cvstuff$fit.preval, foldid = foldid))
-    lamin <- if (cvname == "AUC")
-      getmin(lambda, -cvm, cvsd)
-    else getmin(lambda, cvm, cvsd)
-    obj <- c(out, as.list(lamin))
-    class(obj) <- "cv.glmnet"
-    obj
+  if (!is.null(lambda) && alignment == "fraction") {
+    warning("fraction of path alignment not available if lambda given as argument; switched to alignment=`lambda`")
+    alignment = "lambda"
   }
+  N = nrow(x)
+  if (is.null(weights))
+    weights = rep(1, N)
+  else weights = as.double(weights)
+  y = drop(y)
+  cv.call = glmnet.call = match.call(expand.dots = TRUE)
+  which = match(c("type.measure", "nfolds", "foldid",
+                  "grouped", "keep"), names(glmnet.call), FALSE)
+  if (any(which))
+    glmnet.call = glmnet.call[-which]
+  glmnet.call[[1]] = as.name("glmnet")
+  if (glmnet.control()$itrace)
+    trace.it = 1
+  else {
+    if (trace.it) {
+      glmnet.control(itrace = 1)
+      on.exit(glmnet.control(itrace = 0))
+    }
+  }
+  if (is.null(foldid))
+    foldid = sample(rep(seq(nfolds), length = N))
+  else nfolds = max(foldid)
+  if (nfolds < 3)
+    stop("nfolds must be bigger than 3; nfolds=10 recommended")
+  if (relax)
+    cv.relaxed.raw(x, y, weights, offset, lambda, type.measure,
+                   nfolds, foldid, alignment, grouped, keep, parallel,
+                   trace.it, glmnet.call, cv.call, gamma, ...)
+  else cv.glmnet.raw(x, y, weights, offset, lambda, type.measure, nfolds,
+                     foldid, alignment, grouped, keep, parallel, trace.it,
+                     glmnet.call, cv.call, ...)
+  }
+
 environment(my.cv.glmnet) <- environment(glmnet::cv.glmnet)
-# attributes(my.cv.glmnet) <- attributes(glmnet::cv.glmnet)
+

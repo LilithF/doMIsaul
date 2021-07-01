@@ -5,9 +5,11 @@
 #' @param nfolds number of fold for CV
 #'
 #' @return numeric, cross-validation error
-#' @examples part <- data.frame(x= as.numeric(iris[, 5]))
-#' # doMIsaul:::CVE1_basic(iris[, 1:4],part, 10)
-CVE1_basic <- function(data, partition, nfolds = 10){
+#' @examples
+#' data(cancer, package = "survival")
+#' part <- data.frame(Cl= factor(cancer[, "sex"]), stringsAsFactors = T)
+#' doMIsaul:::cve_basic(cancer,part, 10)
+cve_basic <- function(data, partition, nfolds = 10){
   X <- model.matrix(~ part, data.frame(part = factor(partition[, 1])))
 
   my.cv.glmnet(
@@ -33,12 +35,14 @@ CVE1_basic <- function(data, partition, nfolds = 10){
 #'
 #' @return numeric, cross-validation error
 #' @export
-#' @examples part <- data.frame(x= as.numeric(iris[, 5]))
-#' # CVE_basic(list(data = iris[, 1:4], partition = part, nfolds = 10))
+#' @examples
+#' data(cancer, package = "survival")
+#' part <- data.frame(Cl= factor(cancer[, "sex"]), stringsAsFactors = T)
+#' CVE_basic(list(data = cancer, partition = part, nfolds = 10))
 CVE_basic <- function(x){
   r <- withCallingHandlers({
     error_text <- NA
-    list(value = CVE1_basic(partition = x$partition,
+    list(value = cve_basic(partition = x$partition,
                             data = x$data,
                             nfolds = x$nfolds),
          error = error_text)

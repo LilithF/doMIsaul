@@ -8,8 +8,8 @@ library(devtools)
 # use_build_ignore("dev_history.R")
 # use_build_ignore("R/temp.R")
 # use_r("CritCF_index_functions")
-#### use_r("CVE1_basic")  # ex ne marche pas
-#### use_r("CVE2_VandVH")  # ex à faire
+# use_r("CVE1_basic")
+# use_r("CVE2_VandVH")
 #### use_r("CVE3_LinearPred") # ex à faire
 # use_r("exctract_center_position")      # ATT nom changé (. en _ ; maj)
 #### use_r("glmnet_modified_function")  # ex à faire ?
@@ -26,8 +26,15 @@ library(devtools)
 # use_r("temp")
 ####  use_r("unsupMI")    # Example à faire
 
+
+# # FOR the CVE need an uptodate version of glmnet
+# use_package("glmnet", type = "Imports", min_version = T)
+# # FOR examaples of CVEs
+# use_package("survival", type = "Suggests")
+
+
 # use_github()
-use_testthat()
+# use_testthat()
 
 
 

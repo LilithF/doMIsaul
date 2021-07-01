@@ -9,7 +9,6 @@
 #'
 #' @return See \code{ncvreg:::loss.ncvsurv}.
 mylossncvsurv <- function (y, eta, total = TRUE){
-
   ind <- order(y[, 1])
   d <- as.double(y[ind, 2])
   if (is.matrix(eta)) {
@@ -113,7 +112,6 @@ my.cv.ncvsurv <- function (X, y, ..., cluster, nfolds = 10, seed, fold,
   ind <- which(apply(is.finite(Y), 2, all))
   Y <- Y[, ind]
   lambda <- fit$lambda[ind]
-
   if (se == "quick") {
     L <- matrix(mylossncvsurv(y, Y, total = FALSE))
     cve <- apply(L, 2, sum)/sum(fit$fail)

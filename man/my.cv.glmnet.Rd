@@ -7,16 +7,19 @@
 my.cv.glmnet(
   x,
   y,
-  weights,
+  weights = NULL,
   offset = NULL,
   lambda = NULL,
-  type.measure = c("mse", "deviance", "class", "auc", "mae"),
+  type.measure = c("default", "mse", "deviance", "class", "auc", "mae", "C"),
   nfolds = 10,
-  foldid,
+  foldid = NULL,
   alignment = c("lambda", "fraction"),
   grouped = TRUE,
   keep = FALSE,
   parallel = FALSE,
+  gamma = c(0, 0.25, 0.5, 0.75, 1),
+  relax = FALSE,
+  trace.it = 0,
   ...
 )
 }

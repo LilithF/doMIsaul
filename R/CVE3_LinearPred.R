@@ -4,8 +4,14 @@
 #' @param partition dataframe with 1 colunm
 #' @param nfolds number of fold for CV
 #'
+#'
 #' @return numeric, cross-validation error
-CVE_LinearPred <- function(data, partition, nfolds = 10) {
+#' @examples
+#' data(cancer, package = "survival")
+#' cancer$status <- cancer$status - 1
+#' part <- data.frame(Cl= factor(cancer[, "sex"]), stringsAsFactors = T)
+#' doMIsaul:::cve_LinearPred(cancer,part, 10)
+cve_LinearPred <- function(data, partition, nfolds = 10) {
   X <- model.matrix(~part, data.frame(part = factor(partition[, 1])))
 
   my.cv.ncvsurv(
@@ -26,10 +32,15 @@ CVE_LinearPred <- function(data, partition, nfolds = 10) {
 #'
 #' @return numeric, cross-validation error
 #' @export
+#' @examples
+#' data(cancer, package = "survival")
+#' cancer$status <- cancer$status - 1
+#' part <- data.frame(Cl= factor(cancer[, "sex"]), stringsAsFactors = T)
+#' CVE_LP(list(data = cancer, partition = part, nfolds = 10))
 CVE_LP <- function(x){
   r <- withCallingHandlers({
     error_text <- NA
-    list(value = CVE_LinearPred(partition = x$partition,
+    list(value = cve_LinearPred(partition = x$partition,
                                 data = x$data,
                                 nfolds = x$nfolds),
          error = error_text)

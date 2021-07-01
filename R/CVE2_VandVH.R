@@ -5,7 +5,10 @@
 #' @param nfolds number of fold for CV
 #'
 #' @return numeric, cross-validation error
-CVE1_VandVH <- function(data, partition, nfolds = 10){
+#' data(cancer, package = "survival")
+#' part <- data.frame(Cl= factor(cancer[, "sex"]), stringsAsFactors = T)
+#' doMIsaul:::cve_VandVH(cancer,part, 10)
+cve_VandVH <- function(data, partition, nfolds = 10){
 
   X <- model.matrix(~ part, data.frame(part = factor(partition[, 1])))
 
@@ -33,10 +36,14 @@ CVE1_VandVH <- function(data, partition, nfolds = 10){
 #'
 #' @return numeric, cross-validation error
 #' @export
+#' @examples
+#' data(cancer, package = "survival")
+#' part <- data.frame(Cl= factor(cancer[, "sex"]), stringsAsFactors = T)
+#' CVE_VandVH(list(data = cancer, partition = part, nfolds = 10))
 CVE_VandVH <- function(x){
   r <- withCallingHandlers({
     error_text <- NA
-    list(value = CVE1_VandVH(partition = x$partition,
+    list(value = cve_VandVH(partition = x$partition,
                              data = x$data,
                              nfolds = x$nfolds),
          error = error_text)

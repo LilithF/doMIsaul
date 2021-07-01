@@ -34,7 +34,7 @@ list.partitions <- list(
         k.crit = "ch"),
         partition_generation(iris[, 2:4], LOG = F,
         clust.algo = c("km", "hc"),
-        k.crit = "ch")
+        k.crit = "ch"))
 
 MIclust_mpool(list.partitions, FALSE, FALSE)
 }

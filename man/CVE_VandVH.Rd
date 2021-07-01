@@ -19,3 +19,8 @@ numeric, cross-validation error
 Cross-valitation for cox regression using Verweij and Van Houwelingen
 estimator with wrapper for warnings handling
 }
+\examples{
+data(cancer, package = "survival")
+part <- data.frame(Cl= factor(cancer[, "sex"]), stringsAsFactors = T)
+CVE_VandVH(list(data = cancer, partition = part, nfolds = 10))
+}
