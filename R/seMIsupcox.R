@@ -73,11 +73,11 @@
 #' res <- seMIsupcox(X = cancer.imp, Y = cancer[, c("time", "status")],
 #'                   center.init = inits, nfold = 10)
 seMIsupcox <- function(Impute = FALSE, Impute.m = 5,
-                        center.init = TRUE, center.init.N = 500,
-                        center.init.Ks = 2:7,
-                        X, CVE.fun = "LP", Y, nfolds, save.path = NULL,
-                        Unsup.Sup.relImp = list("relImp.55" = c(.5, .5)),
-                        plot.cons = FALSE, return.detail = FALSE) {
+                       center.init = TRUE, center.init.N = 500,
+                       center.init.Ks = 2:7,
+                       X, CVE.fun = "LP", Y, nfolds, save.path = NULL,
+                       Unsup.Sup.relImp = list("relImp.55" = c(.5, .5)),
+                       plot.cons = FALSE, return.detail = FALSE) {
 
   if(Impute){
     data.imp <-  MImpute_surv(data = X[[1]], mi.m = Impute.m)

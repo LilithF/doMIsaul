@@ -2,16 +2,16 @@
 % Please edit documentation in R/CritCF_index_functions.R
 \name{CritCF.sel}
 \alias{CritCF.sel}
-\title{Number of cluster selection according to CritCF index}
+\title{Number of cluster selection according to \code{CritCF} index}
 \usage{
 CritCF.sel(data, min.nc, max.nc, method, distance)
 }
 \arguments{
 \item{data}{dataframe for which the number of cluster should be estimated.}
 
-\item{min.nc}{interger strictly higher than 1 : minimum number of clusters.}
+\item{min.nc}{integer strictly higher than 1: minimum number of clusters.}
 
-\item{max.nc}{interger (higher than min.nc) : maximum number of clusters.}
+\item{max.nc}{integer (\code{>min.nc}): maximum number of clusters.}
 
 \item{method}{clustering algorithm to use.}
 
@@ -19,11 +19,12 @@ CritCF.sel(data, min.nc, max.nc, method, distance)
 manhattan).}
 }
 \value{
-A list containing the selected number of clusters, the CritCF values
-and the best partition.
+A list containing the selected number of clusters, the \code{CritCF}
+values and the best partition.
 }
 \description{
-Wrapper to estimate the best number of clusters according to CritCF index
+Wrapper to estimate the best number of clusters according to \code{CritCF}
+index
 }
 \examples{
 doMIsaul:::CritCF.sel(iris[, 1:4], 2, 9, "kmeans", "euclidean")

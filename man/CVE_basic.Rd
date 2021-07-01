@@ -2,21 +2,21 @@
 % Please edit documentation in R/CVE1_basic.R
 \name{CVE_basic}
 \alias{CVE_basic}
-\title{Cross-valitation for cox regression using the basic approach
+\title{Cross-validation for cox regression using the basic approach
 estimator with wrapper for warnings handling}
 \usage{
 CVE_basic(x)
 }
 \arguments{
-\item{x}{list of 3 named elements : data (data contaning columns time and
-status), partition (dataframe with 1 colunm), nfolds (number of fold for
-CV)}
+\item{x}{list of 3 named elements : data (data containing columns time and
+status), partition (dataframe with 1 column), nfolds (number of fold for
+CV)?}
 }
 \value{
 numeric, cross-validation error
 }
 \description{
-Cross-valitation for cox regression using the basic approach
+Cross-validation for cox regression using the basic approach
 estimator with wrapper for warnings handling
 }
 \examples{

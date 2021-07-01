@@ -2,21 +2,21 @@
 % Please edit documentation in R/CVE2_VandVH.R
 \name{CVE_VandVH}
 \alias{CVE_VandVH}
-\title{Cross-valitation for cox regression using Verweij and Van Houwelingen
+\title{Cross-validation for cox regression using Verweij and Van Houwelingen
 estimator with wrapper for warnings handling}
 \usage{
 CVE_VandVH(x)
 }
 \arguments{
-\item{x}{list of 3 named elements : data (data contaning columns time and
-status), partition (dataframe with 1 colunm), nfolds (number of fold for
-CV)}
+\item{x}{list of 3 named elements : data (data containing columns time and
+status), partition (dataframe with 1 column), nfolds (number of fold for
+CV).}
 }
 \value{
 numeric, cross-validation error
 }
 \description{
-Cross-valitation for cox regression using Verweij and Van Houwelingen
+Cross-validation for cox regression using Verweij and Van Houwelingen
 estimator with wrapper for warnings handling
 }
 \examples{

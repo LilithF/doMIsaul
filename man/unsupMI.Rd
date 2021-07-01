@@ -9,31 +9,32 @@ unsupMI(data, log.data = FALSE, algo = "km", k.crit = "ch",
    not.to.use = c("time", "status"))
 }
 \arguments{
-\item{data}{list of the imupted datasets (if present, columns names "time"
-and "status" will be discared)}
+\item{data}{list of the imputed datasets (if present, columns names
+\code{time} and \code{status} will be discard)}
 
 \item{log.data}{logical. Should all columns of the dataset be logged before
 applying clustering algorithms?}
 
-\item{algo}{vector of strings: name of clsutering algorithms to use (use "km"
-for k-means, "kmed" for K-medians, "hc" for hclust and/or "mclust" for
-mclust).}
+\item{algo}{vector of strings: name of clustering algorithms to use (use
+"\code{km}" for \code{k-means}, "\code{kmed}" for \code{K-medians},
+"\code{hc}" for \code{hclust} and/or "\code{mclust}" for \code{mclust}).}
 
 \item{k.crit}{string. Criterion to select the optimal number of clusters (for
-each imputed dataset). Use "ch" for Calinski and Harabasz criterion (not
-available for mclust), "CritCF" for CriCF or bic for BIC (mclust only).}
+each imputed dataset). Use "\code{ch}" for Calinski and Harabasz criterion
+(not available for \code{mclust}), "\code{CritCF}" for \code{CriCF} or
+"\code{bic}" for \code{BIC} (\code{mclust} only).}
 
-\item{comb.cons}{logical. Forced to FALSE if \code{length(algo)<2}. Use
-\code{TRUE} to perform an additional consensus from all partitions
-generates, whaterver the algorithm.}
+\item{comb.cons}{logical. Forced to \code{FALSE} if \code{length(algo)<2}.
+Use \code{TRUE} to perform an additional consensus from all partitions
+generates, whatever the algorithm.}
 
 \item{plot.cons}{logical. Use \code{TRUE} to print the MultiCons tree.}
 
 \item{return.detail}{logical. Should the detail of imputation specific
-partition be returned, in the supplument to the final consensus partition?}
+partition be returned, in the supplement to the final consensus partition?}
 
 \item{not.to.use}{vector of strings : names of the columns that should be
-discraded for the learning step.}
+discarded for the learning step.}
 }
 \value{
 if \code{length(algo)>1} a vector of final cluster ID ; if
@@ -41,9 +42,20 @@ if \code{length(algo)>1} a vector of final cluster ID ; if
 ID for the corresponding algorithm.
 }
 \description{
-Unsupervised clustering for multiply imputed datasets unsing MultiCons
-consensus (Faucheux et al. 2020 procedure)
+Unsupervised clustering for multiply imputed datasets using \code{MultiCons}
+consensus (Faucheux et al. 2021 procedure)
 }
 \examples{
-# unsupMI()
+## With imputation included TO DO
+#
+### With imputation not included
+## 1 imputation
+data(cancer, package = "survival")
+cancer$status <- cancer$status - 1
+cancer.imp <- MImpute_surv(cancer, 3)
+## 2 learning
+res <- unsupMI(data = cancer.imp)
+## 2.bis learning with several algorithms
+res.2 <- unsupMI(data = cancer.imp, algo = c("km", "hc"), comb.cons = TRUE,
+                 plot.cons = TRUE)
 }

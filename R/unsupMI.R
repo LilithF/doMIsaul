@@ -13,11 +13,11 @@
 #'   applying clustering algorithms?
 #' @param algo vector of strings: name of clustering algorithms to use (use
 #'   "\code{km}" for \code{k-means}, "\code{kmed}" for \code{K-medians},
-#'    "\code{hc"} for \code{hclust} and/or "\code{mclust}" for \code{mclust}).
+#'   "\code{hc}" for \code{hclust} and/or "\code{mclust}" for \code{mclust}).
 #' @param k.crit string. Criterion to select the optimal number of clusters (for
 #'   each imputed dataset). Use "\code{ch}" for Calinski and Harabasz criterion
 #'   (not available for \code{mclust}), "\code{CritCF}" for \code{CriCF} or
-#'   \code{bic} for \code{BIC} (\code{mclust} only).
+#'   "\code{bic}" for \code{BIC} (\code{mclust} only).
 #' @param comb.cons logical. Forced to \code{FALSE} if \code{length(algo)<2}.
 #'   Use \code{TRUE} to perform an additional consensus from all partitions
 #'   generates, whatever the algorithm.
@@ -28,7 +28,6 @@
 #'   partition be returned, in the supplement to the final consensus partition?
 #'
 #'
-#'
 #' @return if \code{length(algo)>1} a vector of final cluster ID ; if
 #'   \code{length(algo)>1} a data.frame with each column being the final cluster
 #'   ID for the corresponding algorithm.
@@ -36,7 +35,7 @@
 #'
 #' @examples
 #' ## With imputation included TO DO
-#'
+#' #
 #' ### With imputation not included
 #' ## 1 imputation
 #' data(cancer, package = "survival")

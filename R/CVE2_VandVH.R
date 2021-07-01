@@ -7,8 +7,8 @@
 #' @return numeric, cross-validation error
 #' data(cancer, package = "survival")
 #' part <- data.frame(Cl= factor(cancer[, "sex"]), stringsAsFactors = T)
-#' doMIsaul:::cve_VandVH(cancer,part, 10)
-cve_VandVH <- function(data, partition, nfolds = 10){
+#' doMIsaul:::cve_VVH(cancer,part, 10)
+cve_VVH <- function(data, partition, nfolds = 10){
 
   X <- model.matrix(~ part, data.frame(part = factor(partition[, 1])))
 
@@ -43,7 +43,7 @@ cve_VandVH <- function(data, partition, nfolds = 10){
 CVE_VandVH <- function(x){
   r <- withCallingHandlers({
     error_text <- NA
-    list(value = cve_VandVH(partition = x$partition,
+    list(value = cve_VVH(partition = x$partition,
                              data = x$data,
                              nfolds = x$nfolds),
          error = error_text)

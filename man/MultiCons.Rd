@@ -36,7 +36,7 @@ among. Must be included in default value.}
 
 \item{Plot}{Should tree be plotted.}
 
-\item{verbose}{Passed on to mclust and other functions.}
+\item{verbose}{Passed on to \code{mclust} and other functions.}
 }
 \value{
 A list of 2: performances and partitions. If \code{returnAll} is
@@ -46,8 +46,8 @@ the tree.
 }
 \description{
 Performs Multicons clustering, from Al-Najdi et Al.
-For some reason, if you want to use mclust clustering the package needs
-to be loaded manually
+For some reason, if you want to use \code{mclust} clustering the package
+needs to be loaded manually
 }
 \examples{
 library(mclust)

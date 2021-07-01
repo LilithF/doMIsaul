@@ -2,21 +2,21 @@
 % Please edit documentation in R/CVE3_LinearPred.R
 \name{CVE_LP}
 \alias{CVE_LP}
-\title{Cross-valitation for cox regression using the linear predicor estimator with
+\title{Cross-validation for cox regression using the linear predictor estimator with
 wrapper for warnings handling}
 \usage{
 CVE_LP(x)
 }
 \arguments{
-\item{x}{list of 3 named elements : data (data contaning columns time and
-status), partition (dataframe with 1 colunm), nfolds (number of fold for
-CV)}
+\item{x}{list of 3 named elements : data (data containing columns time and
+status), partition (dataframe with 1 column), nfolds (number of fold for
+CV).}
 }
 \value{
 numeric, cross-validation error
 }
 \description{
-Cross-valitation for cox regression using the linear predicor estimator with
+Cross-validation for cox regression using the linear predictor estimator with
 wrapper for warnings handling
 }
 \examples{

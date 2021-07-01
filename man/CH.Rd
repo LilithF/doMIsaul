@@ -2,7 +2,7 @@
 % Please edit documentation in R/CH_index_functions.R
 \name{CH}
 \alias{CH}
-\title{CH index}
+\title{\code{CH} index}
 \usage{
 CH(data, k, method)
 }
@@ -12,14 +12,14 @@ CH(data, k, method)
 \item{k}{integer, number of clusters.}
 
 \item{method}{string, clustering algorithm to use. Only available value for
-know is "kmed" for K-medians clsutering.}
+know is "\code{kmed}" for \code{K-medians} clustering.}
 }
 \value{
-a list, containing the criterion value and the partition
+a list, containing the criterion value and the partition.
 }
 \description{
 Computes CH index for the selected number of clusters and clustering
-algorithm
+algorithm.
 }
 \examples{
 doMIsaul:::CH(iris[, 1:4], 5, "kmed")

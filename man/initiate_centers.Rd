@@ -2,36 +2,36 @@
 % Please edit documentation in R/initiate_centers.R
 \name{initiate_centers}
 \alias{initiate_centers}
-\title{Initiate centers for clustering allgorithm}
+\title{Initiate centers for clustering algorithm}
 \usage{
 initiate_centers(data, N = 1000, t = 1, k, algorithms = NULL, seeds.N = NULL)
 }
 \arguments{
 \item{data}{Dataset that clustering will be applied on}
 
-\item{N}{Integer. Number clsutering initialisation (set of centers) to
+\item{N}{Integer. Number clustering initialization (set of centers) to
 generate}
 
-\item{t}{Numeric beteween 0 and 1. weight coefficient between only random
+\item{t}{Numeric between 0 and 1. weight coefficient between only random
 centers (t=1) and only centers from clustering (t=0).}
 
 \item{k}{Vector of size N containing the number of centers for each
-initialisation.}
+initialization.}
 
 \item{algorithms}{list of algorithm(s) (size \code{N * (1-t)} to generate
 centers if t!=1, given as characters. Possible values are \code{km} for
 Kmeans, \code{kmed} for Kmedians, \code{hclust.mean, hclust.med} for
-hierachical clustering with mean or median position of the center.}
+hierarchical clustering with mean or median position of the center.}
 
 \item{seeds.N}{(optional) vector of size N containing seeds for each
-initialisation.}
+initialization.}
 }
 \value{
-list of size \code{N} containing coordiates of centers for clustering
-initialzation.
+list of size \code{N} containing coordinates of centers for
+clustering initialization.
 }
 \description{
-Initiate centers for clustering allgorithm
+Initiate centers for clustering algorithm
 }
 \examples{
 Cent.init <- initiate_centers(data = iris[, 1:4], N = 10,

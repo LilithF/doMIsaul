@@ -24,6 +24,7 @@ library(devtools)
 # use_r("partition_generation")
 # use_r("seMIsupcox")
 ####  use_r("unsupMI")    # Example à faire
+# use_r("mice_imputers_censored")
 
 
 # # FOR the CVE need an up to date version of glmnet

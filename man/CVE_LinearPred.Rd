@@ -2,22 +2,22 @@
 % Please edit documentation in R/CVE3_LinearPred.R
 \name{cve_LinearPred}
 \alias{cve_LinearPred}
-\title{Cross-valitation for cox regression using the linear predicor estimator}
+\title{Cross-validation for cox regression using the linear predictor estimator}
 \usage{
 cve_LinearPred(data, partition, nfolds = 10)
 }
 \arguments{
-\item{data}{data contaning columns time and status}
+\item{data}{data containing columns time and status.}
 
-\item{partition}{dataframe with 1 colunm}
+\item{partition}{dataframe with 1 column.}
 
-\item{nfolds}{number of fold for CV}
+\item{nfolds}{number of fold for CV.}
 }
 \value{
 numeric, cross-validation error
 }
 \description{
-Cross-valitation for cox regression using the linear predicor estimator
+Cross-validation for cox regression using the linear predictor estimator
 }
 \examples{
 data(cancer, package = "survival")

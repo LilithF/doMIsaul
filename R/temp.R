@@ -1,3 +1,85 @@
+# PerformancesEvaluation <- function(partition, true.unsup, true.sup, true.latent,
+#                                    data.surv, TMIN = 2, TMAX = 5){
+#   # Evaluate partitions (number of clusters, ARI, AUC diff with true Sup/unsup/latent
+#   #      partition)
+#   # Returns a list of named performances values
+#
+#   # partition: vector containing cluster ids (after removing small clusters)
+#   # true.unsup: true partition UNSUP (ie data structure) for comparison (vector)
+#   # true.sup: true partition SUP (ie using survivial parameters) for comparison (vector)
+#   # true.latent: true partition (LATENT) (ie combining both) for comparison (vector)
+#   # data.surv: dataframe with variables time and status
+#   # TMAX: timepoint to analyze AUC
+#   # TMIN: timepoint to stat analyzing AUC
+#
+#   data <- data.frame(data.surv,
+#                      Cluster = factor(partition),
+#                      Unsup = true.unsup,
+#                      Sup = true.sup,
+#                      Latent = true.latent)
+#   CC <- complete.cases(data$Cluster)
+#   data <- data[CC, ]
+#
+#   # Estimated number of clusters
+#   Nbclust <- length(levels(data$Cluster[drop = T]))
+#
+#   # Cluster strcture ####
+#   ARI.Latent <- ARI(data$Cluster, data$Latent)
+#   ARI.Unsup <- ARI(data$Cluster, data$Unsup)
+#
+#   # Association patition - survival data ####
+#   if(nlevels(data$Cluster) == 1){data$Cluster <- 1}
+#
+#   data$LP <- suppressWarnings(
+#     predict(survival::coxph(Surv(time, status) ~  Cluster, data), type = "lp"))
+#   data$LP.latent <- suppressWarnings(
+#     predict(survival::coxph(Surv(time, status) ~  Latent, data), type = "lp"))
+#   data$LP.sup <- suppressWarnings(
+#     predict(survival::coxph(Surv(time, status) ~  Sup, data), type = "lp"))
+#   timeS <- seq(from = TMIN, to = TMAX, length.out = 100)[-1]
+#
+#   auc <- Extract.AUC(data = data, predictor = "LP", time.vect = timeS)
+#   auc.latent <- Extract.AUC(data = data, predictor = "LP.latent", time.vect = timeS)
+#   auc.sup <- Extract.AUC(data = data, predictor = "LP.sup", time.vect = timeS)
+#
+#   # out ####
+#   ret <- list(Nbclust = Nbclust,
+#               N.classified = sum(CC),
+#
+#               DeltaAUCLatent.Tmax = auc$AUC.Tmax - auc.latent$AUC.Tmax,
+#               DeltaAUCLatent.med = auc$AUC.med - auc.latent$AUC.med,
+#               DeltaAUCSup.Tmax = auc$AUC.Tmax - auc.sup$AUC.Tmax,
+#               DeltaAUCSup.med = auc$AUC.med - auc.sup$AUC.med,
+#
+#               AUCLatent.Tmax = auc.latent$AUC.Tmax,
+#               AUCLatent.med = auc.latent$AUC.med,
+#               AUCSup.Tmax = auc.sup$AUC.Tmax,
+#               AUCSup.med = auc.sup$AUC.med,
+#
+#               ARI.Latent = ARI.Latent,
+#               ARI.Unsup = ARI.Unsup
+#   )
+#
+#   return(ret)
+#
+# }
+#
+# Extract.AUC <- function(data, predictor, time.vect){
+#   # Wrapper to evaluate time dependent AUC
+#   # Returns AUC at max(time.vect) and median AUC along time.vect
+#
+#   # data: dataframe containg time and staus inforamtion, as well as marker
+#   # predictor: colname of the marker to use to calculate AUC
+#   # time.vect: vector of timepoints to consider
+#
+#   AUCs <- timeROC(data$time, delta = data$status, marker = data[, predictor],
+#                   cause = 1, times = time.vect)
+#   return(list(AUC.Tmax = unname(AUCs$AUC[length(time.vect)]),
+#               AUC.med = median(AUCs$AUC, na.rm = T)))
+# }
+
+
+
 # Simulation <- function(df.param, where,
 #                        md.type = c("MCAR"),
 #                        DataSimu = F,

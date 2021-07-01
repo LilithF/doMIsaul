@@ -2,17 +2,16 @@
 % Please edit documentation in R/CH_index_functions.R
 \name{CH.sel}
 \alias{CH.sel}
-\title{Number of cluster selection according to CH index}
+\title{Number of cluster selection according to \code{CH} index}
 \usage{
 CH.sel(data, min.nc, max.nc, method)
 }
 \arguments{
 \item{data}{dataframe for which the number of cluster should be estimated.}
 
-\item{min.nc}{interger strictly higher than 1 : minimum number of clusters.}
+\item{min.nc}{integer strictly higher than 1: minimum number of clusters.}
 
-\item{max.nc}{interger (higher than \code{min.nc}) : maximum number of
-clusters.}
+\item{max.nc}{integer (\code{>min.nc}): maximum number of  clusters.}
 
 \item{method}{Clustering algorithm to use.}
 }
@@ -21,7 +20,7 @@ A list containing the selected number of clusters, the CH values and
 the best partition.
 }
 \description{
-Wrapper to estimate the best number of clusters according to CH index
+Wrapper to estimate the best number of clusters according to \code{CH} index.
 }
 \examples{
  doMIsaul:::CH.sel(iris[, 1:4], 2, 5, "kmed")

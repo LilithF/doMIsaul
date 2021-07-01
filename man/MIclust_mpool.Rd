@@ -2,7 +2,7 @@
 % Please edit documentation in R/MIclust_mpool.R
 \name{MIclust_mpool}
 \alias{MIclust_mpool}
-\title{Multicons wrapper for imputed datasets}
+\title{\code{Multicons} wrapper for imputed datasets}
 \usage{
 MIclust_mpool(list.part, comb.cons, plot.MIclust = FALSE)
 }
@@ -10,19 +10,19 @@ MIclust_mpool(list.part, comb.cons, plot.MIclust = FALSE)
 \item{list.part}{list of partitions with one element of the list corresponds
 to the results of one imputed dataset. If more than one algorithm were
 tester, each element if the list is a dataframe, as obtained by
-partition_generation()}
+\code{partition_generation()}.}
 
-\item{comb.cons}{logical. Forced to FALSE if \code{length(algo)<2}. Use
-\code{TRUE} to perform an additional consensus from all partitions}
+\item{comb.cons}{logical. Forced to \code{FALSE} if \code{length(algo)<2}.
+Use \code{TRUE} to perform an additional consensus from all partitions.}
 
-\item{plot.MIclust}{should Multicons tree be plotted?}
+\item{plot.MIclust}{should \code{Multicons} tree be plotted?}
 }
 \value{
-a data frame with ncol = number of algorithms (+1 if comb.cons ==
-T), containing the consensus partitions
+a data frame with \code{ncol} = number of algorithms (+1 if
+\code{comb.cons == T}), containing the consensus partitions.
 }
 \description{
-Performs Multicons from a list of partitions
+Performs \code{Multicons} from a list of partitions
 }
 \examples{
 list.partitions <- list(

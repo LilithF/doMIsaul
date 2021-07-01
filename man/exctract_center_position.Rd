@@ -2,23 +2,23 @@
 % Please edit documentation in R/exctract_center_position.R
 \name{exctract_center_position}
 \alias{exctract_center_position}
-\title{Exctract the cluster centers coordinates}
+\title{Extract the cluster centers coordinates}
 \usage{
 exctract_center_position(data, Cluster, centPos)
 }
 \arguments{
-\item{data}{dataframe (\code{n * p})}
+\item{data}{dataframe (\code{n * p}).}
 
-\item{Cluster}{vector (\code{n}) of cluster allocation}
+\item{Cluster}{vector (\code{n}) of cluster allocation.}
 
 \item{centPos}{Cluster: center is defined by mean ("colMeans") or median
-of the cluster}
+of the cluster.}
 }
 \value{
 matrix (\code{k * p}) with center coordinates
 }
 \description{
-Exctract the cluster centers coordinates
+Extract the cluster centers coordinates
 }
 \examples{
 doMIsaul:::exctract_center_position(iris[, 1:4],

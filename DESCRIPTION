@@ -29,6 +29,7 @@ BugReports: https://github.com/LilithF/doMIsaul/issues
 Imports: 
     aricode,
     arules,
+    censReg,
     cluster,
     clusterCrit,
     clusteval,
@@ -39,6 +40,7 @@ Imports:
     Gmedian,
     graphics,
     igraph,
+    MASS,
     mclust,
     methods,
     mice,
@@ -48,6 +50,7 @@ Imports:
     RColorBrewer,
     scales,
     stats,
+    truncnorm,
     utils,
     withr
 Suggests: 

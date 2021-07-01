@@ -8,8 +8,8 @@
 #' @examples
 #' data(cancer, package = "survival")
 #' part <- data.frame(Cl= factor(cancer[, "sex"]), stringsAsFactors = T)
-#' doMIsaul:::cve_basic(cancer,part, 10)
-cve_basic <- function(data, partition, nfolds = 10){
+#' doMIsaul:::cve_bas(cancer,part, 10)
+cve_bas <- function(data, partition, nfolds = 10){
   X <- model.matrix(~ part, data.frame(part = factor(partition[, 1])))
 
   my.cv.glmnet(
@@ -42,7 +42,7 @@ cve_basic <- function(data, partition, nfolds = 10){
 CVE_basic <- function(x){
   r <- withCallingHandlers({
     error_text <- NA
-    list(value = cve_basic(partition = x$partition,
+    list(value = cve_bas(partition = x$partition,
                             data = x$data,
                             nfolds = x$nfolds),
          error = error_text)

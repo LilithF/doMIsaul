@@ -87,18 +87,20 @@ res <- seMIsupcox(X = list(cancer), Y = cancer[, c("time", "status")],
                   Impute = TRUE, Impute.m = 3, center.init = TRUE,
                   nfold = 10)
 
-### With imputation and center initialisation not included
+### With imputation and center initialization not included
 ## 1 imputation
 cancer.imp <- MImpute_surv(cancer, 3)
-## 2 Center initialisation
-center.number <- sample(2:6, size = 500, replace = TRUE)
-the.seeds <- runif(500) * 10^9
+## 2 Center initialization
+N <- 100
+center.number <- sample(2:6, size = N, replace = TRUE)
+the.seeds <- runif(N) * 10^9
 sel.col <- which(!colnames(cancer) \%in\% c("time", "status"))
 inits <- sapply(1:length(cancer.imp), function(mi.i) {
  initiate_centers(data = cancer.imp[[mi.i]][, sel.col],
-                  N = 500, t = 1, k = center.number,
+                  N = N, t = 1, k = center.number,
                   seeds.N = the.seeds)},
                 USE.NAMES = TRUE, simplify = FALSE)
+## 3 learning
 res <- seMIsupcox(X = cancer.imp, Y = cancer[, c("time", "status")],
-                  center.init = inits, nfold = 10, plot.cons = T)
+                  center.init = inits, nfold = 10)
 }
