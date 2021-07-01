@@ -22,6 +22,6 @@ wrapper for warnings handling
 \examples{
 data(cancer, package = "survival")
 cancer$status <- cancer$status - 1
-part <- data.frame(Cl= factor(cancer[, "sex"]), stringsAsFactors = T)
+part <- data.frame(Cl= factor(cancer[, "sex"]), stringsAsFactors = TRUE)
 CVE_LP(list(data = cancer, partition = part, nfolds = 10))
 }

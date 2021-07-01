@@ -4,9 +4,21 @@
 \alias{unsupMI}
 \title{Unsupervised learning for incomplete dataset}
 \usage{
-unsupMI(data, log.data = FALSE, algo = "km", k.crit = "ch",
-   comb.cons = FALSE, plot.cons = FALSE, return.detail = FALSE,
-   not.to.use = c("time", "status"))
+unsupMI(
+  Impute = FALSE,
+  Impute.m = 5,
+  cens.data.lod = NULL,
+  cens.standards = NULL,
+  cens.mice.log = 10,
+  data,
+  log.data = FALSE,
+  algo = "km",
+  k.crit = "ch",
+  comb.cons = FALSE,
+  plot.cons = FALSE,
+  return.detail = FALSE,
+  not.to.use = c("time", "status")
+)
 }
 \arguments{
 \item{Impute}{Default is FALSE to indicate that the user performed

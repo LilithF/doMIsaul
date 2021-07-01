@@ -36,5 +36,5 @@ list.partitions <- list(
         clust.algo = c("km", "hc"),
         k.crit = "ch"))
 
-MIclust_mpool(list.partitions, FALSE, FALSE)
+doMIsaul:::MIclust_mpool(list.partitions, FALSE, FALSE)
 }

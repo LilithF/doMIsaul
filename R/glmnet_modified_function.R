@@ -16,6 +16,9 @@
 #' @param grouped See \code{glmnet:::cv.glmnet}.
 #' @param keep See \code{glmnet:::cv.glmnet}.
 #' @param parallel See \code{glmnet:::cv.glmnet}.
+#' @param gamma See \code{glmnet:::cv.glmnet}.
+#' @param relax See \code{glmnet:::cv.glmnet}.
+#' @param trace.it See \code{glmnet:::cv.glmnet}.
 #' @param ... See \code{glmnet:::cv.glmnet}.
 #'
 #' @import glmnet
@@ -29,26 +32,26 @@ my.cv.glmnet <- function(
   gamma = c(0, 0.25, 0.5, 0.75, 1), relax = FALSE, trace.it = 0, ...) {
 
   requireNamespace("glmnet", quietly = FALSE)
-  type.measure = match.arg(type.measure)
-  alignment = match.arg(alignment)
+  type.measure <- match.arg(type.measure)
+  alignment <- match.arg(alignment)
 
   if (!is.null(lambda) && alignment == "fraction") {
     warning("fraction of path alignment not available if lambda given as argument; switched to alignment=`lambda`")
-    alignment = "lambda"
+    alignment <- "lambda"
   }
-  N = nrow(x)
+  N <- nrow(x)
   if (is.null(weights))
-    weights = rep(1, N)
-  else weights = as.double(weights)
-  y = drop(y)
-  cv.call = glmnet.call = match.call(expand.dots = TRUE)
-  which = match(c("type.measure", "nfolds", "foldid",
+    weights <- rep(1, N)
+  else weights <- as.double(weights)
+  y <- drop(y)
+  cv.call <- glmnet.call <- match.call(expand.dots = TRUE)
+  which <- match(c("type.measure", "nfolds", "foldid",
                   "grouped", "keep"), names(glmnet.call), FALSE)
   if (any(which))
-    glmnet.call = glmnet.call[-which]
-  glmnet.call[[1]] = as.name("glmnet")
+    glmnet.call <- glmnet.call[-which]
+  glmnet.call[[1]] <- as.name("glmnet")
   if (glmnet.control()$itrace)
-    trace.it = 1
+    trace.it <- 1
   else {
     if (trace.it) {
       glmnet.control(itrace = 1)
@@ -56,8 +59,8 @@ my.cv.glmnet <- function(
     }
   }
   if (is.null(foldid))
-    foldid = sample(rep(seq(nfolds), length = N))
-  else nfolds = max(foldid)
+    foldid <- sample(rep(seq(nfolds), length = N))
+  else nfolds <- max(foldid)
   if (nfolds < 3)
     stop("nfolds must be bigger than 3; nfolds=10 recommended")
   if (relax)

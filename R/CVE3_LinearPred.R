@@ -9,7 +9,7 @@
 #' @examples
 #' data(cancer, package = "survival")
 #' cancer$status <- cancer$status - 1
-#' part <- data.frame(Cl= factor(cancer[, "sex"]), stringsAsFactors = T)
+#' part <- data.frame(Cl= factor(cancer[, "sex"]), stringsAsFactors = TRUE)
 #' doMIsaul:::cve_LinearPred(cancer,part, 10)
 cve_LinearPred <- function(data, partition, nfolds = 10) {
   X <- model.matrix(~part, data.frame(part = factor(partition[, 1])))
@@ -35,7 +35,7 @@ cve_LinearPred <- function(data, partition, nfolds = 10) {
 #' @examples
 #' data(cancer, package = "survival")
 #' cancer$status <- cancer$status - 1
-#' part <- data.frame(Cl= factor(cancer[, "sex"]), stringsAsFactors = T)
+#' part <- data.frame(Cl= factor(cancer[, "sex"]), stringsAsFactors = TRUE)
 #' CVE_LP(list(data = cancer, partition = part, nfolds = 10))
 CVE_LP <- function(x){
   r <- withCallingHandlers({

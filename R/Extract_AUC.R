@@ -11,8 +11,11 @@
 
 Extract_AUC <- function(data, predictor, time.vect){
 
-  AUCs <- timeROC::timeROC(data$time, delta = data$status, marker = data[, predictor],
-                  cause = 1, times = time.vect)
+  requireNamespace("survival", quietly = FALSE)
+
+  AUCs <- timeROC::timeROC(data$time, delta = data$status,
+                           marker = data[, predictor],
+                           cause = 1, times = time.vect)
   return(list(AUC.Tmax = unname(AUCs$AUC[length(time.vect)]),
-              AUC.med = median(AUCs$AUC, na.rm = T)))
+              AUC.med = median(AUCs$AUC, na.rm = TRUE)))
 }

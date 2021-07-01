@@ -20,7 +20,7 @@
 #'   \code{sum(wy)}.
 #' @export
 mice.impute.cens <- function(y, ry, x, lod.j, lod.name = "lod",
-                             REDRAW = F, wy = NULL, ...) {
+                             REDRAW = FALSE, wy = NULL, ...) {
 
   lod.j <- eval(parse(text = lod.j))
   if (is.null(wy))
@@ -34,10 +34,10 @@ mice.impute.cens <- function(y, ry, x, lod.j, lod.name = "lod",
   yy <- y
   yy[xx == lod.j] <- lod.j
   ryy <- ry
-  ryy[xx == lod.j] <- T
-  parm <- .cens.draw3(y = yy, ry = ryy, x = x, lod.j = lod.j)
+  ryy[xx == lod.j] <- TRUE
+  parm <- doMIsaul:::.cens.draw3(y = yy, ry = ryy, x = x, lod.j = lod.j)
   wyy <- wy[wy]
-  wyy[xx[wy] != lod.j] <- F
+  wyy[xx[wy] != lod.j] <- FALSE
   .draw <- as.numeric (x[wy, ] %*% parm$beta +
                          rnorm(sum(wy)) * parm$sigma)
   .draw[wyy] <- truncnorm::rtruncnorm(

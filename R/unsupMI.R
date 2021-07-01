@@ -3,9 +3,6 @@
 #' Unsupervised clustering for multiply imputed datasets using \code{MultiCons}
 #' consensus (Faucheux et al. 2021 procedure)
 #'
-#' @usage unsupMI(data, log.data = FALSE, algo = "km", k.crit = "ch",
-#'    comb.cons = FALSE, plot.cons = FALSE, return.detail = FALSE,
-#'    not.to.use = c("time", "status"))
 #'
 #'
 #' @param Impute Default is FALSE to indicate that the user performed

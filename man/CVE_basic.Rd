@@ -21,6 +21,6 @@ estimator with wrapper for warnings handling
 }
 \examples{
 data(cancer, package = "survival")
-part <- data.frame(Cl= factor(cancer[, "sex"]), stringsAsFactors = T)
+part <- data.frame(Cl= factor(cancer[, "sex"]), stringsAsFactors = TRUE)
 CVE_basic(list(data = cancer, partition = part, nfolds = 10))
 }

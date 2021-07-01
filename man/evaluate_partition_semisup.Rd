@@ -41,6 +41,7 @@ Evaluate number of clusters, ARI, AUC difference, c-index and CPE, with
 Supervised, unsupervised and semisuperivsed reference  partitions
 }
 \examples{
+library(survival) # survival should be loaded in the environment
 data(cancer, package = "survival")
 cancer$status <- cancer$status - 1
 res <- evaluate_partition_semisup (

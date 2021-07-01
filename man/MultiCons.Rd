@@ -60,6 +60,6 @@ parts <- data.frame(factor(rep(c(1,2,3), each = 50)),
                     factor(rep(c(1,2,3), times = c(100, 25, 25))),
                     factor(rep(c(1,2), times = c(50, 100))),
                     factor(rep(c(3, 2, 1), times = c(120, 10, 20))),
-                    stringsAsFactors = T)
+                    stringsAsFactors = TRUE)
 MultiCons(parts, Clust_entry = TRUE, Plot = TRUE)
 }

@@ -75,7 +75,7 @@ MImpute <- function(data, mi.m, method = NULL, predMat = NULL, maxit = 10,
 
   res <- mice::mice(data, m = mi.m, method = my.method,
                     predictorMatrix = my.predictorMatrix,
-                    maxit = maxit, print = F)
+                    maxit = maxit, print = FALSE)
   imp.ret <- mice::complete(res, "all")
 
   if(return.midsObject){
@@ -195,7 +195,7 @@ MImpute_lcens <- function(data, data.lod, standards, mi.m, mice.log = 10,
       ""
     }
 
-  }, USE.NAMES = T)
+  }, USE.NAMES = TRUE)
 
   my.blots <- sapply(names(my.method), function(i){
     if (my.method[i] == "cens") {
@@ -203,20 +203,20 @@ MImpute_lcens <- function(data, data.lod, standards, mi.m, mice.log = 10,
     } else {
       list()
     }
-  }, USE.NAMES = T, simplify = F)
+  }, USE.NAMES = TRUE, simplify = FALSE)
 
   res <- mice::mice(tmp, m = mi.m, method = my.method,
-                    maxit = maxit, blots = my.blots, print = F)
+                    maxit = maxit, blots = my.blots, print = FALSE)
 
   imp.ret <- mice::complete(res, "all")
 
   if (is.numeric(mice.log)){
-    imp.ret <- sapply(imp.ret, exp, USE.NAMES = T, simplify = F)
+    imp.ret <- sapply(imp.ret, exp, USE.NAMES = TRUE, simplify = FALSE)
   }
 
   imp.ret <- sapply(imp.ret, function(dtemp, nc = ncol(data)){
     dtemp[, 1:nc]
-  }, USE.NAMES = T, simplify = F)
+  }, USE.NAMES = TRUE, simplify = FALSE)
 
 
 if(return.midsObject){

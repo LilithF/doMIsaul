@@ -48,6 +48,12 @@ my.cv.glmnet(
 
 \item{parallel}{See \code{glmnet:::cv.glmnet}.}
 
+\item{gamma}{See \code{glmnet:::cv.glmnet}.}
+
+\item{relax}{See \code{glmnet:::cv.glmnet}.}
+
+\item{trace.it}{See \code{glmnet:::cv.glmnet}.}
+
 \item{...}{See \code{glmnet:::cv.glmnet}.}
 }
 \description{

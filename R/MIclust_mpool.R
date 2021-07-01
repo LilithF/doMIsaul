@@ -25,7 +25,7 @@
 #'         clust.algo = c("km", "hc"),
 #'         k.crit = "ch"))
 #'
-#' MIclust_mpool(list.partitions, FALSE, FALSE)
+#' doMIsaul:::MIclust_mpool(list.partitions, FALSE, FALSE)
 MIclust_mpool <- function(list.part, comb.cons, plot.MIclust = FALSE) {
   algo <- colnames(list.part[[1]])
 

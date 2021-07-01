@@ -21,6 +21,6 @@ Cross-validation for cox regression using the basic approach
 }
 \examples{
 data(cancer, package = "survival")
-part <- data.frame(Cl= factor(cancer[, "sex"]), stringsAsFactors = T)
+part <- data.frame(Cl= factor(cancer[, "sex"]), stringsAsFactors = TRUE)
 doMIsaul:::cve_bas(cancer,part, 10)
 }

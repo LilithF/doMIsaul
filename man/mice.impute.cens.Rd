@@ -4,7 +4,16 @@
 \alias{mice.impute.cens}
 \title{Impute left censored data with MICE}
 \usage{
-mice.impute.cens(y, ry, x, lod.j, lod.name = "lod", REDRAW = F, wy = NULL, ...)
+mice.impute.cens(
+  y,
+  ry,
+  x,
+  lod.j,
+  lod.name = "lod",
+  REDRAW = FALSE,
+  wy = NULL,
+  ...
+)
 }
 \arguments{
 \item{y}{Vector to be imputed}

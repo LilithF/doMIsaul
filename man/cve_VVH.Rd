@@ -15,10 +15,12 @@ cve_VVH(data, partition, nfolds = 10)
 }
 \value{
 numeric, cross-validation error
-data(cancer, package = "survival")
-part <- data.frame(Cl= factor(cancer\link{, "sex"}), stringsAsFactors = TRUE)
-doMIsaul:::cve_VVH(cancer,part, 10)
 }
 \description{
 Cross-validation for cox regression using Verweij and Van Houwelingen method
+}
+\examples{
+data(cancer, package = "survival")
+part <- data.frame(Cl= factor(cancer[, "sex"]), stringsAsFactors = TRUE)
+doMIsaul:::cve_VVH(cancer, part, 10)
 }

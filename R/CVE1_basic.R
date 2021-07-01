@@ -7,7 +7,7 @@
 #' @return numeric, cross-validation error
 #' @examples
 #' data(cancer, package = "survival")
-#' part <- data.frame(Cl= factor(cancer[, "sex"]), stringsAsFactors = T)
+#' part <- data.frame(Cl= factor(cancer[, "sex"]), stringsAsFactors = TRUE)
 #' doMIsaul:::cve_bas(cancer,part, 10)
 cve_bas <- function(data, partition, nfolds = 10){
   X <- model.matrix(~ part, data.frame(part = factor(partition[, 1])))
@@ -37,7 +37,7 @@ cve_bas <- function(data, partition, nfolds = 10){
 #' @export
 #' @examples
 #' data(cancer, package = "survival")
-#' part <- data.frame(Cl= factor(cancer[, "sex"]), stringsAsFactors = T)
+#' part <- data.frame(Cl= factor(cancer[, "sex"]), stringsAsFactors = TRUE)
 #' CVE_basic(list(data = cancer, partition = part, nfolds = 10))
 CVE_basic <- function(x){
   r <- withCallingHandlers({
