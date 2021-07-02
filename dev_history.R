@@ -27,6 +27,7 @@ library(devtools)
 ####  use_r("unsupMI")
 # use_r("mice_imputers_censored")
 # use_r("evaluate_partition_semisup")
+# use_r("evaluate_partition_unsup")
 # use_r("Extract_AUC")
 
 
