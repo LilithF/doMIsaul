@@ -26,6 +26,7 @@
 #'    \code{Per.Unclass.ic}: Among incomplete cases, percentage of observations
 #'    unclassified in the partition
 #' @export
+#' @importFrom aricode ARI
 #'
 #' @examples
 #' res <- evaluate_partition_unsup(

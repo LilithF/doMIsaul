@@ -75,7 +75,7 @@ res3 <- evaluate_partition_unsup(
   is.cens = Censor.indicator)
 
 ## With missing and censored data and unclassifed observations
-res3 <- evaluate_partition_unsup(
+res4 <- evaluate_partition_unsup(
   partition = factor(rep(c(1,2, NA,3), times = c(50, 40, 20, 40))),
   partition.ref = factor(rep(c(1,2,3), times = c(100, 25, 25))),
   is.missing = missing.indicator,

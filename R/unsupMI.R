@@ -34,13 +34,22 @@
 #'   discarded for the learning step.
 #' @param return.detail logical. Should the detail of imputation specific
 #'   partition be returned, in the supplement to the final consensus partition?
-#'
 #' @param cens.data.lod passed to \code{MImpute_lcens()} if
 #'   \code{Impute == MImpute_lcens}
 #' @param cens.standards passed to \code{MImpute_lcens()} if
 #'   \code{Impute == MImpute_lcens}
 #' @param cens.mice.log passed to \code{MImpute_lcens()} if
 #'   \code{Impute == MImpute_lcens}
+#' @param cleanup.partition should the partition be trimmed of small clusters.
+#'   (The consensus may generate small clusters of observations for which there
+#'     is no consensus on the cluster assignation)
+#' @param min.cluster.size if \code{cleanup.partition == TRUE}: Minimum
+#'  cluster size (ie, smaller clusters will be discarded)
+#' @param level.order if \code{cleanup.partition == TRUE}: optional. If you
+#' supply a variable the  cluster levels will be ordinated according to the
+#' mean values for the variable
+#' @param Unclassified if \code{cleanup.partition == TRUE} string for the label
+#' of the unclassified observations. defaults value is \code{NA}.
 #'
 #' @return if \code{length(algo)>1} a vector of final cluster ID ; if
 #'   \code{length(algo)>1} a data.frame with each column being the final cluster
@@ -56,17 +65,24 @@
 #' cancer$status <- cancer$status - 1
 #' cancer.imp <- MImpute_surv(cancer, 3)
 #' ## 2 learning
-#' res <- unsupMI(data = cancer.imp)
+#' res <- unsupMI(data = cancer.imp, cleanup.partition = FALSE)
+#' summary(factor(res))
+#' res.1 <- unsupMI(data = cancer.imp)
+#' summary(factor(res.1))
+#'
 #' ## 2.bis learning with several algorithms
 #' res.2 <- unsupMI(data = cancer.imp, algo = c("km", "hc"), comb.cons = TRUE,
 #'                  plot.cons = TRUE)
+#'
 #' ## Alternative: perform imputation within
 #' res <- unsupMI(Impute = "MImpute_surv", data = list(cancer))
 unsupMI <- function(Impute = FALSE, Impute.m = 5, cens.data.lod = NULL,
                     cens.standards = NULL, cens.mice.log = 10,
                     data, log.data = FALSE, algo = "km", k.crit = "ch",
                     comb.cons = FALSE, plot.cons = FALSE, return.detail = FALSE,
-                    not.to.use = c("time", "status")){
+                    not.to.use = c("time", "status"),
+                    cleanup.partition = TRUE, min.cluster.size = 10,
+                    level.order = NULL, Unclassified = "Unclassified"){
 
   if(Impute == "MImpute"){
     data.imp <-  MImpute(data = data[[1]], mi.m = Impute.m)
@@ -102,6 +118,17 @@ unsupMI <- function(Impute = FALSE, Impute.m = 5, cens.data.lod = NULL,
       plot.MIclust = plot.cons,
       comb.cons = ifelse(length(algo) > 1, comb.cons, FALSE))
   }
+
+  if(cleanup.partition){
+
+    my.part <- sapply(my.part,
+                             cleanUp_partition,
+                             min.cluster.size = min.cluster.size,
+                             level.order = level.order,
+                             Unclassified = Unclassified)
+
+  }
+
 
   if(return.detail){
     if(length(algo) == 1){

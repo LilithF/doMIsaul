@@ -40,6 +40,17 @@
 #' @param plot.cons Logical. Should the consensus tree be plotted?
 #' @param return.detail logical. Should the detail of imputation specific
 #'   partition be returned, in supplement to the final consensus partition?
+#' @param cleanup.partition should the partition be trimmed of small clusters.
+#'   (The consensus may generate small clusters of observations for which there
+#'     is no consensus on the cluster assignation)
+#' @param min.cluster.size if \code{cleanup.partition == TRUE}: Minimum
+#'  cluster size (ie, smaller clusters will be discarded)
+#' @param level.order if \code{cleanup.partition == TRUE}: optional. If you
+#' supply a variable the  cluster levels will be ordinated according to the
+#' mean values for the variable
+#' @param Unclassified if \code{cleanup.partition == TRUE} string for the label
+#' of the unclassified observations. defaults value is \code{NA}.
+
 #'
 #' @return A vector containing the final cluster IDs
 #' @export
@@ -58,6 +69,7 @@
 #'
 #' ### With imputation and center initialization not included
 #' ## 1 imputation
+#' data(cancer, package = "survival")
 #' cancer.imp <- MImpute_surv(cancer, 3)
 #' ## 2 Center initialization
 #' N <- 100
@@ -70,14 +82,20 @@
 #'                   seeds.N = the.seeds)},
 #'                 USE.NAMES = TRUE, simplify = FALSE)
 #' ## 3 learning
-#' res <- seMIsupcox(X = cancer.imp, Y = cancer[, c("time", "status")],
+#' res1 <- seMIsupcox(X = cancer.imp, Y = cancer[, c("time", "status")],
+#'                   center.init = inits, nfold = 10,
+#'                   cleanup.partition = FALSE)
+#' res2 <- seMIsupcox(X = cancer.imp, Y = cancer[, c("time", "status")],
 #'                   center.init = inits, nfold = 10)
 seMIsupcox <- function(Impute = FALSE, Impute.m = 5,
                        center.init = TRUE, center.init.N = 500,
                        center.init.Ks = 2:7,
                        X, CVE.fun = "LP", Y, nfolds, save.path = NULL,
                        Unsup.Sup.relImp = list("relImp.55" = c(.5, .5)),
-                       plot.cons = FALSE, return.detail = FALSE) {
+                       plot.cons = FALSE,
+                       cleanup.partition = TRUE, min.cluster.size = 10,
+                       level.order = NULL, Unclassified = "Unclassified",
+                       return.detail = FALSE) {
 
   if(Impute){
     data.imp <-  MImpute_surv(data = X[[1]], mi.m = Impute.m)
@@ -239,6 +257,16 @@ seMIsupcox <- function(Impute = FALSE, Impute.m = 5,
   ret.part <- lapply(what, function(x){
     factor(cons.partS[, x])
   })
+
+  if(cleanup.partition){
+
+    ret.part <- lapply(ret.part,
+                       cleanUp_partition,
+                       min.cluster.size = min.cluster.size,
+                       level.order = level.order,
+                       Unclassified = Unclassified)
+
+  }
 
   if(return.detail){
     return(list(Consensus = ret.part,
