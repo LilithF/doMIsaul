@@ -1,15 +1,15 @@
-#' Table of chisq.test test for several explanotory varaibles
+#' Table of chisq.test test for several explanatory variables
 #'
-#' Performs the function \code{chisq.test} for the \code{main.var} with each
-#'   feature in \code{var}.
+#' Performs the function \code{chisq.test} for the \code{main.var} and
+#'  \code{var}.
 #'
 #' @param data The database.
-#' @param main.var string. The categorical variable against which each variable
+#' @param main.var string. The categorical variable against the variable
 #'   will be compared.
-#' @param var vector of strings. The categorical variables to compare with.
+#' @param var string. The categorical variable to compare with.
 #' @param nb.dec digit. Number of decimals for the percentage.
 #'
-#' @return table
+#' @return table with n (percentage) per level and pvalue of chi2 test.
 chi2tab <- function(data, main.var, var, nb.dec = 1){
 
   freq <- as.data.frame(

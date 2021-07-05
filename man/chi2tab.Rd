@@ -2,24 +2,24 @@
 % Please edit documentation in R/chi2tab.R
 \name{chi2tab}
 \alias{chi2tab}
-\title{Table of chisq.test test for several explanotory varaibles}
+\title{Table of chisq.test test for several explanatory variables}
 \usage{
 chi2tab(data, main.var, var, nb.dec = 1)
 }
 \arguments{
 \item{data}{The database.}
 
-\item{main.var}{string. The categorical variable against which each variable
+\item{main.var}{string. The categorical variable against the variable
 will be compared.}
 
-\item{var}{vector of strings. The categorical variables to compare with.}
+\item{var}{string. The categorical variable to compare with.}
 
 \item{nb.dec}{digit. Number of decimals for the percentage.}
 }
 \value{
-table
+table with n (percentage) per level and pvalue of chi2 test.
 }
 \description{
-Performs the function \code{chisq.test} for the \code{main.var} with each
-feature in \code{var}.
+Performs the function \code{chisq.test} for the \code{main.var} and
+\code{var}.
 }

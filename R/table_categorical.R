@@ -1,7 +1,8 @@
 #' Display table with comparison of the partition with categorical variables.
 #'
 #' @param data The dataset.
-#' @param partition string. Name of the partition (in data.
+#' @param partition.name string. Name of the partition (in data). The partition
+#'   variable should be a factor.
 #' @param vars.cat vector of strings. variables to compare to (categorical
 #'   only).
 #' @param vars.cat.names Optional. Names for displaying the categorical
@@ -12,20 +13,22 @@
 #' @param text.pval boolean. Set to \code{TRUE}to display \code{"p="}, to
 #'   \code{FALSE} to display only the value.
 #'
-#' @return table
+#' @return table with n and percentage values per level of the partition and
+#'   chi square test pvalues.
 #' @export
 #'
 #' @examples
 #' data(cancer, package = "survival")
-#' table_categorical(data = cancer, partition = "status",
+#' cancer$status <- factor(cancer$status)
+#' table_categorical(data = cancer, partition.name = "status",
 #'                   vars.cat = c("sex", "ph.ecog"))
-table_categorical <- function(data, partition, vars.cat,
+table_categorical <- function(data, partition.name, vars.cat,
                               vars.cat.names = NULL, na.value = "",
                               nb.dec = 1, text.pval = FALSE){
 
   tab <- do.call(rbind,
                  lapply(vars.cat, chi2tab,
-                        data = data, main.var = partition, nb.dec = nb.dec)
+                        data = data, main.var = partition.name, nb.dec = nb.dec)
                  )
 
   tab$pvalue[!is.na(tab$pvalue)] <-
@@ -33,7 +36,7 @@ table_categorical <- function(data, partition, vars.cat,
 
   if(!is.null(vars.cat.names)){
 
-    tab$Parameter <- mapvalues(tab$Parameter,
+    tab$Parameter <- plyr::mapvalues(tab$Parameter,
                                vars.cat,
                                vars.cat.names,
                                warn_missing = FALSE)
@@ -41,8 +44,9 @@ table_categorical <- function(data, partition, vars.cat,
 
   tab[is.na(tab)] <- na.value
 
-  colnames(tab)[-c(1:2, ncol(tab))] <- paste0(partition, ": ",
-                                              levels(factor(data[, partition])))
+  colnames(tab)[-c(1:2, ncol(tab))] <-
+    paste0(partition.name, ": ", levels(factor(data[, partition.name])))
+
   tab
 
 }

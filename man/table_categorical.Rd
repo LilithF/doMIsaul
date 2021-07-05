@@ -6,7 +6,7 @@
 \usage{
 table_categorical(
   data,
-  partition,
+  partition.name,
   vars.cat,
   vars.cat.names = NULL,
   na.value = "",
@@ -17,7 +17,8 @@ table_categorical(
 \arguments{
 \item{data}{The dataset.}
 
-\item{partition}{string. Name of the partition (in data.}
+\item{partition.name}{string. Name of the partition (in data). The partition
+variable should be a factor.}
 
 \item{vars.cat}{vector of strings. variables to compare to (categorical
 only).}
@@ -34,13 +35,15 @@ variables. (in the same order than \code{vars.cat})}
 \code{FALSE} to display only the value.}
 }
 \value{
-table
+table with n and percentage values per level of the partition and
+chi square test pvalues.
 }
 \description{
 Display table with comparison of the partition with categorical variables.
 }
 \examples{
 data(cancer, package = "survival")
-table_categorical(data = cancer, partition = "status",
+cancer$status <- factor(cancer$status)
+table_categorical(data = cancer, partition.name = "status",
                   vars.cat = c("sex", "ph.ecog"))
 }
