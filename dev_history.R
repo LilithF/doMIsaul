@@ -33,9 +33,11 @@ library(devtools)
 # use_r("plot_frequency")
 # use_r("plot_MIpca")
 # use_r("table_continous")
+# use_r("chi2tab")
+use_r("formatpv")
 # use_r("table_categorical")
 # use_r("cleanUp_partition")
-use_r("Investigate_unclass")
+# use_r("Investigate_unclass") # A faire + tard
 
 
 

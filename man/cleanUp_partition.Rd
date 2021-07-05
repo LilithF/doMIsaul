@@ -18,7 +18,7 @@ cleanUp_partition(
 \item{min.cluster.size}{Minimum cluster size (ie, smaller clusters will be
 discarded)}
 
-\item{level.order}{optional. If you sully a variable the  cluster levels will
+\item{level.order}{optional. If you supply a variable the  cluster levels will
 be ordinated according to the mean values for the variable}
 
 \item{Unclassified}{string for the label of the unclassified observations.
@@ -34,5 +34,5 @@ was obtained)
 \examples{
 part <- factor(kmeans(iris[, 1:4], 8)$cluster)
 summary(part)
-cleanUp_partition(part, Unclassified = "Unclassified")
+part.clean <- cleanUp_partition(part, Unclassified = "Unclassified")
 }

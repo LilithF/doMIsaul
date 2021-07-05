@@ -17,7 +17,11 @@ unsupMI(
   comb.cons = FALSE,
   plot.cons = FALSE,
   return.detail = FALSE,
-  not.to.use = c("time", "status")
+  not.to.use = c("time", "status"),
+  cleanup.partition = TRUE,
+  min.cluster.size = 10,
+  level.order = NULL,
+  Unclassified = "Unclassified"
 )
 }
 \arguments{
@@ -68,6 +72,20 @@ partition be returned, in the supplement to the final consensus partition?}
 
 \item{not.to.use}{vector of strings : names of the columns that should be
 discarded for the learning step.}
+
+\item{cleanup.partition}{should the partition be trimmed of small clusters.
+(The consensus may generate small clusters of observations for which there
+is no consensus on the cluster assignation)}
+
+\item{min.cluster.size}{if \code{cleanup.partition == TRUE}: Minimum
+cluster size (ie, smaller clusters will be discarded)}
+
+\item{level.order}{if \code{cleanup.partition == TRUE}: optional. If you
+supply a variable the  cluster levels will be ordinated according to the
+mean values for the variable}
+
+\item{Unclassified}{if \code{cleanup.partition == TRUE} string for the label
+of the unclassified observations. defaults value is \code{NA}.}
 }
 \value{
 if \code{length(algo)>1} a vector of final cluster ID ; if
@@ -87,10 +105,15 @@ data(cancer, package = "survival")
 cancer$status <- cancer$status - 1
 cancer.imp <- MImpute_surv(cancer, 3)
 ## 2 learning
-res <- unsupMI(data = cancer.imp)
+res <- unsupMI(data = cancer.imp, cleanup.partition = FALSE)
+summary(factor(res))
+res.1 <- unsupMI(data = cancer.imp)
+summary(factor(res.1))
+
 ## 2.bis learning with several algorithms
 res.2 <- unsupMI(data = cancer.imp, algo = c("km", "hc"), comb.cons = TRUE,
                  plot.cons = TRUE)
+
 ## Alternative: perform imputation within
 res <- unsupMI(Impute = "MImpute_surv", data = list(cancer))
 }
