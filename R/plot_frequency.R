@@ -1,80 +1,129 @@
-# temp <-  data.frame(do.call(cbind,
-#                             lapply(c(var.cat.main, var.cat.comorb[1]), function(x){
-#                               hemato2[, x] <- mapvalues(hemato2[, x], NA, "NA")
-#                               model.matrix(as.formula(paste("~ 0 +", x)) , data = hemato2)
-#                             })),
-#                     hemato2[,c(var.cat.comorb[-1], var.cat.hemato[c(1,3)])],
-#                     lapply(c(var.cat.hemato[2]), function(x){
-#                       hemato2[, x] <- mapvalues(hemato2[, x], NA, "NA")
-#                       model.matrix(as.formula(paste("~ 0 +", x)) , data = hemato2)
-#                     }),
-#                     hemato2[,c(var.cat.sympt[-1])],
-#                     lapply(c(var.cat.sympt[1], var.cat.covid[2]), function(x){
-#                       hemato2[, x] <- mapvalues(hemato2[, x], NA, "NA")
-#                       model.matrix(as.formula(paste("~ 0 +", x)) , data = hemato2)
-#                     }),
-#                     hemato2[,c( var.cat.covid[-2])],
-#                     Unsup = hemato2$Unsup)
-# temp.melt <- melt(temp, id.vars = "Unsup")
-# temp.melt$variable <- gsub("Country", "Country: ", temp.melt$variable)
-# temp.melt$variable <- gsub("Sex.b1", "Sex: Male", temp.melt$variable)
-# temp.melt$variable <- gsub("Diagh.f5", "Diagnosis: ", temp.melt$variable)
-# temp.melt$variable <- gsub("Diagh.f2", "Diagnosis(K): ", temp.melt$variable)
-# temp.melt$variable <- gsub("iCU", "ICU: ", temp.melt$variable)
-# temp.melt$variable <- gsub("chemo_type", "CT type: ", temp.melt$variable)
-# temp.melt <- temp.melt[!temp.melt$variable %in% c("Diagnosis(K): Benigne", "Country: France", "ncomorb.f2.0", "Sex.b0"), ]
-# temp.melt$variable <- gsub("ncomorb.f20", "No comorbidities", temp.melt$variable)
-# temp.melt$variable <- gsub("delsf.f", "Delay 1st sympt.: ", temp.melt$variable)
-# temp.melt$variable <- gsub(".0.7.", "]0,7]", temp.melt$variable)
-# temp.melt$variable <- gsub("..0", "<=0", temp.melt$variable, fixed = T)
-# temp.melt$variable <- gsub(".7", ">7", temp.melt$variable, fixed = T)
-# temp.melt <- temp.melt[!temp.melt$variable %in% c("Delay 1st sympt.: Asymptomatic."), ]
-# temp.melt$variable <- factor(temp.melt$variable, levels = rev(unique(temp.melt$variable)))
-#
-# temp.melt2 <- temp.melt %>%
-#   group_by(variable, Unsup) %>%
-#   summarise(freq = 100*sum(value, na.rm = T)/n())
-# temp.melt2$variable <- mapvalues(temp.melt2$variable, db.names, eng.names)
-#
-# nlev <- nlevels(Unsup.part.upd.NA)
-#
-# pps<- lapply(levels(Unsup.part.upd.NA), function(xx){
-#   my.col <- mapvalues(xx,
-#                       levels(Unsup.part.upd.NA),
-#                       RColorBrewer::brewer.pal(nlev, "Set1")[1:nlev],
-#                       warn_missing = F)
-#   p <-  ggplot(temp.melt2[temp.melt2$Unsup %in% xx, ]) +
-#     geom_bar(aes(x = variable, y = freq, fill = freq), stat = "identity") +
-#     scale_fill_gradient(low = "yellow", high = "red", limits = c(0, 100), name = "Prevalence in the cluster (%)") +
-#     coord_flip(ylim = c(0,100)) +
-#     geom_vline(xintercept = 2.5, size = .5, linetype = 2)+
-#     geom_vline(xintercept = 5.5, size = 1)+
-#     geom_vline(xintercept = 8.5, size = .5, linetype = 2)+
-#     geom_vline(xintercept = 19.5, size = 1) +
-#     geom_vline(xintercept = 23.5, size = .5, linetype = 2)+
-#     geom_vline(xintercept = 25.5, size = 1) +
-#     geom_vline(xintercept = 34.5, size = 1) +
-#     geom_vline(xintercept = 39.5, size = .5, linetype = 2) +
-#     geom_vline(xintercept = 40.5, size = 1) +
-#
-#     theme(axis.text.x = element_blank(),
-#           axis.text.y = element_text(color = "black", size = 12),
-#           axis.ticks.x = element_blank(),
-#           axis.title.x = element_text(color = my.col, face = "bold"),
-#           legend.position = "bottom",
-#           axis.title.y = element_blank()) +
-#     ylab(paste0(xx, "\n(n=", sum(hemato2$Unsup == xx) ,")")) +
-#     xlab("Clinical parameters")
-#   leg <<- ggpubr::get_legend(p)
-#   if(xx %in% levels(Unsup.part.upd.NA)[1]){
-#     p + theme(legend.position = "none")
-#   } else {
-#     p + theme(legend.position = "none",
-#               axis.text.y = element_blank(),
-#               axis.ticks.y = element_blank(),
-#               axis.title.y = element_blank())
-#   }
-# })
-# p.UnsupComorb <- cowplot::plot_grid(plotlist = pps, nrow = 1, rel_widths = c(1, rep(.4, length(pps)-1)))
-# p.UnsupComorb <- cowplot::plot_grid(p.UnsupComorb, ggpubr::as_ggplot(leg), ncol = 1, rel_heights = c(1,.05))
-# print(p.UnsupComorb)
+#' ggplot type barplots representing frequencies for each vars.cat by
+#'   partition level.
+#'
+#' @param data The dataset.
+#' @param partition.name string. Name of the partition (in data). The partition
+#'   variable should be a factor.
+#' @param vars.cat vector of strings. variables to plot (categorical only).
+#' @param vars.cat.names Optional. Names for displaying the categorical
+#'   variables. (given in the same order than \code{vars.cat})
+#' @param binary.simplify boolean. Should only the 1st level be kept for binary
+#'   variables in \code{vars.cat}?
+#' @param unclass.name If applicable, name for the unclassified observations in
+#'    the partition.
+#' @param include.unclass boolean, should boxplot be displayed for the
+#'   unclassified or should they be excluded from the plot.
+#'
+#' @import ggplot2
+#' @return ggplot object.
+#' @export
+#'
+#' @examples
+#' data(cancer, package = "survival")
+#' cancer$status <- factor(cancer$status)
+#' plot_frequency(data = cancer, partition.name = "status",
+#'                   vars.cat = c("sex", "ph.ecog"))
+#'
+#' ## With unclassifieds
+#' cancer$status.2 <- as.character(cancer$status)
+#' cancer$status.2[sample(1:nrow(cancer), 30)] <- "Unclassif."
+#' cancer$status.2 <- factor(cancer$status.2)
+#' plot_frequency(data = cancer, partition.name = "status.2",
+#'                vars.cat = c("sex", "ph.ecog"),
+#'                unclass.name = "Unclassif.", include.unclass = TRUE)
+#'
+#' ## With unclassifieds (as NA)
+#' cancer$status.3 <- cancer$status
+#' cancer$status.3[sample(1:nrow(cancer), 30)] <- NA
+#' plot_frequency(data = cancer, partition.name = "status.3",
+#'                vars.cat = c("sex", "ph.ecog"),
+#'                unclass.name = NA, include.unclass = TRUE)
+#'
+#' plot_frequency(data = cancer, partition.name = "status.3",
+#'                vars.cat = c("sex", "ph.ecog", "ph.karno"),
+#'                binary.simplify = FALSE,
+#'                unclass.name = NA, include.unclass = FALSE)
+plot_frequency <- function(data, partition.name,
+                           vars.cat, vars.cat.names = NULL,
+                           binary.simplify = TRUE,
+                           unclass.name = "Unclassified",
+                           include.unclass = FALSE){
+
+  if(!include.unclass) {
+    data <- data[!data[, partition.name] %in% unclass.name, ]
+  } else {
+    if(is.na(unclass.name)){
+      data[, partition.name] <- factor(data[, partition.name])
+      levels(data[, partition.name]) <- c(levels(data[, partition.name]), "NA")
+      data[is.na(data[, partition.name]), partition.name] <- "NA"
+    }
+  }
+
+
+  nlev <- sapply(data[, vars.cat], function(x){nlevels(factor(x, exclude = NULL))})
+
+  temp <-  data.frame(
+    do.call(cbind,
+            lapply(c(vars.cat), function(x){
+              uu <- levels(factor(data[, x]))
+              data[, x] <- as.character(data[, x])
+              data[is.na(data[, x]), x] <- "NA"
+              data[, x] <- factor(data[, x],
+                                  levels = unique(c(uu, "NA")))[drop = TRUE]
+
+              stats::model.matrix(as.formula(paste("~ 0 +", x)) , data = data)
+            })),
+    part = data[, partition.name]
+    )
+
+  if(binary.simplify){
+    to.rm <- sapply(names(nlev)[nlev == 2], function(x){
+      paste0(x, levels(factor(data[, x]))[2])
+    })
+
+    temp <- temp[, setdiff(colnames(temp), to.rm)]
+    nlev[nlev == 2] <- 1
+  }
+
+  temp.melt <- reshape2::melt(temp, id.vars = "part")
+  if(is.null(vars.cat.names)) vars.cat.names <- vars.cat
+  for(xx in seq_along(vars.cat)){
+    temp.melt$variable <- gsub(vars.cat[xx],
+                               paste0(vars.cat.names[xx], ": "),
+                               temp.melt$variable)
+  }
+
+  temp.melt$variable <- factor(temp.melt$variable,
+                               levels = rev(unique(temp.melt$variable)))
+
+  temp.melt2 <- dplyr::summarise(
+    dplyr::group_by(temp.melt, variable, part),
+    freq = 100*sum(value, na.rm = TRUE)/dplyr::n()
+  )
+
+  temp.melt2$part <- factor(temp.melt2$part)[drop = TRUE]
+  lev.p <- levels(temp.melt2$part)
+  rr <- summary(factor(data[, partition.name]))
+  temp.melt2$part <- plyr::mapvalues(temp.melt2$part,
+                                     lev.p,
+                                     paste0(lev.p, "\n(n=", rr,")")
+  )
+
+  xlines <- cumsum(rev(nlev)) + .5
+  xlines <- xlines[-length(xlines)]
+
+  p <-  ggplot(temp.melt2) +
+    geom_bar(aes(x = variable, y = freq, fill = freq), stat = "identity") +
+    scale_fill_gradient(low = "yellow", high = "red", limits = c(0, 100), name = "Prevalence in the cluster (%)") +
+    coord_flip(ylim = c(0,100)) +
+    geom_vline(xintercept = xlines, size = 1) +
+    facet_wrap(~part, nrow = 1) +
+    theme(axis.text.x = element_blank(),
+          axis.ticks.x = element_blank(),
+          legend.position = "bottom") +
+    xlab("Parameters") +
+    ylab("Prevalence")
+
+  p
+}
+

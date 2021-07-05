@@ -6,7 +6,7 @@
 #' @param vars.cont vector of strings. variables to plot (continuous only).
 #' @param vars.cont.names Optional. Names for displaying the continuous
 #'   variables. (given in the same order than \code{vars.cont})
-#' @param unclass.name If applicable, name for the unclassfied observations in
+#' @param unclass.name If applicable, name for the unclassified observations in
 #'    the partition.
 #' @param include.unclass boolean, should boxplot be displayed for the
 #'   unclassified or should they be excluded from the plot.
@@ -51,7 +51,7 @@ plot_boxplot <- function(data, partition.name,
     if(is.na(unclass.name)){
       temp[, partition.name] <- factor(temp[, partition.name])
       levels(temp[, partition.name]) <- c(levels(temp[, partition.name]), "NA")
-      temp[is.na(temp[, partition.name]), partition.name] <- NA
+      temp[is.na(temp[, partition.name]), partition.name] <- "NA"
     }
   }
 

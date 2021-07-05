@@ -24,7 +24,7 @@ variable should be a factor.}
 \item{vars.cont.names}{Optional. Names for displaying the continuous
 variables. (given in the same order than \code{vars.cont})}
 
-\item{unclass.name}{If applicable, name for the unclassfied observations in
+\item{unclass.name}{If applicable, name for the unclassified observations in
 the partition.}
 
 \item{include.unclass}{boolean, should boxplot be displayed for the
