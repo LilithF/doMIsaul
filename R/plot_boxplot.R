@@ -40,7 +40,8 @@ plot_boxplot <- function(data, partition.name,
                          unclass.name = "Unclassified",
                          include.unclass = FALSE){
 
-  temp <- reshape2::melt(data, measure.vars = vars.cont)
+  temp <- reshape2::melt(data, measure.vars = vars.cont,
+                         value.name = "value", variable.name = "variable")
   if(!is.null(vars.cont.names)){
     temp$variable <- plyr::mapvalues(temp$variable, vars.cont, vars.cont.names)
   }

@@ -66,5 +66,5 @@ plot_frequency(data = cancer, partition.name = "status.3",
 plot_frequency(data = cancer, partition.name = "status.3",
                vars.cat = c("sex", "ph.ecog", "ph.karno"),
                binary.simplify = FALSE,
-               unclass.name = NA, include.unclass = TRUE)
+               unclass.name = NA, include.unclass = FALSE)
 }

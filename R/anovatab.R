@@ -9,7 +9,7 @@
 #' @param nb.dec digit. Number of decimals for the mean and quantiles
 #'
 #' @return table with mean and q1 q3 for each level and pvalue of anova test.
-anovatab <- function(data, main.var, var, nb_dec = 1){
+anovatab <- function(data, main.var, var, nb.dec = 1){
 
   ret <- as.data.frame(matrix(NA, nrow = 1, ncol = nlevels(data[, main.var])+2))
 
@@ -25,8 +25,8 @@ anovatab <- function(data, main.var, var, nb_dec = 1){
       qq <- quantile(data[data[, main.var] %in% lev, var],
                      c(.25, .75), na.rm = TRUE)
 
-      paste0(round(m, nb_dec), " [", round(qq[1], nb_dec),
-             " ; ", round(qq[2], nb_dec), "]")
+      paste0(round(m, nb.dec), " [", round(qq[1], nb.dec),
+             " ; ", round(qq[2], nb.dec), "]")
 
     })
 
