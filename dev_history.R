@@ -4,7 +4,7 @@ library(devtools)
 load_all()
 document()
 use_tidy_description()
-attachment::att_amend_desc()
+# attachment::att_amend_desc()
 
 spell_check()
 
@@ -72,7 +72,7 @@ goodpractice::goodpractice()
 # use_lifecycle_badge("experimental")
 # badger::badge_last_commit()
 # use_vignette("unsupMI_semisup_cox")
-use_github_action_check_standard()
+# use_github_action_check_standard()
 
 # use_spell_check()
 # use_readme_rmd()
