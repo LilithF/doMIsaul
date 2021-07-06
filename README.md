@@ -42,6 +42,7 @@ data(cancer, package = "survival")
 cancer$status <- cancer$status - 1
 cancer <- cancer[, -1]
 
+set.seed(1243)
 res.unsup <- 
   unsupMI(data = list(cancer), Impute = "MImpute_surv", Impute.m = 10,
           cleanup.partition = TRUE, return.detail = TRUE)
@@ -76,6 +77,7 @@ learning for an incomplete dataset with a survival outcome:
 
 ``` r
 ## With imputation included
+set.seed(345)
 res.semisup <- 
   seMIsupcox(X = list(cancer[, setdiff(colnames(cancer), "part_unsup")]),
              Y = cancer[, c("time", "status")],

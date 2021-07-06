@@ -72,7 +72,7 @@ goodpractice::goodpractice()
 # use_lifecycle_badge("experimental")
 # badger::badge_last_commit()
 # use_vignette("unsupMI_semisup_cox")
-use_github_action_check_release()
+use_github_action_check_standard()
 
 # use_spell_check()
 # use_readme_rmd()
