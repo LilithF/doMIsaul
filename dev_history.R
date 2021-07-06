@@ -1,4 +1,17 @@
 library(devtools)
+### Do it often ####
+load_all()
+document()
+use_tidy_description()
+attachment::att_amend_desc()
+
+
+## Moins régulièrement ###
+check()
+# et si fonctionne :
+install()
+# build()  # construit le targz
+goodpractice::goodpractice()
 
 ### Do it once ####
 # use_git()
@@ -54,19 +67,6 @@ library(devtools)
 
 # use_r("temp")
 
-### Do it often ####
-load_all()
-document()
-use_tidy_description()
-attachment::att_amend_desc()
-
-
-## Moins régulièrement ###
-check()
-# et si fonctionne :
-install()
-# build()  # construit le targz
-goodpractice::goodpractice()
 
 
 

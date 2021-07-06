@@ -38,6 +38,7 @@ Imports:
     dplyr,
     e1071,
     ggplot2,
+    ggpubr,
     glmnet (>= 4.1.1),
     Gmedian,
     graphics,

@@ -128,7 +128,6 @@ my.cv.ncvsurv <- function (X, y, ..., cluster, nfolds = 10, seed, fold,
     val$Y <- Y
   structure(val, class = c("cv.ncvsurv", "cv.ncvreg"))
 }
-# environment(my.cv.ncvsurv) <- environment(cv.ncvsurv)
 
 
 
@@ -270,4 +269,3 @@ my.ncvsurv <- function (X, y, penalty = c("MCP", "SCAD", "lasso"),
   }
   val
 }
-# environment(my.ncvsurv) <- environment(ncvsurv)

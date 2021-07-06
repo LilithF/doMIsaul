@@ -4,7 +4,7 @@
 \alias{anovatab}
 \title{Table of anova test for several explanatory variables}
 \usage{
-anovatab(data, main.var, var, nb_dec = 1)
+anovatab(data, main.var, var, nb.dec = 1)
 }
 \arguments{
 \item{data}{The database.}
