@@ -66,11 +66,11 @@ goodpractice::goodpractice()
 
 use_test("unsupMI")
 use_test("CH_index_functions")
-
+# use_logo("../hex/doMIsaul_V1.png")
 test()
 
 # use_spell_check()
-
+# use_readme_rmd()
 # use_r("temp")
 
 
