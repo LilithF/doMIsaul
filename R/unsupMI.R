@@ -33,7 +33,8 @@
 #' @param not.to.use vector of strings : names of the columns that should be
 #'   discarded for the learning step.
 #' @param return.detail logical. Should the detail of imputation specific
-#'   partition be returned, in the supplement to the final consensus partition?
+#'   partition and the imputed data be returned, in the supplement to the final
+#'   consensus partition?
 #' @param cens.data.lod passed to \code{MImpute_lcens()} if
 #'   \code{Impute == MImpute_lcens}
 #' @param cens.standards passed to \code{MImpute_lcens()} if
@@ -53,11 +54,14 @@
 #'
 #' @return if \code{length(algo)>1} a vector of final cluster ID ; if
 #'   \code{length(algo)>1} a data.frame with each column being the final cluster
-#'   ID for the corresponding algorithm.
+#'   ID for the corresponding algorithm. Or if \code{return.detail == TRUE}, a
+#'   list containing \code{Consensus} : the final cluster ID (or data.frame),
+#'   \code{Detail}: the clusters obtained for each imputed dataset,
+#'   \code{Imputed.data} a list containing the imputed datasets.
 #' @export
 #'
 #' @examples
-#' ## With imputation included TO DO
+#' ## With imputation included
 #' data(cancer, package = "survival")
 #' cancer$status <- cancer$status - 1
 #' res.0 <- unsupMI(data = list(cancer), Impute = "MImpute_surv",
@@ -135,10 +139,12 @@ unsupMI <- function(Impute = FALSE, Impute.m = 5, cens.data.lod = NULL,
   if(return.detail){
     if(length(algo) == 1){
       return(list(Consensus = unlist(unname(my.part)),
-                  Detail = Partition.list))
+                  Detail = Partition.list,
+                  Imputed.data = X))
     } else{
       return(list(Consensus = my.part,
-                  Detail = Partition.list))
+                  Detail = Partition.list,
+                  Imputed.data = X))
     }
 
   } else {

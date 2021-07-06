@@ -53,7 +53,10 @@
 #' of the unclassified observations. defaults value is \code{NA}.
 
 #'
-#' @return A vector containing the final cluster IDs
+#' @return A vector containing the final cluster IDs. Or if
+#'   \code{return.detail == TRUE}, a list containing \code{Consensus}: the final
+#'    cluster ID, \code{Detail}: the clusters obtained for each imputed dataset,
+#'   \code{Imputed.data} a list containing the imputed datasets.
 #' @export
 #' @importFrom Gmedian kGmedian
 #' @importFrom aricode ARI
@@ -272,7 +275,8 @@ seMIsupcox <- function(Impute = FALSE, Impute.m = 5,
 
   if(return.detail){
     return(list(Consensus = ret.part,
-                Detail = binded.part))
+                Detail = binded.part,
+                Imputed.data = X))
   } else {
     return(ret.part)
   }

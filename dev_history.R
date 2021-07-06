@@ -1,5 +1,5 @@
 library(devtools)
-library(testthat)
+# library(testthat)
 ### Do it often ####
 load_all()
 document()
@@ -62,16 +62,17 @@ goodpractice::goodpractice()
 
 
 # use_github()
-# use_testthat()
+### TEST ####
+# # use_testthat()
+# # use_test("unsupMI")
+# # use_test("CH_index_functions")
+# # test()
 
-use_test("unsupMI")
-use_test("CH_index_functions")
 # use_logo("../hex/doMIsaul_V1.png")
 # use_lifecycle_badge("experimental")
 # badger::badge_last_commit()
 # use_vignette("unsupMI_semisup_cox")
 use_github_action_check_release()
-test()
 
 # use_spell_check()
 # use_readme_rmd()

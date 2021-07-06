@@ -68,7 +68,8 @@ generates, whatever the algorithm.}
 \item{plot.cons}{logical. Use \code{TRUE} to print the MultiCons tree.}
 
 \item{return.detail}{logical. Should the detail of imputation specific
-partition be returned, in the supplement to the final consensus partition?}
+partition and the imputed data be returned, in the supplement to the final
+consensus partition?}
 
 \item{not.to.use}{vector of strings : names of the columns that should be
 discarded for the learning step.}
@@ -90,14 +91,17 @@ of the unclassified observations. defaults value is \code{NA}.}
 \value{
 if \code{length(algo)>1} a vector of final cluster ID ; if
 \code{length(algo)>1} a data.frame with each column being the final cluster
-ID for the corresponding algorithm.
+ID for the corresponding algorithm. Or if \code{return.detail == TRUE}, a
+list containing \code{Consensus} : the final cluster ID (or data.frame),
+\code{Detail}: the clusters obtained for each imputed dataset,
+\code{Imputed.data} a list containing the imputed datasets.
 }
 \description{
 Unsupervised clustering for multiply imputed datasets using \code{MultiCons}
 consensus (\code{Faucheux et al. 2021} procedure)
 }
 \examples{
-## With imputation included TO DO
+## With imputation included
 data(cancer, package = "survival")
 cancer$status <- cancer$status - 1
 res.0 <- unsupMI(data = list(cancer), Impute = "MImpute_surv",

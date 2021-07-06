@@ -15,6 +15,9 @@ Authors@R:
       person(given = "Emmanuel",
              family = "Curis",
              role = "ctb"),
+      person(given = "Eric",
+             family = "Han",
+             role = "ctb"),
       person(given = "Vassili",
              family = "Soumelis",
              role = c("dtc", "ths")))
@@ -64,14 +67,11 @@ Imports:
 Suggests: 
     knitr,
     markdown,
-    rmarkdown,
-    spelling,
-    testthat (>= 3.0.0)
+    rmarkdown
 VignetteBuilder: 
     knitr
 Remotes: 
     cran/clusteval
-Config/testthat/edition: 3
 Encoding: UTF-8
 Language: en-US
 LazyData: true

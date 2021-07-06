@@ -90,7 +90,10 @@ of the unclassified observations. defaults value is \code{NA}.}
 partition be returned, in supplement to the final consensus partition?}
 }
 \value{
-A vector containing the final cluster IDs
+A vector containing the final cluster IDs. Or if
+\code{return.detail == TRUE}, a list containing \code{Consensus}: the final
+cluster ID, \code{Detail}: the clusters obtained for each imputed dataset,
+\code{Imputed.data} a list containing the imputed datasets.
 }
 \description{
 MultiCons consensus based method for MI-Semisupervised

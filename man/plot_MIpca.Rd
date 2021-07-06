@@ -3,32 +3,63 @@
 \name{plot_MIpca}
 \alias{plot_MIpca}
 \alias{plot_MIpca_all}
-\title{plot a PCA from a multiply imputed dataset.}
+\title{Plot a PCA from a multiply imputed dataset.}
 \usage{
-plot_MIpca(data.list, obs.sel = NULL, pca.varsel = NULL, pc.sel = c(1, 2))
+plot_MIpca(
+  data.list,
+  obs.sel,
+  color.var = NULL,
+  pca.varsel = NULL,
+  pc.sel = c(1, 2)
+)
 
-plot_MIpca_all(data.list, obs.sel = NULL, pca.varsel = NULL, pc.sel = c(1, 2))
+plot_MIpca_all(
+  data.list,
+  obs.sel,
+  pca.varsel = NULL,
+  color.var = NULL,
+  pc.sel = c(1, 2),
+  alpha = 0.4
+)
 }
 \arguments{
-\item{data.list}{list of the imputed datasets.}
+\item{data.list}{The list of the imputed datasets.}
 
-\item{obs.sel}{selection of observations to highlight}
+\item{obs.sel}{The selection of observations to highlight. If \code{NULL},
+no observations are selected; if
+\code{numeric}, the vector corresponds to the observations' row number to
+highlight, if \code{character}, the string should be of type a condition
+(\code{TRUE/FALSE} on the dataset to select the observations, where the
+dataset is referred to as \code{"DATA"} (ex: \code{obs.sel = "DATA$X1>3"}).}
 
-\item{pca.varsel}{optional. A variables selection for the PCA}
+\item{color.var}{Either \code{NULL} to color according to \code{obs.sel},
+\code{"none"} to use no color, or a vector of size
+\code{nrow(data.list[[1]])} (a factor).}
 
-\item{pc.sel}{which PC to draw. default is 1 and 2}
+\item{pca.varsel}{optional. A vector of strings containing the names of the
+variables to use for the PCA. If \code{NULL} all variables in the dataset
+will be used.}
+
+\item{pc.sel}{Numeric vector of size 2 containing the indexes of the
+principal components to plot. Default is PC1 and PC2.}
+
+\item{alpha}{Transparency level for plotting the point of the selected
+observations.}
 }
 \value{
-\code{ggplot} object
+A \code{ggplot} object.
 }
 \description{
-\code{plot_MIpca} draws only mean value while \code{plot_MIpca_all} draws all
+\code{plot_MIpca} plots only mean value while \code{plot_MIpca_all} plots all
 values for the selected observations.
 }
 \examples{
 data(cancer, package = "survival")
 cancer.imp <- MImpute(cancer[, -c(1:3)], 6)
 plot_MIpca(cancer.imp, 1:10,
+    pca.varsel = c("age", "sex", "ph.ecog", "meal.cal",  "wt.loss"))
+
+plot_MIpca(cancer.imp, obs.sel = NULL, color.var = factor(cancer$status),
     pca.varsel = c("age", "sex", "ph.ecog", "meal.cal",  "wt.loss"))
 data(cancer, package = "survival")
 cancer.imp <- MImpute(cancer[, -c(1:3)], 6)
