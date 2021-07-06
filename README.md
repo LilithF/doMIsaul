@@ -54,7 +54,7 @@ plot_MIpca(res.unsup$Imputed.data, 1:228, color.var = cancer$part_unsup,
                           "meal.cal",  "wt.loss"))
 ```
 
-<img src="man/figures/README-example_unsup-1.png" width="100%" />
+<img src="man/figures/README-example_unsup-1.png" width="60%" />
 
 ``` r
 plot_boxplot(data = cancer, partition.name = "part_unsup",
@@ -63,14 +63,14 @@ plot_boxplot(data = cancer, partition.name = "part_unsup",
 #> Warning: Removed 60 rows containing non-finite values (stat_boxplot).
 ```
 
-<img src="man/figures/README-example_unsup-2.png" width="100%" />
+<img src="man/figures/README-example_unsup-2.png" width="60%" />
 
 ``` r
 plot_frequency(data = cancer, partition.name = "part_unsup",
                vars.cat = c("sex", "ph.ecog"))
 ```
 
-<img src="man/figures/README-example_unsup-3.png" width="100%" />
+<img src="man/figures/README-example_unsup-3.png" width="60%" />
 
 This is a basic example which shows you how to perform semisupervised
 learning for an incomplete dataset with a survival outcome:
@@ -93,7 +93,7 @@ plot_MIpca(res.semisup$Imputed.data, NULL, color.var = cancer$part_semisup,
                           "meal.cal",  "wt.loss"))
 ```
 
-<img src="man/figures/README-example_semisup-1.png" width="100%" />
+<img src="man/figures/README-example_semisup-1.png" width="60%" />
 
 ``` r
 plot_boxplot(data = cancer, partition.name = "part_semisup",
@@ -102,14 +102,14 @@ plot_boxplot(data = cancer, partition.name = "part_semisup",
 #> Warning: Removed 61 rows containing non-finite values (stat_boxplot).
 ```
 
-<img src="man/figures/README-example_semisup-2.png" width="100%" />
+<img src="man/figures/README-example_semisup-2.png" width="60%" />
 
 ``` r
 plot_frequency(data = cancer, partition.name = "part_semisup",
                vars.cat = c("sex", "ph.ecog"))
 ```
 
-<img src="man/figures/README-example_semisup-3.png" width="100%" />
+<img src="man/figures/README-example_semisup-3.png" width="60%" />
 
 <!-- You'll still need to render `README.Rmd` regularly, to keep `README.md` up-to-date. `devtools::build_readme()` is handy for this. You could also use GitHub Actions to re-render `README.Rmd` every time you push. An example workflow can be found here: <https://github.com/r-lib/actions/tree/master/examples>. -->
 <!-- Don't forget to commit and push the resulting figure files, so they display on GitHub and CRAN. -->
