@@ -1,9 +1,13 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# doMIsaul <img src='man/figures/logo.png' align="right" height="100" />
+# doMIsaul <img src='man/figures/logo.png' align="right" height="104" />
 
 <!-- badges: start -->
+
+[![Lifecycle:
+experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
+[![](https://img.shields.io/github/last-commit/LilithF/doMIsaul.svg)](https://github.com/LilithF/doMIsaul/commits/main)
 <!-- badges: end -->
 
 The goal of is to provide function to perform unsupervised and
