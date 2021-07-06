@@ -3,7 +3,7 @@
 \name{plot_MIpca}
 \alias{plot_MIpca}
 \alias{plot_MIpca_all}
-\title{plot a PCA from a multiply imuted dataset.}
+\title{plot a PCA from a multiply imputed dataset.}
 \usage{
 plot_MIpca(data.list, obs.sel = NULL, pca.varsel = NULL, pc.sel = c(1, 2))
 
@@ -12,17 +12,17 @@ plot_MIpca_all(data.list, obs.sel = NULL, pca.varsel = NULL, pc.sel = c(1, 2))
 \arguments{
 \item{data.list}{list of the imputed datasets.}
 
-\item{obs.sel}{selection of pobse to highlight}
+\item{obs.sel}{selection of observations to highlight}
 
-\item{pca.varsel}{optional. A var sel for the PCA}
+\item{pca.varsel}{optional. A variables selection for the PCA}
 
-\item{pc.sel}{which PC to draw. defaut is 1 and 2}
+\item{pc.sel}{which PC to draw. default is 1 and 2}
 }
 \value{
-ggplot object
+\code{ggplot} object
 }
 \description{
-\code{plot_MIpca} drawsonly mean value while \code{plot_MIpca_all} draws all
+\code{plot_MIpca} draws only mean value while \code{plot_MIpca_all} draws all
 values for the selected observations.
 }
 \examples{

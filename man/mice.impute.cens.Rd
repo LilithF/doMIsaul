@@ -43,5 +43,5 @@ Vector with imputed data, same type as \code{y}, and of length
 \code{sum(wy)}.
 }
 \description{
-Function from Lapidus et al. for imputing left-censored data with mice
+Function from \code{Lapidus et al.} for imputing left-censored data with mice
 }

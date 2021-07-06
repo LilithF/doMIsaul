@@ -45,7 +45,7 @@ the tree, else they only contain the results for the best level of
 the tree.
 }
 \description{
-Performs Multicons clustering, from Al-Najdi et Al.
+Performs MultiCons clustering, from Al-Najdi et Al.
 For some reason, if you want to use \code{mclust} clustering the package
 needs to be loaded manually
 }

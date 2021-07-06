@@ -2,7 +2,7 @@
 % Please edit documentation in R/cleanUp_partition.R
 \name{cleanUp_partition}
 \alias{cleanUp_partition}
-\title{Remove small clusters (ie unclassified observations for which no consensus
+\title{Remove small clusters (i.e. unclassified observations for which no consensus
 was obtained)}
 \usage{
 cleanUp_partition(
@@ -15,11 +15,11 @@ cleanUp_partition(
 \arguments{
 \item{partition}{the partition to clean (vector).}
 
-\item{min.cluster.size}{Minimum cluster size (ie, smaller clusters will be
+\item{min.cluster.size}{Minimum cluster size (i.e., smaller clusters will be
 discarded)}
 
-\item{level.order}{optional. If you supply a variable the  cluster levels will
-be ordinated according to the mean values for the variable}
+\item{level.order}{optional. If you supply a variable the  cluster levels
+will be ordinated according to the mean values for the variable}
 
 \item{Unclassified}{string for the label of the unclassified observations.
 defaults value is \code{NA}.}
@@ -28,7 +28,7 @@ defaults value is \code{NA}.}
 The cleaned up partition (factor).
 }
 \description{
-Remove small clusters (ie unclassified observations for which no consensus
+Remove small clusters (i.e. unclassified observations for which no consensus
 was obtained)
 }
 \examples{

@@ -58,5 +58,5 @@ my.ncvsurv(
 }
 \description{
 modification of the \code{ncvsurv()} function (\code{ncvreg} internal)
-with removal of the condition nlambda > 2
+with removal of the condition \code{nlambda > 2}.
 }

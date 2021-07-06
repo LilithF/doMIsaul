@@ -1,6 +1,6 @@
 #' Impute left censored data with MICE
 #'
-#' Function from Lapidus et al. for imputing left-censored data with mice
+#' Function from \code{Lapidus et al.} for imputing left-censored data with mice
 #' @param y Vector to be imputed
 #' @param ry Logical vector of length \code{length(y)} indicating the the subset
 #'   \code{y[ry]} of elements in y to which the imputation model is fitted.
@@ -66,7 +66,7 @@ environment(mice.impute.cens) <- environment(mice::mice.impute.norm)
 
 #' Base function for imputing left censored data with MICE
 #'
-#'  from Lapidus et al.
+#'  from \code{Lapidus et al.}
 #'
 #' @param y Vector to be imputed
 #' @param ry Logical vector of length \code{length(y)} indicating the the subset
@@ -78,7 +78,7 @@ environment(mice.impute.cens) <- environment(mice::mice.impute.norm)
 #' @param lod.j censoring value.
 #' @param ... Other named arguments.
 #'
-#' @return param
+#' @return parameters
 .cens.draw3 <- function(y, ry, x, lod.j=lod.j, ...) {
 
     x <- as.data.frame(x)

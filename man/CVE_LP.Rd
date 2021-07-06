@@ -8,9 +8,9 @@ wrapper for warnings handling}
 CVE_LP(x)
 }
 \arguments{
-\item{x}{list of 3 named elements : data (data containing columns time and
-status), partition (dataframe with 1 column), nfolds (number of fold for
-CV).}
+\item{x}{list of 3 named elements : \code{data} (data containing columns time
+and status), \code{partition} (dataframe with 1 column), \code{nfolds}
+(number of fold for cross-validation).}
 }
 \value{
 numeric, cross-validation error

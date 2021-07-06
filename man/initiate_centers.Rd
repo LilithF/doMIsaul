@@ -20,7 +20,7 @@ initialization.}
 
 \item{algorithms}{list of algorithm(s) (size \code{N * (1-t)} to generate
 centers if t!=1, given as characters. Possible values are \code{km} for
-Kmeans, \code{kmed} for Kmedians, \code{hclust.mean, hclust.med} for
+K-means, \code{kmed} for K-medians, \code{hclust.mean, hclust.med} for
 hierarchical clustering with mean or median position of the center.}
 
 \item{seeds.N}{(optional) vector of size N containing seeds for each

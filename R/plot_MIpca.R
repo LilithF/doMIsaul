@@ -1,14 +1,14 @@
-#' plot a PCA from a multiply imuted dataset.
+#' plot a PCA from a multiply imputed dataset.
 #'
-#' \code{plot_MIpca} drawsonly mean value while \code{plot_MIpca_all} draws all
+#' \code{plot_MIpca} draws only mean value while \code{plot_MIpca_all} draws all
 #'    values for the selected observations.
 #'
 #' @param data.list list of the imputed datasets.
-#' @param obs.sel selection of pobse to highlight
-#' @param pca.varsel optional. A var sel for the PCA
-#' @param pc.sel which PC to draw. defaut is 1 and 2
+#' @param obs.sel selection of observations to highlight
+#' @param pca.varsel optional. A variables selection for the PCA
+#' @param pc.sel which PC to draw. default is 1 and 2
 #'
-#' @return ggplot object
+#' @return \code{ggplot} object
 #' @export
 #'
 #' @examples

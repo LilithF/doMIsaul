@@ -1,4 +1,5 @@
 library(devtools)
+library(testthat)
 ### Do it often ####
 load_all()
 document()
@@ -8,7 +9,7 @@ attachment::att_amend_desc()
 
 ## Moins régulièrement ###
 check()
-# et si fonctionne :
+# And if it works:
 install()
 # build()  # construit le targz
 goodpractice::goodpractice()
@@ -62,8 +63,12 @@ goodpractice::goodpractice()
 # use_github()
 # use_testthat()
 
+use_test("unsupMI")
+use_test("CH_index_functions")
 
+test()
 
+use_spell_check()
 
 # use_r("temp")
 

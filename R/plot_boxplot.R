@@ -1,4 +1,4 @@
-#' ggplot type boxplots for each vars.cont by partition level.
+#' \code{ggplot} type boxplots for each vars.cont by partition level.
 #'
 #' @param data The dataset.
 #' @param partition.name string. Name of the partition (in data). The partition
@@ -12,7 +12,7 @@
 #'   unclassified or should they be excluded from the plot.
 #'
 #' @import ggplot2
-#' @return ggplot object.
+#' @return \code{ggplot} object.
 #' @export
 #'
 #' @examples

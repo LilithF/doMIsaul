@@ -1,11 +1,11 @@
 #' Unsupervised learning for incomplete dataset
 #'
 #' Unsupervised clustering for multiply imputed datasets using \code{MultiCons}
-#' consensus (Faucheux et al. 2021 procedure)
+#' consensus (\code{Faucheux et al. 2021} procedure)
 #'
 #'
 #'
-#' @param Impute Default is FALSE to indicate that the user performed
+#' @param Impute Default is \code{FALSE} to indicate that the user performed
 #'   the imputation and provides the imputed data. Otherwise string
 #'   ("\code{MImpute}", "\code{MImpute_surv}" or "\code{MImpute_lcens}") to
 #'   perform the imputation within the call using the \code{MImpute()},
@@ -24,7 +24,7 @@
 #'   "\code{hc}" for \code{hclust} and/or "\code{mclust}" for \code{mclust}).
 #' @param k.crit string. Criterion to select the optimal number of clusters (for
 #'   each imputed dataset). Use "\code{ch}" for Calinski and Harabasz criterion
-#'   (not available for \code{mclust}), "\code{CritCF}" for \code{CriCF} or
+#'   (not available for \code{mclust}), "\code{CritCF}" for \code{CritCF} or
 #'   "\code{bic}" for \code{BIC} (\code{mclust} only).
 #' @param comb.cons logical. Forced to \code{FALSE} if \code{length(algo)<2}.
 #'   Use \code{TRUE} to perform an additional consensus from all partitions
@@ -44,7 +44,7 @@
 #'   (The consensus may generate small clusters of observations for which there
 #'     is no consensus on the cluster assignation)
 #' @param min.cluster.size if \code{cleanup.partition == TRUE}: Minimum
-#'  cluster size (ie, smaller clusters will be discarded)
+#'  cluster size (i.e., smaller clusters will be discarded)
 #' @param level.order if \code{cleanup.partition == TRUE}: optional. If you
 #' supply a variable the  cluster levels will be ordinated according to the
 #' mean values for the variable

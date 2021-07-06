@@ -27,26 +27,27 @@ seMIsupcox(
 \arguments{
 \item{Impute}{Boolean. Default is FALSE to indicate that the user performed
 the imputation and provides the imputed data. If TRUE, the imputation will
-be performed within the call using the MImpute_surv() function. Note that
-if Impute is TRUE, center.init is also forced to TRUE as the center
-coordinates may depend on the imputation.}
+be performed within the call using the \code{MImpute_surv()} function. Note
+that if Impute is \code{TRUE}, \code{center.init} is also forced to
+\code{TRUE} as the center coordinates may depend on the imputation.}
 
-\item{Impute.m}{Used only if Impute is TRUE ; number of imputations to
+\item{Impute.m}{Used only if Impute is \code{TRUE}; number of imputations to
 perform}
 
 \item{center.init}{Either a User supplied List of dataframe containing the
 cluster centers coordinates (for example as obtained with
-initiate_centers(), Or \code{TRUE} to initiate the centers within the call
-of the function (performed with \code{initiate_centers()}). Note that if
-\code{TRUE} a random initialization will be performed. For a finer tuning
-of the center initialization the user should generate and provide the list
-of centers coordinates.}
+\code{initiate_centers()}, Or \code{TRUE} to initiate the centers within
+the call of the function (performed with \code{initiate_centers()}). Note
+that if \code{TRUE} a random initialization will be performed. For a finer
+tuning of the center initialization the user should generate and provide
+the list of centers coordinates.}
 
-\item{center.init.N}{Used only if center.init is TRUE. The number to
-initialization to produce. Default to 500.}
+\item{center.init.N}{Used only if \code{center.init} is \code{TRUE}. The
+number to initialization to produce. Default to 500.}
 
-\item{center.init.Ks}{Used only if center.init is TRUE. Vector of number of
-clusters to generate for the initialization. Default to 2 to 7 clusters.}
+\item{center.init.Ks}{Used only if \code{center.init} is \code{TRUE}. Vector
+of number of clusters to generate for the initialization. Default to 2 to
+7 clusters.}
 
 \item{X}{Data, in the form of a list of data.frame(s). The list should be one
 length 1 if data are complete or if Impute is TRUE, of should be a list of
@@ -76,7 +77,7 @@ of weights : same weight.}
 is no consensus on the cluster assignation)}
 
 \item{min.cluster.size}{if \code{cleanup.partition == TRUE}: Minimum
-cluster size (ie, smaller clusters will be discarded)}
+cluster size (i.e., smaller clusters will be discarded)}
 
 \item{level.order}{if \code{cleanup.partition == TRUE}: optional. If you
 supply a variable the  cluster levels will be ordinated according to the
@@ -92,8 +93,8 @@ partition be returned, in supplement to the final consensus partition?}
 A vector containing the final cluster IDs
 }
 \description{
-MultiCons consensus based method for MI-SemiSup clustering
-Clustering. The final partition is a consensus of the Pareto-optimal
+MultiCons consensus based method for MI-Semisupervised
+clustering. The final partition is a consensus of the Pareto-optimal
 solutions.
 }
 \examples{

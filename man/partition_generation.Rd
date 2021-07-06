@@ -13,20 +13,21 @@ partition_generation(data, LOG, clust.algo, k.crit)
 applying clustering algorithms?}
 
 \item{clust.algo}{vector of strings: name of clustering algorithms to use
-(use "km" for k-means, "kmed" for K-medians, "hc" for hclust and/or
-"mclust" for mclust).}
+(use \code{"km"} for k-means, \code{"kmed"} for K-medians, \code{"hc"} for
+\code{hclust} and/or \code{"mclust"} for \code{mclust}).}
 
 \item{k.crit}{string. Criterion to select the optimal number of clusters (for
-each imputed dataset). Use "ch" for Calinski and Harabasz criterion (not
-available for mclust), "CritCF" for CriCF or bic for BIC (mclust only).}
+each imputed dataset). Use \code{"ch"} for Calinski and Harabasz criterion
+(not available for \code{mclust}), \code{"CritCF"} for \code{CritCF} or
+\code{bic} for BIC (\code{mclust} only).}
 }
 \value{
-a dataframe with one column for each algorithm in clust.algo ,
+a dataframe with one column for each algorithm in \code{clust.algo},
 containing the cluster IDs.
 }
 \description{
-Generates a partition using clust.algo algorithm, with k.crit for selecting
-the number of clusters
+Generates a partition using \code{clust.algo} algorithm, with \code{k.crit}
+for selecting the number of clusters
 }
 \examples{
 partition_generation(iris[, 1:4], LOG = FALSE,

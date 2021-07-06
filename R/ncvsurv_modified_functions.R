@@ -134,7 +134,7 @@ my.cv.ncvsurv <- function (X, y, ..., cluster, nfolds = 10, seed, fold,
 #' Modified \code{ncvreg:::ncvsurv}.
 #'
 #' modification of the \code{ncvsurv()} function (\code{ncvreg} internal)
-#' with removal of the condition nlambda > 2
+#' with removal of the condition \code{nlambda > 2}.
 #'
 #' @param X See \code{ncvreg:::ncvsurv}.
 #' @param y See \code{ncvreg:::ncvsurv}.

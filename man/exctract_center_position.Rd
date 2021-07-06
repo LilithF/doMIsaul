@@ -11,7 +11,7 @@ exctract_center_position(data, Cluster, centPos)
 
 \item{Cluster}{vector (\code{n}) of cluster allocation.}
 
-\item{centPos}{Cluster: center is defined by mean ("colMeans") or median
+\item{centPos}{Cluster: center is defined by mean (\code{colMeans}) or median
 of the cluster.}
 }
 \value{

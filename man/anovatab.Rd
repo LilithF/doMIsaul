@@ -2,7 +2,7 @@
 % Please edit documentation in R/anovatab.R
 \name{anovatab}
 \alias{anovatab}
-\title{Table of anova test for several explanatory variables}
+\title{Table of ANOVA test for several explanatory variables}
 \usage{
 anovatab(data, main.var, var, nb.dec = 1)
 }
@@ -17,7 +17,7 @@ will be compared.}
 \item{nb.dec}{digit. Number of decimals for the mean and quantiles}
 }
 \value{
-table with mean and q1 q3 for each level and pvalue of anova test.
+table with mean and q1 q3 for each level and p-value of ANOVA test.
 }
 \description{
 Performs the function \code{aov} for the \code{main.var} and \code{var}.

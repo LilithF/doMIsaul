@@ -8,14 +8,14 @@ objective_clustering(Alloc_Dist)
 }
 \arguments{
 \item{Alloc_Dist}{list with Distance to cluster centers and allocation
-matrix, as obtained with Allocation_Distance()}
+matrix, as obtained with \code{Allocation_Distance()}.}
 }
 \value{
 matrix
 }
 \description{
 Auxiliary function to calculate a cost function for clustering. Modified
-version of Cost_func from Khorshidi et al., 2019
+version of \code{Cost_func} from \code{Khorshidi et al., 2019}.
 }
 \examples{
 allocation <- doMIsaul:::Allocation_Distance(iris[, 1:4],

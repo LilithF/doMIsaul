@@ -29,9 +29,9 @@ cve_bas <- function(data, partition, nfolds = 10){
 #' Cross-validation for cox regression using the basic approach
 #' estimator with wrapper for warnings handling
 #'
-#' @param x list of 3 named elements : data (data containing columns time and
-#'   status), partition (dataframe with 1 column), nfolds (number of fold for
-#'   CV)?
+#' @param x list of 3 named elements : \code{data} (data containing columns time
+#'  and status), \code{partition} (dataframe with 1 column), \code{nfolds}
+#'   (number of fold for cross-validation).
 #'
 #' @return numeric, cross-validation error
 #' @export

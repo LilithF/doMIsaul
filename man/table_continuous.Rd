@@ -26,7 +26,7 @@ only).}
 \item{vars.cont.names}{Optional. Names for displaying the continuous
 variables. (in the same order than \code{vars.cont})}
 
-\item{na.value}{Value to use for the empty cases (eg. \code{""} or
+\item{na.value}{Value to use for the empty cases (e.g. \code{""} or
 \code{NA}).}
 
 \item{nb.dec}{digit. Number of decimals for the mean and quartile values.}
@@ -36,7 +36,7 @@ variables. (in the same order than \code{vars.cont})}
 }
 \value{
 table with mean and Q1 Q3 values per level of the partition and
-anova test pvalues.
+ANOVA test p-values.
 }
 \description{
 Display table with comparison of the partition with continuous variables.

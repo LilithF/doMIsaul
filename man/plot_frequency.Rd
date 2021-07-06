@@ -2,7 +2,7 @@
 % Please edit documentation in R/plot_frequency.R
 \name{plot_frequency}
 \alias{plot_frequency}
-\title{ggplot type barplots representing frequencies for each vars.cat by
+\title{\code{ggplot} type barplots representing frequencies for each vars.cat by
 partition level.}
 \usage{
 plot_frequency(
@@ -36,10 +36,10 @@ the partition.}
 unclassified or should they be excluded from the plot.}
 }
 \value{
-ggplot object.
+\code{ggplot} object.
 }
 \description{
-ggplot type barplots representing frequencies for each vars.cat by
+\code{ggplot} type barplots representing frequencies for each vars.cat by
 partition level.
 }
 \examples{

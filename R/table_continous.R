@@ -7,14 +7,14 @@
 #'   only).
 #' @param vars.cont.names Optional. Names for displaying the continuous
 #'   variables. (in the same order than \code{vars.cont})
-#' @param na.value Value to use for the empty cases (eg. \code{""} or
+#' @param na.value Value to use for the empty cases (e.g. \code{""} or
 #'    \code{NA}).
 #' @param nb.dec digit. Number of decimals for the mean and quartile values.
 #' @param text.pval boolean. Set to \code{TRUE}to display \code{"p="}, to
 #'   \code{FALSE} to display only the value.
 #'
 #' @return table with mean and Q1 Q3 values per level of the partition and
-#'   anova test pvalues.
+#'   ANOVA test p-values.
 #' @export
 #'
 #' @examples

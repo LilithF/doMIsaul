@@ -1,4 +1,4 @@
-#' Table of anova test for several explanatory variables
+#' Table of ANOVA test for several explanatory variables
 #'
 #' Performs the function \code{aov} for the \code{main.var} and \code{var}.
 #'
@@ -8,7 +8,7 @@
 #' @param var strings. The categorical variable to compare with.
 #' @param nb.dec digit. Number of decimals for the mean and quantiles
 #'
-#' @return table with mean and q1 q3 for each level and pvalue of anova test.
+#' @return table with mean and q1 q3 for each level and p-value of ANOVA test.
 anovatab <- function(data, main.var, var, nb.dec = 1){
 
   ret <- as.data.frame(matrix(NA, nrow = 1, ncol = nlevels(data[, main.var])+2))

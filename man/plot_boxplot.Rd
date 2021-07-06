@@ -2,7 +2,7 @@
 % Please edit documentation in R/plot_boxplot.R
 \name{plot_boxplot}
 \alias{plot_boxplot}
-\title{ggplot type boxplots for each vars.cont by partition level.}
+\title{\code{ggplot} type boxplots for each vars.cont by partition level.}
 \usage{
 plot_boxplot(
   data,
@@ -31,10 +31,10 @@ the partition.}
 unclassified or should they be excluded from the plot.}
 }
 \value{
-ggplot object.
+\code{ggplot} object.
 }
 \description{
-ggplot type boxplots for each vars.cont by partition level.
+\code{ggplot} type boxplots for each vars.cont by partition level.
 }
 \examples{
 data(cancer, package = "survival")

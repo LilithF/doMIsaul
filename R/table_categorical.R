@@ -7,14 +7,14 @@
 #'   only).
 #' @param vars.cat.names Optional. Names for displaying the categorical
 #'   variables. (in the same order than \code{vars.cat})
-#' @param na.value Value to use for the empty cases (eg. \code{""} or
+#' @param na.value Value to use for the empty cases (e.g. \code{""} or
 #'    \code{NA}).
 #' @param nb.dec digit. Number of decimals for the percentage.
 #' @param text.pval boolean. Set to \code{TRUE}to display \code{"p="}, to
 #'   \code{FALSE} to display only the value.
 #'
 #' @return table with n and percentage values per level of the partition and
-#'   chi square test pvalues.
+#'   chi square test p-values.
 #' @export
 #'
 #' @examples

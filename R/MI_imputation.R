@@ -34,12 +34,12 @@
 #'   left-censored data. Note that if the data are to be logged
 #'   (\code{is.numeric(mice.log)}), only the argument \code{data} will be
 #'   logged,  therefore, the LOD values given here should be given as
-#'   \code{log(LOD)} wiht the correct number of decimals:
+#'   \code{log(LOD)} with the correct number of decimals:
 #'   \code{round(log(LOD), mice.log)}.
 #' @param standards  Dataframe of 1 row containing the LOD values (not logged,
 #'   whatever the value for \code{mice.log}).
 #' @param mice.log set to \code{FALSE} if the imputation should be performed on
-#'  unlogged data. Ohterwise, number of decimal to save after taking the log of
+#'  unlogged data. Otherwise, number of decimal to save after taking the log of
 #'  data (should be 10 unless for specific reasons) ; in that case the data will
 #'  be unlogged after imputation.
 #'
@@ -53,7 +53,6 @@
 #' @export
 #'
 #' @examples
-#' ## MImpute
 #' data(cancer, package = "survival")
 #' cancer.imp <- MImpute(cancer[, -c(1:3)], 3)
 #'

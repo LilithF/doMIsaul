@@ -2,14 +2,14 @@
 #'   partitions
 #'
 #' Evaluate number of clusters, ARI, AUC difference, c-index and CPE, with
-#'  Supervised, unsupervised and semisuperivsed reference  partitions
+#'  Supervised, unsupervised and Semisupervised reference  partitions
 #'
 #' @param partition Vector containing cluster ids of the partition to evaluate.
-#' @param ref.unsup Vector: Unsupervised reference partition (ie data
+#' @param ref.unsup Vector: Unsupervised reference partition (i.e. data
 #'   structure).
-#' @param ref.sup Vector: Supervised reference partition (ie using survival
+#' @param ref.sup Vector: Supervised reference partition (i.e. using survival
 #'   parameters).
-#' @param ref.semisup Vector: Semisupervised reference partition (ie combining
+#' @param ref.semisup Vector: Semisupervised reference partition (i.e. combining
 #'    both).
 #' @param data.surv dataframe with variables \code{time} and \code{status}.
 #' @param TMIN time point to start analyzing AUC.

@@ -1,7 +1,7 @@
 #' Allocation Distance
 #'
 # Auxiliary function to allocate data points into clusters from
-#'  Khorshidi et al., 2019
+#'  \code{Khorshidi et al., 2019}.
 #'
 #' @param Z dataset
 #' @param Xr Center coordinates

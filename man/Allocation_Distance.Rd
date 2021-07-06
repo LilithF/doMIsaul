@@ -15,7 +15,7 @@ Allocation_Distance(Z, Xr)
 List with distances to center and allocation matrix
 }
 \description{
-Khorshidi et al., 2019
+\code{Khorshidi et al., 2019}.
 }
 \examples{
 doMIsaul:::Allocation_Distance(iris[, 1:4], iris[c(1,5, 10), 1:4])

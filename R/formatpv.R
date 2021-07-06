@@ -1,6 +1,6 @@
-#' Apply format to pvalues
+#' Apply format to p-values
 #'
-#' @param p digit. The pvalue to format
+#' @param p digit. The p-value to format
 #' @param text boolean. Set to \code{TRUE}to display \code{"p="}, to
 #'   \code{FALSE} to display only the value.
 #'

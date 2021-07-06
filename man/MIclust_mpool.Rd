@@ -2,7 +2,7 @@
 % Please edit documentation in R/MIclust_mpool.R
 \name{MIclust_mpool}
 \alias{MIclust_mpool}
-\title{\code{Multicons} wrapper for imputed datasets}
+\title{\code{MultiCons} wrapper for imputed datasets}
 \usage{
 MIclust_mpool(list.part, comb.cons, plot.MIclust = FALSE)
 }
@@ -15,14 +15,14 @@ tester, each element if the list is a dataframe, as obtained by
 \item{comb.cons}{logical. Forced to \code{FALSE} if \code{length(algo)<2}.
 Use \code{TRUE} to perform an additional consensus from all partitions.}
 
-\item{plot.MIclust}{should \code{Multicons} tree be plotted?}
+\item{plot.MIclust}{should \code{MultiCons} tree be plotted?}
 }
 \value{
 a data frame with \code{ncol} = number of algorithms (+1 if
 \code{comb.cons == T}), containing the consensus partitions.
 }
 \description{
-Performs \code{Multicons} from a list of partitions
+Performs \code{MultiCons} from a list of partitions
 }
 \examples{
 list.partitions <- list(

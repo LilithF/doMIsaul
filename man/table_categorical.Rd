@@ -26,7 +26,7 @@ only).}
 \item{vars.cat.names}{Optional. Names for displaying the categorical
 variables. (in the same order than \code{vars.cat})}
 
-\item{na.value}{Value to use for the empty cases (eg. \code{""} or
+\item{na.value}{Value to use for the empty cases (e.g. \code{""} or
 \code{NA}).}
 
 \item{nb.dec}{digit. Number of decimals for the percentage.}
@@ -36,7 +36,7 @@ variables. (in the same order than \code{vars.cat})}
 }
 \value{
 table with n and percentage values per level of the partition and
-chi square test pvalues.
+chi square test p-values.
 }
 \description{
 Display table with comparison of the partition with categorical variables.

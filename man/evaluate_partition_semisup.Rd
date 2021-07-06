@@ -18,13 +18,13 @@ evaluate_partition_semisup(
 \arguments{
 \item{partition}{Vector containing cluster ids of the partition to evaluate.}
 
-\item{ref.unsup}{Vector: Unsupervised reference partition (ie data
+\item{ref.unsup}{Vector: Unsupervised reference partition (i.e. data
 structure).}
 
-\item{ref.sup}{Vector: Supervised reference partition (ie using survival
+\item{ref.sup}{Vector: Supervised reference partition (i.e. using survival
 parameters).}
 
-\item{ref.semisup}{Vector: Semisupervised reference partition (ie combining
+\item{ref.semisup}{Vector: Semisupervised reference partition (i.e. combining
 both).}
 
 \item{data.surv}{dataframe with variables \code{time} and \code{status}.}
@@ -38,7 +38,7 @@ a list of named performances values
 }
 \description{
 Evaluate number of clusters, ARI, AUC difference, c-index and CPE, with
-Supervised, unsupervised and semisuperivsed reference  partitions
+Supervised, unsupervised and Semisupervised reference  partitions
 }
 \examples{
 library(survival) # survival should be loaded in the environment

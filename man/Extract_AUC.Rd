@@ -10,12 +10,12 @@ Extract_AUC(data, predictor, time.vect)
 \item{data}{dataframe containing time and status information, as well as
 marker}
 
-\item{predictor}{colname of the marker to use to calculate AUC}
+\item{predictor}{\code{colname} of the marker to use to calculate AUC}
 
 \item{time.vect}{vector of time points to consider}
 }
 \value{
-AUC at max(time.vect) and median AUC along time.vect
+AUC at \code{max(time.vect)} and median AUC along \code{time.vect}.
 }
 \description{
 Wrapper to evaluate time dependent AUC

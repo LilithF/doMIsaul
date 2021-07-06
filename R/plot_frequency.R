@@ -1,4 +1,4 @@
-#' ggplot type barplots representing frequencies for each vars.cat by
+#' \code{ggplot} type barplots representing frequencies for each vars.cat by
 #'   partition level.
 #'
 #' @param data The dataset.
@@ -15,7 +15,7 @@
 #'   unclassified or should they be excluded from the plot.
 #'
 #' @import ggplot2
-#' @return ggplot object.
+#' @return \code{ggplot} object.
 #' @export
 #'
 #' @examples

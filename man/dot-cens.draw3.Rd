@@ -22,8 +22,8 @@ for \code{y}. Matrix \code{x} may have no missing values.}
 \item{...}{Other named arguments.}
 }
 \value{
-param
+parameters
 }
 \description{
-from Lapidus et al.
+from \code{Lapidus et al.}
 }
