@@ -58,11 +58,13 @@
 #'
 #' @examples
 #' ## With imputation included TO DO
-#' #
-#' ### With imputation not included
-#' ## 1 imputation
 #' data(cancer, package = "survival")
 #' cancer$status <- cancer$status - 1
+#' res.0 <- unsupMI(data = list(cancer), Impute = "MImpute_surv",
+#'                  cleanup.partition = FALSE)
+#'
+#' ### With imputation not included
+#' ## 1 imputation
 #' cancer.imp <- MImpute_surv(cancer, 3)
 #' ## 2 learning
 #' res <- unsupMI(data = cancer.imp, cleanup.partition = FALSE)

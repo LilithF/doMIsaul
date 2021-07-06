@@ -4,3 +4,4 @@
 ^LICENSE\.md$
 ^temp\.R$
 ^README\.Rmd$
+^\.github$

@@ -7,7 +7,7 @@
 
 [![Lifecycle:
 experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
-[![](https://img.shields.io/github/last-commit/LilithF/doMIsaul.svg)](https://github.com/LilithF/doMIsaul/commits/main)
+[![R-CMD-check](https://github.com/LilithF/doMIsaul/workflows/R-CMD-check/badge.svg)](https://github.com/LilithF/doMIsaul/actions)
 <!-- badges: end -->
 
 The goal of is to provide function to perform unsupervised and
