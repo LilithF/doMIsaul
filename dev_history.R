@@ -6,6 +6,7 @@ document()
 use_tidy_description()
 attachment::att_amend_desc()
 
+spell_check()
 
 ## Moins régulièrement ###
 check()
@@ -68,7 +69,7 @@ use_test("CH_index_functions")
 
 test()
 
-use_spell_check()
+# use_spell_check()
 
 # use_r("temp")
 
