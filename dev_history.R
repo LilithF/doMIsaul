@@ -70,6 +70,7 @@ use_test("CH_index_functions")
 # use_lifecycle_badge("experimental")
 # badger::badge_last_commit()
 # use_vignette("unsupMI_semisup_cox")
+use_github_action_check_release()
 test()
 
 # use_spell_check()
