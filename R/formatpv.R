@@ -30,7 +30,7 @@ formatpv <- function(p, text = FALSE) {
   }
 
   if(p >= 0.0995) {
-    ifelse(text == F,
+    ifelse(text == FALSE,
            return(sprintf("%.2f", signif(p, 2))),
            return(paste("=", sprintf("%.2f", signif(p, 2)), sep = ""))
     )

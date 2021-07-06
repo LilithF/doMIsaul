@@ -91,7 +91,8 @@ evaluate_partition_unsup <-
       ARI <- ARI(partition[CC], partition.ref[CC])
       ARI.cc <- ARI(partition[CC.data & CC], partition.ref[CC.data & CC])
       ARI.nona <- ARI(partition[!miss.ind & CC], partition.ref[!miss.ind & CC])
-      ARI.nocens <- ARI(partition[!cens.ind & CC], partition.ref[!cens.ind & CC])
+      ARI.nocens <- ARI(partition[!cens.ind & CC],
+                        partition.ref[!cens.ind & CC])
       Nbclust <- length(levels(factor(partition)))
     } else {
       ARI <- ARI.cc <- ARI.nona <- ARI.nocens <- Nbclust <- NA

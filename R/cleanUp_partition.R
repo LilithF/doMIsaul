@@ -4,8 +4,8 @@
 #' @param partition the partition to clean (vector).
 #' @param min.cluster.size Minimum cluster size (ie, smaller clusters will be
 #'   discarded)
-#' @param level.order optional. If you supply a variable the  cluster levels will
-#'  be ordinated according to the mean values for the variable
+#' @param level.order optional. If you supply a variable the  cluster levels
+#'  will be ordinated according to the mean values for the variable
 #' @param Unclassified string for the label of the unclassified observations.
 #'   defaults value is \code{NA}.
 #'
