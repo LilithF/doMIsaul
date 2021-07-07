@@ -8,7 +8,6 @@
 #' @param time.vect vector of time points to consider
 #'
 #' @return AUC at \code{max(time.vect)} and median AUC along \code{time.vect}.
-
 Extract_AUC <- function(data, predictor, time.vect){
 
   requireNamespace("survival", quietly = FALSE)

@@ -70,6 +70,7 @@ covr::package_coverage()
 # use_test("CH_index_functions")
 # use_test("output_tables")
 # use_test("CVE3_LinearPred")
+use_test("other")
 
 # use_logo("../hex/doMIsaul_V1.png")
 # use_lifecycle_badge("experimental")

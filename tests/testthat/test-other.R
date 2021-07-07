@@ -1,0 +1,62 @@
+test_that("pformat", {
+  expect_equal(formatpv(0.0005),  "0.0005")
+  expect_equal(formatpv(0.001 ),  "0.001")
+})
+
+test_that("mi impute", {
+  pm <- mice::mice(airquality, maxit = 0)$predictorMatrix
+  expect_equal(length(MImpute(airquality, 3,
+                              method = c("pmm", "pmm", "", "", "", ""),
+                              predMat = pm,
+                              return.midsObject = TRUE)), 2)
+  expect_equal(length(MImpute(airquality[, -1], 2)), 2)
+
+})
+
+
+test_that("mi impute for survival", {
+  data(lung, package = "survival")
+  expect_equal(length(MImpute_surv(lung, 3,
+                              return.midsObject = TRUE)), 2)
+
+})
+
+test_that("mi impute for censored", {
+  airquality2 <- airquality
+  airqualitycens <- log(airquality)
+  airqualitycens[is.na(airqualitycens)] <- 4
+  airquality2$Temp[airquality$Temp <= 72] <- NA
+  airqualitycens$Temp[airquality$Ozone <= 72] <- round(log(72), 10)
+  airqualitycens$Temp[is.na(airqualitycens$Temp)] <- 90
+
+  expect_equal(length(
+    MImpute_lcens(data = airquality2, mi.m = 2,
+                  data.lod = data.frame(Temp = airqualitycens$Temp),
+                  standards = data.frame(Temp = 72),
+                  mice.log = 10, return.midsObject = TRUE)),
+               2)
+})
+
+test_that("partition generation", {
+  library(mclust, quietly = TRUE)
+  expect_equal(dim(
+    partition_generation(iris[, 1:4], LOG = FALSE,
+                         clust.algo = c("kmed", "mclust", "hc"),
+                         k.crit = "ch")),
+    c(dim(iris)[1], 3))
+
+  expect_equal(dim(
+    partition_generation(iris[, 1:4], LOG = FALSE,
+                         clust.algo = c("km", "mclust", "hc"),
+                         k.crit = "CritCF")),
+    c(dim(iris)[1], 3))
+  expect_equal(dim(
+    partition_generation(iris[, 1:4], LOG = FALSE,
+                         clust.algo = c("mclust"),
+                         k.crit = "bic")),
+    c(dim(iris)[1], 1))
+
+
+})
+
+

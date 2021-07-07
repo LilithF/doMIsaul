@@ -29,6 +29,7 @@ test_that("seMIsup itself", {
     dim(diabetic)[1]
   )
 
+
   expect_equal(
     length(
       suppressWarnings(
@@ -36,6 +37,11 @@ test_that("seMIsup itself", {
                        k = sample(2:6, size = 10, replace = TRUE),
                        algorithms = c("km", "hclust.mean", "hclust.med", "kmed")))),
     10)
+
+  expect_equal(
+    dim(exctract_center_position(iris[, 1], as.numeric(iris[, 5]), "colMeans")),
+    c(3,1)
+  )
 
 })
 
@@ -52,10 +58,11 @@ test_that("Evaluation of partitions", {
                      Y = diabetic[, c("time", "status")],
                      nfolds = 10,
                      center.init = TRUE)[[1]]
+  library(survival, quietly = TRUE)
 
   expect_equal(length(
     evaluate_partition_semisup(part,
-                               part,
+                               part2,
                                part,
                                part,
                                data.surv = diabetic[, c("time", "status")],

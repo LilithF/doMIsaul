@@ -221,7 +221,7 @@ MImpute_lcens <- function(data, data.lod, standards, mi.m, mice.log = 10,
 if(return.midsObject){
   imp2 <- mice::complete(res, "long", include = TRUE)
   if (is.numeric(mice.log)){
-    imp2 <- exp(imp2)
+    imp2[, -c(1:2)] <- exp(imp2[, -c(1:2)])
   }
   imp2 <- imp2[, 1:ncol(data)]
   MIDS <- mice::as.mids(imp2)
