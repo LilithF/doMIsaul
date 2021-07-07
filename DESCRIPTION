@@ -51,6 +51,7 @@ Imports:
     utils,
     withr
 Suggests: 
+    testthat (>= 3.0.0),
     censReg,
     cluster,
     CPE,
@@ -72,3 +73,4 @@ Language: en-US
 LazyData: true
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.1.1
+Config/testthat/edition: 3

@@ -1,8 +1,8 @@
 library(devtools)
 # library(testthat)
 ### Do it often ####
-load_all()
 document()
+load_all()
 use_tidy_description()
 # attachment::att_amend_desc()
 
@@ -10,11 +10,12 @@ spell_check()
 
 ## Moins régulièrement ###
 check()
+test()
 # And if it works:
 install()
 # build()  # construit le targz
 goodpractice::goodpractice()
-
+covr::package_coverage()
 ### Do it once ####
 # use_git()
 # use_gpl_license(version = 3, include_future = TRUE)
@@ -63,10 +64,11 @@ goodpractice::goodpractice()
 
 # use_github()
 ### TEST ####
-# # use_testthat()
-# # use_test("unsupMI")
-# # use_test("CH_index_functions")
-# # test()
+# use_testthat()
+# use_test("unsupMI")
+# use_test("CH_index_functions")
+# use_test("output_tables")
+#
 
 # use_logo("../hex/doMIsaul_V1.png")
 # use_lifecycle_badge("experimental")
