@@ -59,17 +59,12 @@ Suggests:
     ggpubr,
     Hmisc,
     igraph,
-    knitr,
-    markdown,
     mclust,
     parallel,
     RColorBrewer,
     reshape2,
-    rmarkdown,
     timeROC,
     truncnorm
-VignetteBuilder: 
-    knitr
 Remotes: 
     cran/clusteval
 Encoding: UTF-8

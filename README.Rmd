@@ -112,12 +112,11 @@ plot_frequency(data = cancer, partition.name = "part_semisup",
 You may find more details on the methods implemented in this package in the 
 associated publications: 
 
--- Unsupervised MI learning: Faucheux L, Resche-Rigon M, Curis E, Soumelis V, 
+* Unsupervised MI learning: Faucheux L, Resche-Rigon M, Curis E, Soumelis V, 
 Chevret S., Clustering with missing and left-censored data: A simulation study
 comparing multiple-imputation-based procedures. Biometrical Journal. 2021;
 63: 372– 393. https://doi.org/10.1002/bimj.201900366
-
--- Semisupervised MI learning for a survival outcome: Faucheux L, Soumelis V,
+* Semisupervised MI learning for a survival outcome: Faucheux L, Soumelis V,
 Chevret S., Multiobjective semisupervised learning with a right-censored
 endpoint adapted to the multiple imputation framework. Biometrical Journal.
 2021; 1– 21. https://doi.org/10.1002/bimj.202000365
