@@ -13,7 +13,7 @@ seMIsupcox(
   X,
   CVE.fun = "LP",
   Y,
-  nfolds,
+  nfolds = 10,
   save.path = NULL,
   Unsup.Sup.relImp = list(relImp.55 = c(0.5, 0.5)),
   plot.cons = FALSE,

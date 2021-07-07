@@ -95,7 +95,7 @@
 seMIsupcox <- function(Impute = FALSE, Impute.m = 5,
                        center.init = TRUE, center.init.N = 500,
                        center.init.Ks = 2:7,
-                       X, CVE.fun = "LP", Y, nfolds, save.path = NULL,
+                       X, CVE.fun = "LP", Y, nfolds = 10, save.path = NULL,
                        Unsup.Sup.relImp = list("relImp.55" = c(.5, .5)),
                        plot.cons = FALSE,
                        cleanup.partition = TRUE, min.cluster.size = 10,

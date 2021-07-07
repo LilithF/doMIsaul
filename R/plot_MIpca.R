@@ -8,7 +8,7 @@
 #'   no observations are selected; if
 #'   \code{numeric}, the vector corresponds to the observations' row number to
 #'   highlight, if \code{character}, the string should be of type a condition
-#'   (\code{TRUE/FALSE} on the dataset to select the observations, where the
+#'   (\code{TRUE/FALSE}) on the dataset to select the observations, where the
 #'   dataset is referred to as \code{"DATA"} (ex: \code{obs.sel = "DATA$X1>3"}).
 #' @param color.var Either \code{NULL} to color according to \code{obs.sel},
 #'   \code{"none"} to use no color, or a vector of size
