@@ -68,13 +68,5 @@ test_that("Evaluation of partitions", {
                                data.surv = diabetic[, c("time", "status")],
                                TMIN = 50, TMAX = 60)), 22)
 
-  # expect_equal(length(
-  #   evaluate_partition_semisup(part,
-  #                              diabetic$laser,
-  #                              diabetic$eye,
-  #                              diabetic$trt,
-  #                              data.surv = diabetic[, c("time", "status")],
-  #                              TMIN= 1, TMAX = 4)), 22)
-
 
 })
