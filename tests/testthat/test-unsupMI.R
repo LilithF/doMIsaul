@@ -118,7 +118,7 @@ test_that("Plot works", {
 
 
 test_that("multiCOns",{
-  library(mclust, quietly = TRUE)
+  suppressWarnings(library(mclust, quietly = TRUE, verbose = FALSE))
   expect_equal(length(MultiCons(iris[, 1:4])), 2)
   expect_equal(length(MultiCons(iris[, 1:4], Plot = FALSE, returnAll = TRUE)), 2)
 })

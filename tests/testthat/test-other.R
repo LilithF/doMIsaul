@@ -38,7 +38,7 @@ test_that("mi impute for censored", {
 })
 
 test_that("partition generation", {
-  library(mclust, quietly = TRUE)
+  suppressWarnings(library(mclust, quietly = TRUE))
   expect_equal(dim(
     partition_generation(iris[, 1:4], LOG = FALSE,
                          clust.algo = c("kmed", "mclust", "hc"),
@@ -61,6 +61,17 @@ test_that("partition generation", {
 
 
 test_that("MIclust mpool", {
-  MIclust_mpool(list.part, comb.cons, plot.MIclust = FALSE)
+  expect_equal(
+    dim(MIclust_mpool(list(data.frame(A = factor(rep(c(1,2), times = 50))),
+                           data.frame(A = factor(rep(c(1,2), times = 50)))),
+                      comb.cons = FALSE)),
+    c(100, 1))
+
+  expect_equal(
+    dim(MIclust_mpool(list(data.frame(A = factor(rep(c(1,2), times = 50))),
+                           data.frame(A = factor(rep(c(1,2), each = 50)))),
+                      comb.cons = FALSE, mcons.JAC.sel = .4)),
+    c(100, 1))
+
 })
 
