@@ -4,7 +4,7 @@
 \alias{MIclust_mpool}
 \title{\code{MultiCons} wrapper for imputed datasets}
 \usage{
-MIclust_mpool(list.part, comb.cons, plot.MIclust = FALSE)
+MIclust_mpool(list.part, comb.cons, mcons.JAC.sel = 0, plot.MIclust = FALSE)
 }
 \arguments{
 \item{list.part}{list of partitions with one element of the list corresponds
@@ -14,6 +14,9 @@ tester, each element if the list is a dataframe, as obtained by
 
 \item{comb.cons}{logical. Forced to \code{FALSE} if \code{length(algo)<2}.
 Use \code{TRUE} to perform an additional consensus from all partitions.}
+
+\item{mcons.JAC.sel}{passed to internal function \code{my_jack()}. Minimum
+\code{Jaccard index} value between partitions to keep them for the consensus.}
 
 \item{plot.MIclust}{should \code{MultiCons} tree be plotted?}
 }
@@ -36,5 +39,5 @@ list.partitions <- list(
         clust.algo = c("km", "hc"),
         k.crit = "ch"))
 
-doMIsaul:::MIclust_mpool(list.partitions, FALSE, FALSE)
+doMIsaul:::MIclust_mpool(list.partitions, FALSE,0, FALSE)
 }

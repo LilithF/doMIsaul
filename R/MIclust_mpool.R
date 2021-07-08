@@ -2,7 +2,6 @@
 #'
 #' Performs \code{MultiCons} from a list of partitions
 #'
-#' @usage MIclust_mpool(list.part, comb.cons, plot.MIclust = FALSE)
 #'
 #' @param list.part list of partitions with one element of the list corresponds
 #'   to the results of one imputed dataset. If more than one algorithm were
@@ -28,7 +27,7 @@
 #'         clust.algo = c("km", "hc"),
 #'         k.crit = "ch"))
 #'
-#' doMIsaul:::MIclust_mpool(list.partitions, FALSE, FALSE)
+#' doMIsaul:::MIclust_mpool(list.partitions, FALSE,0, FALSE)
 MIclust_mpool <- function(list.part, comb.cons,
                           mcons.JAC.sel = 0, plot.MIclust = FALSE) {
   algo <- colnames(list.part[[1]])
