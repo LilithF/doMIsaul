@@ -116,7 +116,7 @@ unsupMI <- function(Impute = FALSE, Impute.m = 5, cens.data.lod = NULL,
                         LOG = log.data, clust.algo = algo, k.crit = k.crit)
   })
 
-  if(length(data) == 1){
+  if(length(X) == 1){
     my.part <- Partition.list[[1]]
   } else {
     my.part <- MIclust_mpool(

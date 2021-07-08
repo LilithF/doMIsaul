@@ -38,8 +38,12 @@ test_that("UnsupMI it self", {
 
 
   expect_equal(
+    dim(unsupMI(data = list(airquality), Impute = "MImpute", algo = c("km", "hc"), comb.cons = TRUE)),
+               c(dim(airquality)[1], 3))
+  expect_equal(
     dim(unsupMI(data = list(airquality), Impute = "MImpute", algo = c("km", "hc"))),
-               c(dim(airquality)[1], 2))
+    c(dim(airquality)[1], 2))
+
   expect_equal(length(unsupMI(data = list(airquality), Impute = "MImpute", return.detail = TRUE)),
                3)
   expect_equal(

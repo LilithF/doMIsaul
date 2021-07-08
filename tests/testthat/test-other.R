@@ -60,3 +60,7 @@ test_that("partition generation", {
 })
 
 
+test_that("MIclust mpool", {
+  MIclust_mpool(list.part, comb.cons, plot.MIclust = FALSE)
+})
+
