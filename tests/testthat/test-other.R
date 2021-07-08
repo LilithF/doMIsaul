@@ -15,8 +15,8 @@ test_that("mi impute", {
 
 
 test_that("mi impute for survival", {
-  data(lung, package = "survival")
-  expect_equal(length(MImpute_surv(lung, 3,
+  data(cancer, package = "survival")
+  expect_equal(length(MImpute_surv(cancer, 3,
                               return.midsObject = TRUE)), 2)
 
 })
