@@ -73,5 +73,28 @@ test_that("MIclust mpool", {
                       comb.cons = FALSE, mcons.JAC.sel = .4)),
     c(100, 1))
 
+  expect_equal(
+    dim(
+      my_jack(data.frame(A = factor(rep(c(1,2), each = 50)),
+                         B = factor(rep(c(1,2), times = c(52, 48))),
+                         B2 = factor(rep(c(1,2), times = c(45, 55))),
+                         C = factor(rep(c(1,2), times = 50))),
+                mcons.JAC.sel = .6)
+        ),
+    c(100, 3))
+
 })
+
+
+test_that("Clean up partitions", {
+
+  expect_equal(
+    length(cleanUp_partition(
+      factor(rep(c(1,2, 3), times = c(50, 50, 5))),
+      level.order = runif(105))),
+    105)
+
+
+})
+
 

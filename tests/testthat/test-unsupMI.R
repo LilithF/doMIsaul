@@ -11,6 +11,9 @@ test_that("UnsupMI it self", {
   expect_equal(dim(unsupMI(data = list(airquality), log.data = TRUE, Impute = "MImpute")),
                c(dim(airquality)[1], 1))
 
+  expect_equal(dim(unsupMI(data = list(airquality), Impute = "MImpute", Impute.m = 1)),
+               c(dim(airquality)[1], 1))
+
   airquality2 <- airquality
   airqualitycens <- airquality
   airquality2$Temp[airquality$Temp <= 72] <- NA
@@ -35,14 +38,16 @@ test_that("UnsupMI it self", {
                            cens.standards = data.frame(Temp = 72),
                            cens.mice.log = 10, return.detail = TRUE))),
                3)
-
+  data(diabetic, package = "survival")
+  expect_equal(dim(unsupMI(data = list(diabetic[, c(3,5:8)]), Impute = "MImpute_surv")),
+               c(dim(diabetic)[1], 1))
 
   expect_equal(
     dim(unsupMI(data = list(airquality), Impute = "MImpute", algo = c("km", "hc"), comb.cons = TRUE)),
                c(dim(airquality)[1], 3))
   expect_equal(
-    dim(unsupMI(data = list(airquality), Impute = "MImpute", algo = c("km", "hc"))),
-    c(dim(airquality)[1], 2))
+    length(unsupMI(data = list(airquality), Impute = "MImpute", algo = c("km", "hc"), return.detail = TRUE)),
+    3)
 
   expect_equal(length(unsupMI(data = list(airquality), Impute = "MImpute", return.detail = TRUE)),
                3)
@@ -70,21 +75,39 @@ test_that("Evaluation of partitions", {
                              factor(airquality$Month),
                              is.missing = !complete.cases(airquality),
                              is.cens = rep(FALSE, nrow(airquality)))), 10)
+  expect_equal(length(
+    evaluate_partition_unsup(rep(NA, nrow(airquality)),
+                             factor(airquality$Month))), 10)
+
 
 
 })
 
 test_that("Plot works", {
   imp <- MImpute(airquality, 3)
+  expect_error(plot_MIpca(imp, NULL, pc.sel = 1))
+  expect_error(plot_MIpca(imp, NULL, pc.sel = c("A", "B")))
+  expect_error(plot_MIpca(imp, NULL, pc.sel = c(1, 7)))
+
   expect_s3_class(plot_MIpca(imp, 1:10, color.var = airquality$Month == 6), "ggplot")
   expect_s3_class(plot_MIpca(imp, NULL, pca.varsel = c("Ozone", "Solar.R", "Wind")), "ggplot")
   expect_s3_class(plot_MIpca(imp, "DATA$Month<6", color.var = "none", pc.sel = c(3,4)), "ggplot")
   expect_s3_class(plot_MIpca(imp, 1:10, color.var = NULL), "ggplot")
 
+  imp2 <- lapply(MImpute(airquality, 3), function(x){rownames(x) <- NULL ; x})
+  expect_s3_class(plot_MIpca(imp2, 1:10), "ggplot")
+
+
+  expect_error(plot_MIpca_all(imp, NULL, pc.sel = 1))
+  expect_error(plot_MIpca_all(imp, NULL, pc.sel = c("A", "B")))
+  expect_error(plot_MIpca_all(imp, NULL, pc.sel = c(1, 7)))
+
+
   expect_s3_class(plot_MIpca_all(imp, 1:10, color.var = airquality$Month == 6), "ggplot")
   expect_s3_class(plot_MIpca_all(imp, NULL, pca.varsel = c("Ozone", "Solar.R", "Wind")), "ggplot")
   expect_s3_class(plot_MIpca_all(imp, "DATA$Month<6", color.var = "none", pc.sel = c(3,4)), "ggplot")
   expect_s3_class(plot_MIpca_all(imp, 1:10, color.var = NULL, alpha = .6), "ggplot")
+  expect_s3_class(plot_MIpca_all(imp2, 1:10), "ggplot")
 
   expect_s3_class(plot_boxplot(data = iris, partition.name = "Species",
                                vars.cont = colnames(iris)[1:4]), "ggplot")
@@ -119,6 +142,8 @@ test_that("Plot works", {
 
 test_that("multiCOns",{
   suppressWarnings(library(mclust, quietly = TRUE, verbose = FALSE))
-  expect_equal(length(MultiCons(iris[, 1:4])), 2)
+  expect_equal(length(MultiCons(iris[, 1:4], Clustering_selection = c("kmeans", "pam", "OPTICS"))), 2)
+  expect_equal(length(MultiCons(iris[, 1:4], Clustering_selection = c("agghc",  "AGNES", "DIANA"))), 2)
+  expect_equal(length(MultiCons(iris[, 1:4], Clustering_selection = c("MCLUST", "CMeans", "FANNY", "BaggedClust"), num_algo = 13)), 2)
   expect_equal(length(MultiCons(iris[, 1:4], Plot = FALSE, returnAll = TRUE)), 2)
 })
