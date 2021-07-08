@@ -50,5 +50,5 @@ cleanUp_partition <- function(partition, min.cluster.size = 10,
   }
 
 
-  return(ret[drop = T])
+  return(ret[drop = TRUE])
 }

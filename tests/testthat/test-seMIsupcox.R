@@ -28,13 +28,20 @@ test_that("seMIsup itself", {
   )
 
   expect_equal(
-    length(seMIsupcox(X = imp,
-                   Impute = FALSE, nfolds = 10,
-                   Unsup.Sup.relImp = list("E.55" = c(.5, .5), "E.46" = c(.4, .6), "E.64" = c(.6, .4)),
-                   Y = diabetic[, c("time", "status")],
-                   center.init.N = 20)),
+    length(
+      seMIsupcox(
+        X = imp,
+        Impute = FALSE, nfolds = 10,
+        Unsup.Sup.relImp = list("E.55" = c(.5, .5),
+                                "E.46" = c(.4, .6),
+                                "E.64" = c(.6, .4)),
+        Y = diabetic[, c("time", "status")],
+        center.init.N = 20
+        )
+    ),
     3
-    )
+  )
+
   ks <- sample(2:6, size = 20, replace = TRUE)
   expect_equal(
     length(seMIsupcox(X = imp, Impute = FALSE, nfolds = 10,
@@ -51,19 +58,23 @@ test_that("seMIsup itself", {
   expect_equal(
     length(
       suppressWarnings(
-        initiate_centers(data = iris[, 1:4], N = 10, t = .5,
-                       k = sample(2:6, size = 10, replace = TRUE),
-                       algorithms = sample(c("km", "hclust.mean", "hclust.med", "kmed"),
-                                           size = 10*.5, replace = TRUE)))),
+        initiate_centers(
+          data = iris[, 1:4], N = 10, t = .5,
+          k = sample(2:6, size = 10, replace = TRUE),
+          algorithms = sample(c("km", "hclust.mean", "hclust.med", "kmed"),
+                              size = 10*.5, replace = TRUE)
+        ))),
     10)
 
   expect_equal(
     length(
       suppressWarnings(
-        initiate_centers(data = iris[, 1:4], N = 10, t = 0,
-                         k = sample(2:6, size = 10, replace = TRUE),
-                         algorithms = sample(c("km", "hclust.mean", "hclust.med"),
-                                             size = 10, replace = TRUE)))),
+        initiate_centers(
+          data = iris[, 1:4], N = 10, t = 0,
+          k = sample(2:6, size = 10, replace = TRUE),
+          algorithms = sample(c("km", "hclust.mean", "hclust.med"),
+                              size = 10, replace = TRUE)
+        ))),
     10)
 
   expect_equal(

@@ -16,7 +16,8 @@ tester, each element if the list is a dataframe, as obtained by
 Use \code{TRUE} to perform an additional consensus from all partitions.}
 
 \item{mcons.JAC.sel}{passed to internal function \code{my_jack()}. Minimum
-\code{Jaccard index} value between partitions to keep them for the consensus.}
+\code{Jaccard index} value between partitions to keep them for the
+consensus.}
 
 \item{plot.MIclust}{should \code{MultiCons} tree be plotted?}
 }
