@@ -29,7 +29,10 @@
 #' @param comb.cons logical. Forced to \code{FALSE} if \code{length(algo)<2}.
 #'   Use \code{TRUE} to perform an additional consensus from all partitions
 #'   generates, whatever the algorithm.
-#' @param plot.cons logical. Use \code{TRUE} to print the MultiCons tree.
+#' @param plot.cons logical. Use \code{TRUE} to print the MultiCons tree. Note
+#'   that if all partitions are identical across the imputation no consensus
+#'   will be performed and therefore not plot will be obtained even if
+#'   \code{plot.cons = TRUE}.
 #' @param not.to.use vector of strings : names of the columns that should be
 #'   discarded for the learning step.
 #' @param return.detail logical. Should the detail of imputation specific

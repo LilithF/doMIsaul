@@ -13,15 +13,15 @@ Authors@R:
       person(given = "Matthieu",
              family = "Resche-Rigon",
              role = "aut"),
-      person(given = "Emmanuel",
-             family = "Curis",
+      person(given = "Natanael",
+             family = "Lapidus",
+             role = "aut"),
+      person(given = "Marie",
+             family = "Perrot-Dockès",
              role = "ctb"),
       person(given = "Eric",
              family = "Han",
-             role = "ctb"),
-      person(given = "Vassili",
-             family = "Soumelis",
-             role = c("dtc", "ths")))
+             role = "ctb"))
 Description: Algorithms for (i) unsupervised learning for dataset with
     missing data and/or left-censored data, using multiple imputation and
     consensus clustering ; (ii) semisupervised learning with a survival
