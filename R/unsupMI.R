@@ -15,8 +15,8 @@
 #' @param data Data, in the form of a list of data.frame(s). The list should be
 #'   one length 1 if data are complete or if Impute is not \code{FALSE}, it
 #'   should be a list of imputed dataframes if data are incomplete and imputed.
-#'   If columns named "\code{time}" and "\code{status}" are present they will be
-#'    discarded for the clustering.
+#'   If some columns are in \code{not.to.use}, they will be discarded for the
+#'   clustering.
 #' @param log.data logical. Should all columns of the dataset be logged before
 #'   applying clustering algorithms?
 #' @param algo vector of strings: name of clustering algorithms to use (use

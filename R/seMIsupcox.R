@@ -28,8 +28,8 @@
 #'   imputed dataframes if data are incomplete. If columns named "\code{time}"
 #'   and "\code{status}" are present they will be discarded for the clustering.
 #' @param CVE.fun string indicating how to calculate the cross validation error
-#'   : \code{LP} for linear predictor, \code{VandVH} for Verweij and Van
-#'   Houwelingen estimator and \code{basic} for the basic approach.
+#'   : only \code{LP} is available and stands for linear predictor approach
+#'   (using the \code{ncvreg} package).
 #' @param Y Passed to CVE.fun, Outcome data: should be dataframe or matrix with
 #'   2 columns: "time" and "status".
 #' @param nfolds Number of folds for cross-validation.

@@ -1,5 +1,6 @@
 Package: doMIsaul
-Title: Do Multiple Imputation-Semisupervised And Unsupervised Learning
+Title: Do Multiple Imputation-based Semisupervised And Unsupervised
+    Learning
 Version: 0.0.0.9000
 Authors@R: 
     c(person(given = "Lilith",
