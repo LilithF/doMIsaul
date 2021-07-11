@@ -13,12 +13,13 @@ knitr::opts_chunk$set(
 )
 ```
 
-# doMIsaul <img src='man/figures/logo.png' align="right" height="104" />
+# doMIsaul <img src='man/figures/logo.png' align="right" height="139" />
 
 
 <!-- badges: start -->
-[![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
+[![Lifecycle: stable](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://lifecycle.r-lib.org/articles/stages.html#stable)
 [![R-CMD-check](https://github.com/LilithF/doMIsaul/workflows/R-CMD-check/badge.svg)](https://github.com/LilithF/doMIsaul/actions)
+[![](https://img.shields.io/github/last-commit/LilithF/doMIsaul.svg)](https://github.com/LilithF/doMIsaul/commits/main)
 <!-- badges: end -->
 
 ## Overview

@@ -1,13 +1,14 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# doMIsaul <img src='man/figures/logo.png' align="right" height="104" />
+# doMIsaul <img src='man/figures/logo.png' align="right" height="139" />
 
 <!-- badges: start -->
 
 [![Lifecycle:
-experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
+stable](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://lifecycle.r-lib.org/articles/stages.html#stable)
 [![R-CMD-check](https://github.com/LilithF/doMIsaul/workflows/R-CMD-check/badge.svg)](https://github.com/LilithF/doMIsaul/actions)
+[![](https://img.shields.io/github/last-commit/LilithF/doMIsaul.svg)](https://github.com/LilithF/doMIsaul/commits/main)
 <!-- badges: end -->
 
 ## Overview
@@ -60,7 +61,7 @@ plot_MIpca(res.unsup$Imputed.data, 1:228, color.var = cancer$part_unsup,
 plot_boxplot(data = cancer, partition.name = "part_unsup",
              vars.cont = c("age", "meal.cal", "wt.loss"),
              unclass.name = "Unclassified", include.unclass = FALSE)
-#> Warning: Removed 60 rows containing non-finite values (stat_boxplot).
+#> Warning: Removed 27 rows containing non-finite values (stat_boxplot).
 ```
 
 <img src="man/figures/README-example_unsup-2.png" width="100%" />
