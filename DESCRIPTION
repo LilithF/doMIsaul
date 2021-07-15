@@ -3,12 +3,22 @@ Title: Do Multiple Imputation-based Semisupervised And Unsupervised
     Learning
 Version: 0.0.0.9000
 Authors@R: 
-    c(person(given = "Lilith", family = "Faucheux", role = c("aut", "cre"),
+    c(person(given = "Lilith",
+             family = "Faucheux",
+             role = c("aut", "cre"),
              email = "lilith.faucheux@inserm.fr"),
-      person(given = "Sylvie", family = "Chevret", role = c("ths")),
-      person(given = "Matthieu", family = "Resche-Rigon", role = "ctb"),
-      person(given = "Marie", family = "Perrot-Dockès", role = "ctb"),
-      person(given = "Eric", family = "Han", role = "ctb"))
+      person(given = "Sylvie",
+             family = "Chevret",
+             role = "ths"),
+      person(given = "Matthieu",
+             family = "Resche-Rigon",
+             role = "ctb"),
+      person(given = "Marie",
+             family = "Perrot-Dockès",
+             role = "ctb"),
+      person(given = "Eric",
+             family = "Han",
+             role = "ctb"))
 Description: Algorithms for (i) unsupervised learning for dataset with
     missing data and/or left-censored data, using multiple imputation and
     consensus clustering ; (ii) semisupervised learning with a survival

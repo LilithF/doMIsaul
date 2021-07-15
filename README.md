@@ -13,7 +13,7 @@ stable](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://
 
 ## Overview
 
-The goal of package is to provide function to perform unsupervised and
+The goal of package is to provide functions to perform unsupervised and
 semisupervised learning for an incomplete dataset.
 
 ## Installation
