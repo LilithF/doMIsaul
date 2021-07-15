@@ -12,6 +12,7 @@
 #'   unclassified or should they be excluded from the plot.
 #' @param add.n Boolean. Should the number of samples per cluster be indicated
 #'   on the x axis and color legend.
+#' @param nc.facet integer. Number of columns in the \code{facet_wrap()}
 #'
 #' @import ggplot2
 #' @return \code{ggplot} object.
@@ -41,7 +42,8 @@ plot_boxplot <- function(data, partition.name,
                          vars.cont, vars.cont.names = NULL,
                          unclass.name = "Unclassified",
                          include.unclass = FALSE,
-                         add.n = FALSE){
+                         add.n = FALSE,
+                         nc.facet = 10){
 
   temp <- reshape2::melt(data, measure.vars = vars.cont,
                          value.name = "value", variable.name = "variable")
@@ -82,7 +84,7 @@ plot_boxplot <- function(data, partition.name,
 
   p <- ggplot(temp, aes(x = eval(parse(text = partition.name)), y = value)) +
     geom_boxplot(aes(fill = eval(parse(text = partition.name)))) +
-    facet_wrap(~variable, scales = "free_y") +
+    facet_wrap(~variable, scales = "free_y", ncol = nc.facet) +
     labs(fill = partition.name) +
     xlab(partition.name)
 

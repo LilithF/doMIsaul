@@ -11,7 +11,8 @@ plot_boxplot(
   vars.cont.names = NULL,
   unclass.name = "Unclassified",
   include.unclass = FALSE,
-  add.n = FALSE
+  add.n = FALSE,
+  nc.facet = 10
 )
 }
 \arguments{
@@ -33,6 +34,8 @@ unclassified or should they be excluded from the plot.}
 
 \item{add.n}{Boolean. Should the number of samples per cluster be indicated
 on the x axis and color legend.}
+
+\item{nc.facet}{integer. Number of columns in the \code{facet_wrap()}}
 }
 \value{
 \code{ggplot} object.
