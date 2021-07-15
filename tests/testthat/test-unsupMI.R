@@ -182,7 +182,7 @@ test_that("Plot works", {
                                vars.cont = colnames(iris)[1:4],
                                vars.cont.names = paste("X", 1:4),
                                unclass.name = "virginica",
-                               include.unclass = TRUE),
+                               include.unclass = TRUE, add.n = TRUE),
                   "ggplot")
   expect_s3_class(plot_boxplot(data = iris, partition.name = "Species",
                                vars.cont = colnames(iris)[1:4],

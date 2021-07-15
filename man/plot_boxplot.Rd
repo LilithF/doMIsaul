@@ -10,7 +10,8 @@ plot_boxplot(
   vars.cont,
   vars.cont.names = NULL,
   unclass.name = "Unclassified",
-  include.unclass = FALSE
+  include.unclass = FALSE,
+  add.n = FALSE
 )
 }
 \arguments{
@@ -29,6 +30,9 @@ the partition.}
 
 \item{include.unclass}{boolean, should boxplot be displayed for the
 unclassified or should they be excluded from the plot.}
+
+\item{add.n}{Boolean. Should the number of samples per cluster be indicated
+on the x axis and color legend.}
 }
 \value{
 \code{ggplot} object.
@@ -55,5 +59,5 @@ cancer$status.3 <- cancer$status
 cancer$status.3[sample(1:nrow(cancer), 30)] <- NA
 plot_boxplot(data = cancer, partition.name = "status.3",
                   vars.cont = c("age", "meal.cal", "wt.loss"),
-                  unclass.name = NA, include.unclass = TRUE)
+                  unclass.name = NA, include.unclass = TRUE, add.n = TRUE)
 }

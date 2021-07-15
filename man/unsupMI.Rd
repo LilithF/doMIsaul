@@ -65,7 +65,10 @@ each imputed dataset). Use "\code{ch}" for Calinski and Harabasz criterion
 Use \code{TRUE} to perform an additional consensus from all partitions
 generates, whatever the algorithm.}
 
-\item{plot.cons}{logical. Use \code{TRUE} to print the MultiCons tree.}
+\item{plot.cons}{logical. Use \code{TRUE} to print the MultiCons tree. Note
+that if all partitions are identical across the imputation no consensus
+will be performed and therefore not plot will be obtained even if
+\code{plot.cons = TRUE}.}
 
 \item{return.detail}{logical. Should the detail of imputation specific
 partition and the imputed data be returned, in the supplement to the final
