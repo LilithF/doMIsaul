@@ -66,7 +66,11 @@ plot_MIpca <- function(data.list, obs.sel, color.var = NULL, pca.varsel = NULL,
     vs <- c(pca.varsel)
   }
   myPr <- stats::prcomp(db[, vs], scale = TRUE)
-  db.plot <- data.frame(cbind(db[, c(vs, "ID", "color.var")], myPr$x))
+  PC.per <- summary(myPr)$importance[2, pc.sel]
+
+  db.plot <- data.frame(cbind(
+    db[, intersect(c(vs, "ID", "color.var"), colnames(db))],
+    myPr$x))
 
   # Mean position
   mean.plot <- dplyr::summarise_all(
@@ -121,8 +125,8 @@ plot_MIpca <- function(data.list, obs.sel, color.var = NULL, pca.varsel = NULL,
 
   p + geom_point() +
     ggpubr::stat_conf_ellipse(data = ellipse.plot, npoint = 100) +
-    xlab(paste0("PC", pc.sel[1])) +
-    ylab(paste0("PC", pc.sel[2])) +
+    xlab(paste0("PC", pc.sel[1], " (", round(100*PC.per[1], 2), "%)")) +
+    ylab(paste0("PC", pc.sel[2], " (", round(100*PC.per[2], 2), "%)")) +
     theme(legend.title = element_blank())
 
 }
