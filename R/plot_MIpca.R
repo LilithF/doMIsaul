@@ -66,7 +66,7 @@ plot_MIpca <- function(data.list, obs.sel, color.var = NULL, pca.varsel = NULL,
     vs <- c(pca.varsel)
   }
   myPr <- stats::prcomp(db[, vs], scale = TRUE)
-  db.plot <- data.frame(cbind(db, myPr$x))
+  db.plot <- data.frame(cbind(db[, c(vs, "ID", "color.var")], myPr$x))
 
   # Mean position
   mean.plot <- dplyr::summarise_all(
