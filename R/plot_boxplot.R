@@ -82,7 +82,7 @@ plot_boxplot <- function(data, partition.name,
 
   }
 
-  p <- ggplot(temp, aes(x = eval(parse(text = partition.name)), y = value)) +
+  p <- ggplot(temp, aes(x = eval(parse(text = partition.name)), y = .data$value)) +
     geom_boxplot(aes(fill = eval(parse(text = partition.name)))) +
     facet_wrap(~variable, scales = "free_y", ncol = nc.facet) +
     labs(fill = partition.name) +

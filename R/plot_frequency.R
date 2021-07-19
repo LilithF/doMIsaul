@@ -100,8 +100,8 @@ plot_frequency <- function(data, partition.name,
                                levels = rev(unique(temp.melt$variable)))
 
   temp.melt2 <- dplyr::summarise(
-    dplyr::group_by(temp.melt, variable, part),
-    freq = 100*sum(value, na.rm = TRUE)/dplyr::n()
+    dplyr::group_by(temp.melt, .data$variable, .data$part),
+    freq = 100*sum(.data$value, na.rm = TRUE)/dplyr::n()
   )
 
   temp.melt2$part <- factor(temp.melt2$part)[drop = TRUE]
@@ -116,7 +116,9 @@ plot_frequency <- function(data, partition.name,
   xlines <- xlines[-length(xlines)]
 
   p <-  ggplot(temp.melt2) +
-    geom_bar(aes(x = variable, y = freq, fill = freq), stat = "identity") +
+    geom_bar(aes(x = .data$variable,
+                 y = .data$freq,
+                 fill = .data$freq), stat = "identity") +
     scale_fill_gradient(low = "yellow", high = "red", limits = c(0, 100),
                         name = "Prevalence in the cluster (%)") +
     coord_flip(ylim = c(0,100)) +

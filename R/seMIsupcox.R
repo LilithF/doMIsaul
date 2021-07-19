@@ -140,9 +140,10 @@ seMIsupcox <- function(Impute = FALSE, Impute.m = 5,
   }
 
   CVE.fun <- switch(CVE.fun,
-                    "LP" = CVE_LP ,
-                    "VandVH" = CVE_VandVH,
-                    "basic" = CVE_basic)
+                    "LP" = CVE_LP# ,
+                    # "VandVH" = CVE_VandVH,
+                    # "basic" = CVE_basic
+                    )
 
   # Partition for each set, each imputed dataset
   error.mi <- expand.grid('mi.i' = 1:mi.m,
