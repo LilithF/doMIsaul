@@ -75,11 +75,11 @@ plot_MIpca <- function(data.list, obs.sel, color.var = NULL, pca.varsel = NULL,
 
   # Mean position
   mean.plot <- dplyr::summarise_all(
-    dplyr::group_by(db.plot[setdiff(colnames(db.plot), "color.var")], ID), mean
+    dplyr::group_by(db.plot[setdiff(colnames(db.plot), "color.var")], .data$ID), mean
     )
   if(COL){
     mean.plot$color.var <-
-      factor(unname(unlist(dplyr::summarise(dplyr::group_by(db.plot, ID),
+      factor(unname(unlist(dplyr::summarise(dplyr::group_by(db.plot, .data$ID),
                                             unique(color.var))[, 2])))
   }
   #Select observations
@@ -107,7 +107,7 @@ plot_MIpca <- function(data.list, obs.sel, color.var = NULL, pca.varsel = NULL,
       p <- ggplot(mean.plot) +
         aes(eval(parse(text = paste0("PC", pc.sel[1]))),
             eval(parse(text = paste0("PC", pc.sel[2]))),
-            color = ID.selname)
+            color = .data$ID.selname)
     } else {
       if(color.var == "none"){
         p <- ggplot(mean.plot) +
@@ -120,7 +120,7 @@ plot_MIpca <- function(data.list, obs.sel, color.var = NULL, pca.varsel = NULL,
       p <- ggplot(mean.plot) +
       aes(eval(parse(text = paste0("PC", pc.sel[1]))),
           eval(parse(text = paste0("PC", pc.sel[2]))),
-          group = ID.selname,
+          group = .data$ID.selname,
           color = color.var)
   }
 
@@ -179,11 +179,11 @@ plot_MIpca_all <-  function(data.list, obs.sel, pca.varsel = NULL,
 
   # Mean position
   mean.plot <- dplyr::summarise_all(
-    dplyr::group_by(db.plot[setdiff(colnames(db.plot), "color.var")], ID), mean
+    dplyr::group_by(db.plot[setdiff(colnames(db.plot), "color.var")], .data$ID), mean
   )
   if(COL){
     mean.plot$color.var <-
-      factor(unname(unlist(dplyr::summarise(dplyr::group_by(db.plot, ID),
+      factor(unname(unlist(dplyr::summarise(dplyr::group_by(db.plot, .data$ID),
                                             unique(color.var))[, 2])))
   }
   #Select observations
@@ -217,14 +217,14 @@ plot_MIpca_all <-  function(data.list, obs.sel, pca.varsel = NULL,
         p <- ggplot(mean.plot[!mean.plot$ID.sel, ]) +
           aes(eval(parse(text = paste0("PC", pc.sel[1]))),
               eval(parse(text = paste0("PC", pc.sel[2]))),
-              group = ID.selname)
+              group = .data$ID.selname)
       }
     }
   } else {
     p <- ggplot(mean.plot[!mean.plot$ID.sel, ]) +
       aes(eval(parse(text = paste0("PC", pc.sel[1]))),
           eval(parse(text = paste0("PC", pc.sel[2]))),
-          group = ID.selname,
+          group = .data$ID.selname,
           color = color.var)
   }
 
