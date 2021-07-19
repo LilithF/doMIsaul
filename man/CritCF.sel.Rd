@@ -29,3 +29,4 @@ index
 \examples{
 doMIsaul:::CritCF.sel(iris[, 1:4], 2, 9, "kmeans", "euclidean")
 }
+\keyword{internal}

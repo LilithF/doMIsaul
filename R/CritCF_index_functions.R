@@ -3,6 +3,8 @@
 #' Wrapper to estimate the best number of clusters according to \code{CritCF}
 #'  index
 #'
+#' @keywords internal
+#'
 #' @param data dataframe for which the number of cluster should be estimated.
 #' @param min.nc integer strictly higher than 1: minimum number of clusters.
 #' @param max.nc integer (\code{>min.nc}): maximum number of clusters.
@@ -35,6 +37,8 @@ CritCF.sel <- function(data, min.nc, max.nc, method, distance){
 #'
 #' Computes \code{CritCF} index for the selected number of clusters and
 #'   clustering algorithm.
+#'
+#' @keywords internal
 #'
 #' @param data dataframe for which the number of cluster should be estimated.
 #' @param k integer, number of clusters.

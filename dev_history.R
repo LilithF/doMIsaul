@@ -1,5 +1,5 @@
 library(devtools)
-library(testthat)
+# library(testthat)
 ### Do it often ####
 document()
 load_all()

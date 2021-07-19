@@ -2,6 +2,8 @@
 #'
 #' Find Pareto optimal and Pareto non optimal solutions
 #'
+#' @keywords internal
+#'
 #' @param bi.objective dataframe or matrix containing the objective values for
 #'   each case
 #' @param obj.names name of the two objectives (should be in

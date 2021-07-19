@@ -18,3 +18,4 @@ pvalue
 \description{
 Apply format to p-values
 }
+\keyword{internal}

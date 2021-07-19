@@ -60,3 +60,4 @@ my.ncvsurv(
 modification of the \code{ncvsurv()} function (\code{ncvreg} internal)
 with removal of the condition \code{nlambda > 2}.
 }
+\keyword{internal}

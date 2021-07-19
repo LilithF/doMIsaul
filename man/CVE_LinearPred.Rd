@@ -25,3 +25,4 @@ cancer$status <- cancer$status - 1
 part <- data.frame(Cl= factor(cancer[, "sex"]), stringsAsFactors = TRUE)
 doMIsaul:::cve_LinearPred(cancer,part, 10)
 }
+\keyword{internal}

@@ -3,6 +3,8 @@
 # Auxiliary function to allocate data points into clusters from
 #'  \code{Khorshidi et al., 2019}.
 #'
+#' @keywords internal
+#'
 #' @param Z dataset
 #' @param Xr Center coordinates
 #'

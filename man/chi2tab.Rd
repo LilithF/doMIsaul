@@ -23,3 +23,4 @@ table with n (percentage) per level and p-value of \code{chi2} test.
 Performs the function \code{chisq.test} for the \code{main.var} and
 \code{var}.
 }
+\keyword{internal}

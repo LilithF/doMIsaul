@@ -1,5 +1,7 @@
 #' Cross-validation for cox regression using the linear predictor estimator
 #'
+#' @keywords internal
+#'
 #' @param data data containing columns time and status.
 #' @param partition dataframe with 1 column.
 #' @param nfolds number of fold for CV.

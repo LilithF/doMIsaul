@@ -1,6 +1,6 @@
 #' Wrapper to evaluate time dependent AUC
 #'
-#'
+#' @keywords internal
 #'
 #' @param data  dataframe containing time and status information, as well as
 #'  marker

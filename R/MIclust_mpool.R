@@ -2,6 +2,8 @@
 #'
 #' Performs \code{MultiCons} from a list of partitions
 #'
+#' @keywords internal
+#'
 #'
 #' @param list.part list of partitions with one element of the list corresponds
 #'   to the results of one imputed dataset. If more than one algorithm were

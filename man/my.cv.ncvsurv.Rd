@@ -43,3 +43,4 @@ Modification of the \code{cv.ncvsurv()} function of \code{ncvreg} to use the
 modified functions \code{ncvsurv()} : \code{my.ncvsurv()} and
 \code{loss.ncvsurv()} : \code{mylossncvsurv()}.
 }
+\keyword{internal}

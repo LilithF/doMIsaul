@@ -22,3 +22,4 @@ table with mean and q1 q3 for each level and p-value of ANOVA test.
 \description{
 Performs the function \code{aov} for the \code{main.var} and \code{var}.
 }
+\keyword{internal}

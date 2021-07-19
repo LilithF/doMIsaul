@@ -2,6 +2,8 @@
 #'
 #' Performs the function \code{aov} for the \code{main.var} and \code{var}.
 #'
+#' @keywords internal
+#'
 #' @param data The database.
 #' @param main.var string. The categorical variable against the variable
 #'   will be compared.

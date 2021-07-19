@@ -42,3 +42,4 @@ list.partitions <- list(
 
 doMIsaul:::MIclust_mpool(list.partitions, FALSE,0, FALSE)
 }
+\keyword{internal}

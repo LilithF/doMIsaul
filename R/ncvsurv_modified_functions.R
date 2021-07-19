@@ -3,6 +3,8 @@
 #' modification of the \code{loss.ncvsurv()} function (\code{ncvreg} internal)
 #' to handle a single value of lambda
 #'
+#' @keywords internal
+#'
 #' @param y See \code{ncvreg:::loss.ncvsurv}.
 #' @param eta See \code{ncvreg:::loss.ncvsurv}.
 #' @param total See \code{ncvreg:::loss.ncvsurv}.
@@ -31,6 +33,8 @@ mylossncvsurv <- function (y, eta, total = TRUE){
 #' Modification of the \code{cv.ncvsurv()} function of \code{ncvreg} to use the
 #' modified functions \code{ncvsurv()} : \code{my.ncvsurv()} and
 #' \code{loss.ncvsurv()} : \code{mylossncvsurv()}.
+#'
+#' @keywords internal
 #'
 #' @param X See \code{ncvreg:::cv.ncvsurv}.
 #' @param y See \code{ncvreg:::cv.ncvsurv}.
@@ -135,6 +139,8 @@ my.cv.ncvsurv <- function (X, y, ..., cluster, nfolds = 10, seed, fold,
 #'
 #' modification of the \code{ncvsurv()} function (\code{ncvreg} internal)
 #' with removal of the condition \code{nlambda > 2}.
+#'
+#' @keywords internal
 #'
 #' @param X See \code{ncvreg:::ncvsurv}.
 #' @param y See \code{ncvreg:::ncvsurv}.

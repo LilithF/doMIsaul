@@ -3,6 +3,8 @@
 #' Auxiliary function to calculate a cost function for clustering. Modified
 #' version of \code{Cost_func} from \code{Khorshidi et al., 2019}.
 #'
+#' @keywords internal
+#'
 #' @param Alloc_Dist list with Distance to cluster centers and allocation
 #'   matrix, as obtained with \code{Allocation_Distance()}.
 #'

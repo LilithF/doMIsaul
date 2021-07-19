@@ -20,3 +20,4 @@ See \code{ncvreg:::loss.ncvsurv}.
 modification of the \code{loss.ncvsurv()} function (\code{ncvreg} internal)
 to handle a single value of lambda
 }
+\keyword{internal}

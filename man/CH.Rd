@@ -24,3 +24,4 @@ algorithm.
 \examples{
 doMIsaul:::CH(iris[, 1:4], 5, "kmed")
 }
+\keyword{internal}

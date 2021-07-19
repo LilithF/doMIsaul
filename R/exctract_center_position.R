@@ -1,5 +1,7 @@
 #' Extract the cluster centers coordinates
 #'
+#' @keywords internal
+#'
 #' @param data dataframe (\code{n * p}).
 #' @param Cluster vector (\code{n}) of cluster allocation.
 #' @param centPos Cluster: center is defined by mean (\code{colMeans}) or median

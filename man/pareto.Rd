@@ -24,3 +24,4 @@ Find Pareto optimal and Pareto non optimal solutions
 tab <- data.frame(A = rnorm(100, 10, 3), B = runif(100, 3,4))
 doMIsaul:::pareto(tab, c("A", "B"))
 }
+\keyword{internal}

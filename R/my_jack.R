@@ -4,6 +4,8 @@
 #' needed) and may pre-select partitions depending on a threshold on the Jaccard
 #' index
 #'
+#' @keywords internal
+#'
 #' @param data dataframe containing the partitions (factors)
 #' @param mcons.JAC.sel minimum required Jaccard index between partitions (0 =
 #'   all partitions kept)

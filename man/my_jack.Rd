@@ -29,3 +29,4 @@ partitions <- data.frame(factor(rep(c(1, 2), each = 100)),
 dim(doMIsaul:::my_jack(partitions, 0))
 dim(doMIsaul:::my_jack(partitions, 0.5))
 }
+\keyword{internal}

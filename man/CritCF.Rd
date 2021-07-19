@@ -27,3 +27,4 @@ clustering algorithm.
 \examples{
 doMIsaul:::CritCF(iris[, 1:4], 5, "hc", "euclidean")
 }
+\keyword{internal}

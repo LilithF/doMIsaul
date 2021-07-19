@@ -22,3 +22,4 @@ allocation <- doMIsaul:::Allocation_Distance(iris[, 1:4],
                                              iris[c(1,5, 10), 1:4])
 doMIsaul:::objective_clustering(allocation)
 }
+\keyword{internal}

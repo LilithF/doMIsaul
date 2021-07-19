@@ -68,6 +68,10 @@ environment(mice.impute.cens) <- environment(mice::mice.impute.norm)
 #'
 #'  from \code{Lapidus et al.}
 #'
+#'
+#' @keywords internal
+#'
+#'
 #' @param y Vector to be imputed
 #' @param ry Logical vector of length \code{length(y)} indicating the the subset
 #'   \code{y[ry]} of elements in y to which the imputation model is fitted.

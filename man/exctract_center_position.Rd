@@ -25,3 +25,4 @@ doMIsaul:::exctract_center_position(iris[, 1:4],
                                     as.numeric(iris[, 5]),
                                     "colMeans")
 }
+\keyword{internal}

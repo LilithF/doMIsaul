@@ -25,3 +25,4 @@ Wrapper to estimate the best number of clusters according to \code{CH} index.
 \examples{
  doMIsaul:::CH.sel(iris[, 1:4], 2, 5, "kmed")
 }
+\keyword{internal}

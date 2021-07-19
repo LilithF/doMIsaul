@@ -20,3 +20,4 @@ AUC at \code{max(time.vect)} and median AUC along \code{time.vect}.
 \description{
 Wrapper to evaluate time dependent AUC
 }
+\keyword{internal}
