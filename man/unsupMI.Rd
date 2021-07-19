@@ -124,5 +124,6 @@ res.2 <- unsupMI(data = cancer.imp, algo = c("km", "hc"), comb.cons = TRUE,
                  plot.cons = TRUE)
 
 ## Alternative: perform imputation within
-res <- unsupMI(Impute = "MImpute_surv", data = list(cancer))
+## not run ##
+# res <- unsupMI(Impute = "MImpute_surv", data = list(cancer))
 }

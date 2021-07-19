@@ -105,9 +105,10 @@ data(cancer, package = "survival")
 cancer$status <- cancer$status - 1
 cancer <- cancer[, -1]
 ## With imputation included
-res <- seMIsupcox(X = list(cancer), Y = cancer[, c("time", "status")],
-                  Impute = TRUE, Impute.m = 3, center.init = TRUE,
-                  nfolds = 10, center.init.N = 100)
+## not run ##
+# res <- seMIsupcox(X = list(cancer), Y = cancer[, c("time", "status")],
+#                   Impute = TRUE, Impute.m = 3, center.init = TRUE,
+#                   nfolds = 10, center.init.N = 100)
 
 ### With imputation and center initialization not included
 ## 1 imputation
@@ -125,9 +126,10 @@ inits <- sapply(1:length(cancer.imp), function(mi.i) {
                 USE.NAMES = TRUE, simplify = FALSE)
 
 ## 3 learning
-res1 <- seMIsupcox(X = cancer.imp, Y = cancer[, c("time", "status")],
-                   Impute = FALSE, center.init = inits, nfolds = 10,
-                   cleanup.partition = FALSE)
-res2 <- seMIsupcox(X = cancer.imp, Y = cancer[, c("time", "status")],
-                  center.init = inits, nfolds = 10)
+## not run ##
+# res1 <- seMIsupcox(X = cancer.imp, Y = cancer[, c("time", "status")],
+#                    Impute = FALSE, center.init = inits, nfolds = 10,
+#                    cleanup.partition = FALSE)
+# res2 <- seMIsupcox(X = cancer.imp, Y = cancer[, c("time", "status")],
+#                   center.init = inits, nfolds = 10)
 }

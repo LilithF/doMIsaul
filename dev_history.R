@@ -10,7 +10,7 @@ spell_check()
 
 ## Moins régulièrement ###
 check()
-test()
+# test()
 # And if it works:
 install()
 # build()  # construit le targz

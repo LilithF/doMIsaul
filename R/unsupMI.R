@@ -84,7 +84,8 @@
 #'                  plot.cons = TRUE)
 #'
 #' ## Alternative: perform imputation within
-#' res <- unsupMI(Impute = "MImpute_surv", data = list(cancer))
+#' ## not run ##
+#' # res <- unsupMI(Impute = "MImpute_surv", data = list(cancer))
 unsupMI <- function(Impute = FALSE, Impute.m = 5, cens.data.lod = NULL,
                     cens.standards = NULL, cens.mice.log = 10,
                     data, log.data = FALSE, algo = "km", k.crit = "ch",

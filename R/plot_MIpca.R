@@ -30,8 +30,9 @@
 #' plot_MIpca(cancer.imp, 1:10,
 #'     pca.varsel = c("age", "sex", "ph.ecog", "meal.cal",  "wt.loss"))
 #'
-#' plot_MIpca(cancer.imp, obs.sel = NULL, color.var = factor(cancer$status),
-#'     pca.varsel = c("age", "sex", "ph.ecog", "meal.cal",  "wt.loss"))
+#' ## not run ##
+#' # plot_MIpca(cancer.imp, obs.sel = NULL, color.var = factor(cancer$status),
+#' #     pca.varsel = c("age", "sex", "ph.ecog", "meal.cal",  "wt.loss"))
 plot_MIpca <- function(data.list, obs.sel, color.var = NULL, pca.varsel = NULL,
                        pc.sel = c(1,2)){
   if(length(pc.sel) != 2)
@@ -92,8 +93,8 @@ plot_MIpca <- function(data.list, obs.sel, color.var = NULL, pca.varsel = NULL,
     mean.plot$ID.sel <- rep(FALSE, nrow(mean.plot))
   }
   mean.plot$ID.selname <- ifelse(mean.plot$ID.sel, mean.plot$ID, NA)
-
-  db.plot$ID.sel <- db.plot$ID.selname <- NA
+  db.plot$ID.selname <- NA
+  db.plot$ID.sel <- NA
   for (uu in unique(db.plot$ID)){
     db.plot$ID.sel[db.plot$ID %in% uu] <- mean.plot$ID.sel[mean.plot$ID %in% uu]
     db.plot$ID.selname[db.plot$ID %in% uu] <-

@@ -217,6 +217,15 @@ my.ncvsurv <- function (X, y, penalty = c("MCP", "SCAD", "lasso"),
     nlambda <- length(lambda)
     user.lambda <- TRUE
   }
+
+  ##
+  # cdfit_cox_dh <- R_GetCCallable("ncvreg", "cdfit_cox_dh")
+  # res <- cdfit_cox_dh(XX, Delta, penalty, lambda,
+  #              eps, as.integer(max.iter), as.double(gamma), penalty.factor,
+  #              alpha, as.integer(dfmax),
+  #              as.integer(user.lambda | any(penalty.factor == 0)),
+  #              as.integer(warn))
+  ##
   res <- .Call("cdfit_cox_dh", XX, Delta, penalty, lambda,
                eps, as.integer(max.iter), as.double(gamma), penalty.factor,
                alpha, as.integer(dfmax),
