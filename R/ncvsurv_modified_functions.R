@@ -7,7 +7,7 @@ ncvreg_convexMin <- get_fun("ncvreg", "convexMin")
 ncvreg_se.ncvsurv <- get_fun("ncvreg", "se.ncvsurv")
 #' Modified \code{ncvreg:::loss.ncvsurv}.
 #'
-#' modification of the \code{loss.ncvsurv()} function (\code{ncvreg} internal)
+#' modification of the \code{loss.ncvsurv()} function ('ncvreg' internal)
 #' to handle a single value of lambda
 #'
 #' @keywords internal
@@ -37,7 +37,7 @@ mylossncvsurv <- function (y, eta, total = TRUE){
 
 #' Modified \code{ncvreg:::cv.ncvsurv}.
 #'
-#' Modification of the \code{cv.ncvsurv()} function of \code{ncvreg} to use the
+#' Modification of the \code{cv.ncvsurv()} function of 'ncvreg' to use the
 #' modified functions \code{ncvsurv()} : \code{my.ncvsurv()} and
 #' \code{loss.ncvsurv()} : \code{mylossncvsurv()}.
 #'
@@ -144,7 +144,7 @@ my.cv.ncvsurv <- function (X, y, ..., cluster, nfolds = 10, seed, fold,
 
 #' Modified \code{ncvreg:::ncvsurv}.
 #'
-#' modification of the \code{ncvsurv()} function (\code{ncvreg} internal)
+#' modification of the \code{ncvsurv()} function ('ncvreg' internal)
 #' with removal of the condition \code{nlambda > 2}.
 #'
 #' @keywords internal

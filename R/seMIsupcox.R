@@ -29,7 +29,7 @@
 #'   and "\code{status}" are present they will be discarded for the clustering.
 #' @param CVE.fun string indicating how to calculate the cross validation error
 #'   : only \code{LP} is available and stands for linear predictor approach
-#'   (using the \code{ncvreg} package).
+#'   (using the 'ncvreg' package).
 #' @param Y Passed to CVE.fun, Outcome data: should be dataframe or matrix with
 #'   2 columns: "time" and "status".
 #' @param nfolds Number of folds for cross-validation.

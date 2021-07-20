@@ -15,7 +15,7 @@ matrix
 }
 \description{
 Auxiliary function to calculate a cost function for clustering. Modified
-version of \code{Cost_func} from \code{Khorshidi et al., 2019}.
+version of \code{Cost_func()} from \code{Khorshidi et al., 2019}.
 }
 \examples{
 allocation <- doMIsaul:::Allocation_Distance(iris[, 1:4],

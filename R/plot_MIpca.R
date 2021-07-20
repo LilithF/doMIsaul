@@ -1,7 +1,7 @@
 #' Plot a PCA from a multiply imputed dataset.
 #'
-#' \code{plot_MIpca} plots only mean value while \code{plot_MIpca_all} plots all
-#'    values for the selected observations.
+#' \code{plot_MIpca()} plots only mean value while \code{plot_MIpca_all()}
+#'   plots all values for the selected observations.
 #'
 #' @param data.list The list of the imputed datasets.
 #' @param obs.sel The selection of observations to highlight. If \code{NULL},

@@ -57,7 +57,7 @@ my.ncvsurv(
 \item{...}{See \code{ncvreg:::ncvsurv}.}
 }
 \description{
-modification of the \code{ncvsurv()} function (\code{ncvreg} internal)
+modification of the \code{ncvsurv()} function ('ncvreg' internal)
 with removal of the condition \code{nlambda > 2}.
 }
 \keyword{internal}

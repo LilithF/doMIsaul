@@ -1,7 +1,7 @@
 #' MultiCons Consensus Clustering Algorithm
 #'
 #' Performs MultiCons clustering, from Al-Najdi et Al.
-#' For some reason, if you want to use \code{mclust} clustering the package
+#' For some reason, if you want to use \code{mclust()} clustering, the package
 #' needs to be loaded manually
 #'
 #' @param DB Either data or dataframe of partitions.
@@ -10,11 +10,14 @@
 #'   among. Must be included in default value.
 #' @param num_algo Number of clustering algorithms to perform.
 #' @param maxClust Maximum number of clusters.
-#' @param sim.indice Index for defining best partition.
+#' @param sim.indice Index for defining best partition. Passed to
+#'   \code{clusterCrit::extCriteria)()}, see
+#'   \code{clusterCrit::getCriteriaNames(FALSE)} for other available indexes.
+#'   If more than one index are given, only the first one will be used.
 #' @param returnAll Should all partitions (\code{TRUE}) or only the best
 #'  (\code{FALSE}) be returned.
 #' @param Plot Should tree be plotted.
-#' @param verbose Passed on to \code{mclust} and other functions.
+#' @param verbose Passed on to \code{mclust()} and other functions.
 #'
 #' @return A list of 2: performances and partitions. If \code{returnAll} is
 #'   \code{TRUE}, both elements of the list contain results for all levels of
@@ -40,7 +43,7 @@ MultiCons <-
            Clustering_selection = c("kmeans", "pam", "OPTICS", "agghc",
                                     "AGNES", "DIANA", "MCLUST", "CMeans",
                                     "FANNY", "BaggedClust"),
-           num_algo = 10, maxClust = 10, sim.indice = "jaccard",
+           num_algo = 10, maxClust = 10, sim.indice = "Jaccard",
            returnAll = FALSE, Plot = TRUE, verbose = FALSE){
 
     if(Plot) {
@@ -182,8 +185,10 @@ MultiCons <-
 
     distjack <-
       sum(sapply(Clust, function(x){
-        clusteval::cluster_similarity(x, bic, similarity = c(sim.indice),
-                                      method = "independence")
+        clusterCrit::extCriteria(as.integer(x),
+                                 as.integer(bic),
+                                 crit = sim.indice)[[1]]
+
       }, simplify = TRUE, USE.NAMES = TRUE)) / num_algo
 
     TSim <- distjack
@@ -244,10 +249,11 @@ MultiCons <-
         }, simplify = TRUE, USE.NAMES = TRUE)
         distjack <-
           sum(sapply(Clust, function(x) {
-            clusteval::cluster_similarity(x,
-                                          bic,
-                                          similarity = c(sim.indice),
-                                          method = "independence")
+
+            clusterCrit::extCriteria(as.integer(x),
+                                     as.integer(bic),
+                                     crit = sim.indice)[[1]]
+
           }, simplify = TRUE, USE.NAMES = TRUE
           )) / num_algo
         TSim <- c(TSim, distjack)

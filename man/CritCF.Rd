@@ -12,7 +12,7 @@ CritCF(data, k, method, distance)
 \item{k}{integer, number of clusters.}
 
 \item{method}{string, clustering algorithm to use. Available values are
-\code{kmeans}, \code{hc} (for \code{hclust}) or \code{mclust}.}
+"\code{kmeans}", "\code{hc}" (for \code{hclust()}) or "\code{mclust}".}
 
 \item{distance}{distance between the observations (either euclidean or
 manhattan).}

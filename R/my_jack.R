@@ -23,15 +23,15 @@ my_jack <- function(data, mcons.JAC.sel = 0){
 
   x1 <- utils::combn(1:ncol(data), 2)
   jac <- apply(x1, 2, function(j) {
-    clusteval::cluster_similarity(data[, j[1]], data[, j[2]],
-                                  similarity = "jaccard",
-                                  method = "independence")
+    clusterCrit::extCriteria(as.integer(data[, j[1]]),
+                             as.integer(data[, j[2]]),
+                             crit = "Jaccard")[[1]]
   })
   if (prod(jac == 1) == 1) {
     return(TRUE)
   } else {
     jac <- jac > mcons.JAC.sel
-    if (sum(jac) == ncol(data)) {
+    if (sum(jac) == ncol(x1)) {
       a <- data
     } else {
       if (sum(jac) < 2) {

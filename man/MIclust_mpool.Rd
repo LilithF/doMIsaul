@@ -19,14 +19,14 @@ Use \code{TRUE} to perform an additional consensus from all partitions.}
 \code{Jaccard index} value between partitions to keep them for the
 consensus.}
 
-\item{plot.MIclust}{should \code{MultiCons} tree be plotted?}
+\item{plot.MIclust}{should \code{MultiCons()} tree be plotted?}
 }
 \value{
-a data frame with \code{ncol} = number of algorithms (+1 if
+a data frame with \code{ncol()} = number of algorithms (+1 if
 \code{comb.cons == T}), containing the consensus partitions.
 }
 \description{
-Performs \code{MultiCons} from a list of partitions
+Performs \code{MultiCons()} from a list of partitions
 }
 \examples{
 list.partitions <- list(

@@ -1,6 +1,6 @@
 #' Table of ANOVA test for several explanatory variables
 #'
-#' Performs the function \code{aov} for the \code{main.var} and \code{var}.
+#' Performs the function \code{aov()} for the \code{main.var} and \code{var}.
 #'
 #' @keywords internal
 #'

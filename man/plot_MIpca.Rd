@@ -50,8 +50,8 @@ observations.}
 A \code{ggplot} object.
 }
 \description{
-\code{plot_MIpca} plots only mean value while \code{plot_MIpca_all} plots all
-values for the selected observations.
+\code{plot_MIpca()} plots only mean value while \code{plot_MIpca_all()}
+plots all values for the selected observations.
 }
 \examples{
 data(cancer, package = "survival")

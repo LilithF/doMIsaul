@@ -34,7 +34,7 @@ MImpute_lcens(
 )
 }
 \arguments{
-\item{data}{Dataframe with incomplete data. (for \code{MImpute_lcens}, with
+\item{data}{Dataframe with incomplete data. (for \code{MImpute_lcens()}, with
 \code{NA} for both missing and left-censored data).}
 
 \item{mi.m}{Number of imputations to perform.}
@@ -83,12 +83,12 @@ containing the \code{mids} object as returned by \code{mice()}
 \description{
 Performs imputation of the missing data using MICE and returns a list in the
 correct format for the \code{unsupMI()} and \code{seMIsupcox()}functions.
-\code{MImpute} performs imputation for datasets with missing data only.
-\code{MImpute_surv} performs imputation for a dataset with survival data.
+\code{MImpute()} performs imputation for datasets with missing data only.
+\code{MImpute_surv()} performs imputation for a dataset with survival data.
 The Nelson Aalen estimator is calculated and used as predictor in the
 imputation, Time is not used as predictor.
-\code{MImpute_lcens} performs imputation for a dataset with left-censored
-data. Note that with \code{MImpute_lcens} pmm imputation is
+\code{MImpute_lcens()} performs imputation for a dataset with left-censored
+data. Note that with \code{MImpute_lcens()} pmm imputation is
 performed for variables not affected by left-censoring.
 }
 \examples{

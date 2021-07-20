@@ -11,8 +11,8 @@ exctract_center_position(data, Cluster, centPos)
 
 \item{Cluster}{vector (\code{n}) of cluster allocation.}
 
-\item{centPos}{Cluster: center is defined by mean (\code{colMeans}) or median
-of the cluster.}
+\item{centPos}{Cluster: center is defined by mean (\code{colMeans()}) or
+median of the cluster.}
 }
 \value{
 matrix (\code{k * p}) with center coordinates

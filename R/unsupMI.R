@@ -1,7 +1,7 @@
 #' Unsupervised learning for incomplete dataset
 #'
-#' Unsupervised clustering for multiply imputed datasets using \code{MultiCons}
-#' consensus (\code{Faucheux et al. 2021} procedure)
+#' Unsupervised clustering for multiply imputed datasets using
+#'   \code{MultiCons()} consensus (\code{Faucheux et al. 2021} procedure)
 #'
 #'
 #'
@@ -21,7 +21,8 @@
 #'   applying clustering algorithms?
 #' @param algo vector of strings: name of clustering algorithms to use (use
 #'   "\code{km}" for \code{k-means}, "\code{kmed}" for \code{K-medians},
-#'   "\code{hc}" for \code{hclust} and/or "\code{mclust}" for \code{mclust}).
+#'   "\code{hc}" for \code{hclust()} and/or "\code{mclust}" for
+#'    \code{mclust()}).
 #' @param k.crit string. Criterion to select the optimal number of clusters (for
 #'   each imputed dataset). Use "\code{ch}" for Calinski and Harabasz criterion
 #'   (not available for \code{mclust}), "\code{CritCF}" for \code{CritCF} or

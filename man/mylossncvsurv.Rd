@@ -17,7 +17,7 @@ mylossncvsurv(y, eta, total = TRUE)
 See \code{ncvreg:::loss.ncvsurv}.
 }
 \description{
-modification of the \code{loss.ncvsurv()} function (\code{ncvreg} internal)
+modification of the \code{loss.ncvsurv()} function ('ncvreg' internal)
 to handle a single value of lambda
 }
 \keyword{internal}

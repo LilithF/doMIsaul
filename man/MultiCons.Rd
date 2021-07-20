@@ -11,7 +11,7 @@ MultiCons(
     "MCLUST", "CMeans", "FANNY", "BaggedClust"),
   num_algo = 10,
   maxClust = 10,
-  sim.indice = "jaccard",
+  sim.indice = "Jaccard",
   returnAll = FALSE,
   Plot = TRUE,
   verbose = FALSE
@@ -29,14 +29,17 @@ among. Must be included in default value.}
 
 \item{maxClust}{Maximum number of clusters.}
 
-\item{sim.indice}{Index for defining best partition.}
+\item{sim.indice}{Index for defining best partition. Passed to
+\code{clusterCrit::extCriteria)()}, see
+\code{clusterCrit::getCriteriaNames(FALSE)} for other available indexes.
+If more than one index are given, only the first one will be used.}
 
 \item{returnAll}{Should all partitions (\code{TRUE}) or only the best
 (\code{FALSE}) be returned.}
 
 \item{Plot}{Should tree be plotted.}
 
-\item{verbose}{Passed on to \code{mclust} and other functions.}
+\item{verbose}{Passed on to \code{mclust()} and other functions.}
 }
 \value{
 A list of 2: performances and partitions. If \code{returnAll} is
@@ -46,7 +49,7 @@ the tree.
 }
 \description{
 Performs MultiCons clustering, from Al-Najdi et Al.
-For some reason, if you want to use \code{mclust} clustering the package
+For some reason, if you want to use \code{mclust()} clustering, the package
 needs to be loaded manually
 }
 \examples{

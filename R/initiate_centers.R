@@ -8,9 +8,10 @@
 #' @param k Vector of size N containing the number of centers for each
 #'   initialization.
 #' @param algorithms list of algorithm(s) (size \code{N * (1-t)} to generate
-#'   centers if t!=1, given as characters. Possible values are \code{km} for
-#'   K-means, \code{kmed} for K-medians, \code{hclust.mean, hclust.med} for
-#'   hierarchical clustering with mean or median position of the center.
+#'   centers if t!=1, given as characters. Possible values are "\code{km}" for
+#'   'K-means', "\code{kmed}" for 'K-medians',
+#'   \code{"hclust.mean", "hclust.med"} for hierarchical clustering with mean
+#'    or median position of the center.
 #' @param seeds.N (optional) vector of size N containing seeds for each
 #'   initialization.
 #'

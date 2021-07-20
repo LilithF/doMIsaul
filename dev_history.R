@@ -6,7 +6,7 @@ load_all()
 use_tidy_description()
 # attachment::att_amend_desc()
 
-spell_check()
+# spell_check()
 
 ## Moins régulièrement ###
 check()

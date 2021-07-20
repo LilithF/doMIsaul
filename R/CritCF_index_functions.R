@@ -43,7 +43,7 @@ CritCF.sel <- function(data, min.nc, max.nc, method, distance){
 #' @param data dataframe for which the number of cluster should be estimated.
 #' @param k integer, number of clusters.
 #' @param method string, clustering algorithm to use. Available values are
-#'  \code{kmeans}, \code{hc} (for \code{hclust}) or \code{mclust}.
+#'  "\code{kmeans}", "\code{hc}" (for \code{hclust()}) or "\code{mclust}".
 #' @param distance distance between the observations (either euclidean or
 #' manhattan).
 #'

@@ -1,6 +1,6 @@
 #' \code{MultiCons} wrapper for imputed datasets
 #'
-#' Performs \code{MultiCons} from a list of partitions
+#' Performs \code{MultiCons()} from a list of partitions
 #'
 #' @keywords internal
 #'
@@ -9,14 +9,14 @@
 #'   to the results of one imputed dataset. If more than one algorithm were
 #'   tester, each element if the list is a dataframe, as obtained by
 #'   \code{partition_generation()}.
-#' @param plot.MIclust should \code{MultiCons} tree be plotted?
+#' @param plot.MIclust should \code{MultiCons()} tree be plotted?
 #' @param comb.cons logical. Forced to \code{FALSE} if \code{length(algo)<2}.
 #'   Use \code{TRUE} to perform an additional consensus from all partitions.
 #' @param mcons.JAC.sel passed to internal function \code{my_jack()}. Minimum
 #'   \code{Jaccard index} value between partitions to keep them for the
 #'   consensus.
 #'
-#' @return a data frame with \code{ncol} = number of algorithms (+1 if
+#' @return a data frame with \code{ncol()} = number of algorithms (+1 if
 #'   \code{comb.cons == T}), containing the consensus partitions.
 #' @examples
 #' list.partitions <- list(

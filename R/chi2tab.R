@@ -1,6 +1,6 @@
-#' Table of \code{chisq.test} test for several explanatory variables
+#' Table of \code{chisq.test()} test for several explanatory variables
 #'
-#' Performs the function \code{chisq.test} for the \code{main.var} and
+#' Performs the function \code{chisq.test()} for the \code{main.var} and
 #'  \code{var}.
 #'
 #' @keywords internal

@@ -39,7 +39,7 @@ my.cv.ncvsurv(
 \item{trace}{See \code{ncvreg:::cv.ncvsurv}.}
 }
 \description{
-Modification of the \code{cv.ncvsurv()} function of \code{ncvreg} to use the
+Modification of the \code{cv.ncvsurv()} function of 'ncvreg' to use the
 modified functions \code{ncvsurv()} : \code{my.ncvsurv()} and
 \code{loss.ncvsurv()} : \code{mylossncvsurv()}.
 }

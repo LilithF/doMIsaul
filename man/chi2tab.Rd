@@ -2,7 +2,7 @@
 % Please edit documentation in R/chi2tab.R
 \name{chi2tab}
 \alias{chi2tab}
-\title{Table of \code{chisq.test} test for several explanatory variables}
+\title{Table of \code{chisq.test()} test for several explanatory variables}
 \usage{
 chi2tab(data, main.var, var, nb.dec = 1)
 }
@@ -20,7 +20,7 @@ will be compared.}
 table with n (percentage) per level and p-value of \code{chi2} test.
 }
 \description{
-Performs the function \code{chisq.test} for the \code{main.var} and
+Performs the function \code{chisq.test()} for the \code{main.var} and
 \code{var}.
 }
 \keyword{internal}

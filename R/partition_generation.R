@@ -8,11 +8,11 @@
 #'   applying clustering algorithms?
 #' @param clust.algo vector of strings: name of clustering algorithms to use
 #'   (use \code{"km"} for k-means, \code{"kmed"} for K-medians, \code{"hc"} for
-#'    \code{hclust} and/or \code{"mclust"} for \code{mclust}).
+#'    \code{hclust()} and/or \code{"mclust"} for \code{mclust()}).
 #' @param k.crit string. Criterion to select the optimal number of clusters (for
 #'   each imputed dataset). Use \code{"ch"} for Calinski and Harabasz criterion
-#'   (not available for \code{mclust}), \code{"CritCF"} for \code{CritCF} or
-#'   \code{bic} for BIC (\code{mclust} only).
+#'   (not available for "\code{mclust}"), \code{"CritCF"} for \code{CritCF} or
+#'   \code{bic} for BIC ("\code{mclust}" only).
 #'
 #' @return a dataframe with one column for each algorithm in \code{clust.algo},
 #'   containing the cluster IDs.
