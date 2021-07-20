@@ -1,5 +1,5 @@
 Package: doMIsaul
-Title: Do Multiple Imputation-Based Semisupervised and Unsupervised
+Title: Do Multiple Imputation-Based Semi-supervised and Unsupervised
     Learning
 Version: 1.0.0
 Authors@R: 
@@ -21,7 +21,7 @@ Authors@R:
              role = "ctb"))
 Description: Algorithms for (i) unsupervised learning for dataset with
     missing data and/or left-censored data, using multiple imputation and
-    consensus clustering ; (ii) semisupervised learning with a survival
+    consensus clustering ; (ii) semi-supervised learning with a survival
     endpoint (right-censored) for complete or incomplete datasets, using
     multiple imputation and consensus clustering in the latter case.
 License: GPL (>= 3)
