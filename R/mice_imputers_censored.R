@@ -35,7 +35,9 @@ mice.impute.cens <- function(y, ry, x, lod.j, lod.name = "lod",
   yy[xx == lod.j] <- lod.j
   ryy <- ry
   ryy[xx == lod.j] <- TRUE
-  parm <- doMIsaul:::.cens.draw3(y = yy, ry = ryy, x = x, lod.j = lod.j)
+  doMI.cens.draw3 <- get(".cens.draw3", envir = asNamespace("doMIsaul"),
+                         inherits = FALSE)
+  parm <- doMI.cens.draw3(y = yy, ry = ryy, x = x, lod.j = lod.j)
   wyy <- wy[wy]
   wyy[xx[wy] != lod.j] <- FALSE
   .draw <- as.numeric (x[wy, ] %*% parm$beta +
@@ -85,7 +87,7 @@ environment(mice.impute.cens) <- environment(mice::mice.impute.norm)
 #' @return parameters
 .cens.draw3 <- function(y, ry, x, lod.j=lod.j, ...) {
 
-    x <- as.data.frame(x)
+  x <- as.data.frame(x)
   x <- x[ry, ]
   y <- y[ry]
 

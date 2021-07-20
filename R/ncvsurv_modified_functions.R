@@ -1,3 +1,10 @@
+get_fun <- function(pkg, fun) get(fun, envir = asNamespace(pkg),
+                                  inherits = FALSE)
+ncvreg_cvf.surv <- get_fun("ncvreg", "cvf.surv")
+ncvreg_setupLambdaCox <- get_fun("ncvreg", "setupLambdaCox")
+ncvreg_lamNames <- get_fun("ncvreg", "lamNames")
+ncvreg_convexMin <- get_fun("ncvreg", "convexMin")
+ncvreg_se.ncvsurv <- get_fun("ncvreg", "se.ncvsurv")
 #' Modified \code{ncvreg:::loss.ncvsurv}.
 #'
 #' modification of the \code{loss.ncvsurv()} function (\code{ncvreg} internal)
@@ -98,7 +105,7 @@ my.cv.ncvsurv <- function (X, y, ..., cluster, nfolds = 10, seed, fold,
                                        "y", "cv.args"), envir = environment())
     parallel::clusterCall(cluster, function() requireNamespace(ncvreg))
     fold.results <- parallel::parLapply(cl = cluster, X = 1:nfolds,
-                                        fun = ncvreg:::cvf.surv, XX = X, y = y,
+                                        fun = ncvreg_cvf.surv, XX = X, y = y,
                                         fold = fold, cv.args = cv.args)
   }
   for (i in 1:nfolds) {
@@ -108,7 +115,7 @@ my.cv.ncvsurv <- function (X, y, ..., cluster, nfolds = 10, seed, fold,
     else {
       if (trace)
         cat("Starting CV fold #", i, sep = "", "\n")
-      res <- ncvreg:::cvf.surv(i, X, y, fold, cv.args)
+      res <- ncvreg_cvf.surv(i, X, y, fold, cv.args)
     }
     Y[fold == i, 1:res$nl] <- res$yhat
   }
@@ -123,7 +130,7 @@ my.cv.ncvsurv <- function (X, y, ..., cluster, nfolds = 10, seed, fold,
   }
   else {
     cve <- as.double(mylossncvsurv(y, Y))/sum(fit$fail)
-    cvse <- ncvreg:::se.ncvsurv(y, Y)/sum(fit$fail)
+    cvse <- ncvreg_se.ncvsurv(y, Y)/sum(fit$fail)
   }
   min <- which.min(cve)
   val <- list(cve = cve, cvse = cvse, fold = fold, lambda = lambda,
@@ -216,8 +223,8 @@ my.ncvsurv <- function (X, y, penalty = c("MCP", "SCAD", "lasso"),
   penalty.factor <- penalty.factor[ns]
   p <- ncol(XX)
   if (missing(lambda)) {
-    lambda <- ncvreg:::setupLambdaCox(XX, yy, Delta, alpha, lambda.min,
-                                      nlambda, penalty.factor)
+    lambda <- ncvreg_setupLambdaCox(XX, yy, Delta, alpha, lambda.min,
+                                    nlambda, penalty.factor)
     user.lambda <- FALSE
   } else {
     nlambda <- length(lambda)
@@ -226,11 +233,11 @@ my.ncvsurv <- function (X, y, penalty = c("MCP", "SCAD", "lasso"),
 
   ##
   # cdfit_cox_dh <- R_GetCCallable("ncvreg", "cdfit_cox_dh")
-  # res <- cdfit_cox_dh(XX, Delta, penalty, lambda,
-  #              eps, as.integer(max.iter), as.double(gamma), penalty.factor,
-  #              alpha, as.integer(dfmax),
-  #              as.integer(user.lambda | any(penalty.factor == 0)),
-  #              as.integer(warn))
+  # res <- cdfit_cox_dh_do(XX, Delta, penalty, lambda,
+  #                        eps, as.integer(max.iter), as.double(gamma), penalty.factor,
+  #                        alpha, as.integer(dfmax),
+  #                        as.integer(user.lambda | any(penalty.factor == 0)),
+  #                        as.integer(warn))
   ##
   res <- .Call("cdfit_cox_dh", XX, Delta, penalty, lambda,
                eps, as.integer(max.iter), as.double(gamma), penalty.factor,
@@ -238,6 +245,7 @@ my.ncvsurv <- function (X, y, penalty = c("MCP", "SCAD", "lasso"),
                as.integer(user.lambda | any(penalty.factor == 0)),
                as.integer(warn),
                PACKAGE = "ncvreg")
+
 
   b <- matrix(res[[1]], p, nlambda)
   loss <- -1 * res[[2]]
@@ -252,8 +260,8 @@ my.ncvsurv <- function (X, y, penalty = c("MCP", "SCAD", "lasso"),
   if (warn & sum(iter) == max.iter)
     warning("Algorithm failed to converge for some values of lambda")
   convex.min <- if (convex)
-    ncvreg:::convexMin(b, XX, penalty, gamma, lambda * (1 - alpha),
-                       "cox", penalty.factor, Delta = Delta)
+    ncvreg_convexMin(b, XX, penalty, gamma, lambda * (1 - alpha),
+                     "cox", penalty.factor, Delta = Delta)
   else NULL
   beta <- matrix(0, nrow = ncol(X), ncol = length(lambda))
   bb <- b/attr(XX, "scale")[ns]
@@ -262,7 +270,7 @@ my.ncvsurv <- function (X, y, penalty = c("MCP", "SCAD", "lasso"),
   varnames <- if (is.null(colnames(X)))
     paste("V", 1:ncol(X), sep = "")
   else colnames(X)
-  dimnames(beta) <- list(varnames, ncvreg:::lamNames(lambda))
+  dimnames(beta) <- list(varnames, ncvreg_lamNames(lambda))
   val <- structure(list(beta = beta, iter = iter, lambda = lambda,
                         penalty = penalty, gamma = gamma, alpha = alpha,
                         convex.min = convex.min, loss = loss,
