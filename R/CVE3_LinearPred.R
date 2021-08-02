@@ -16,11 +16,12 @@
 cve_LinearPred <- function(data, partition, nfolds = 10) {
   X <- model.matrix(~part, data.frame(part = factor(partition[, 1])))
 
-  my.cv.ncvsurv(
+  ncvreg::cv.ncvsurv(
     X = X, y = as.matrix(data[, c("time", "status")]),
-    penalty = "lasso", penalty.factor = rep(0, ncol(X)),
-    lambda = 0, nfolds = nfolds, se = c("quick")
-  )$cve
+    penalty = "lasso", penalty.factor = rep(1, ncol(X)),
+    nlambda = 2, lambda.min = 0, nfolds = nfolds, se = c("quick"),
+    eps = 1e-05
+  )$cve[2]
 }
 
 

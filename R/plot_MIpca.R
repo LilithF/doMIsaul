@@ -75,7 +75,8 @@ plot_MIpca <- function(data.list, obs.sel, color.var = NULL, pca.varsel = NULL,
 
   # Mean position
   mean.plot <- dplyr::summarise_all(
-    dplyr::group_by(db.plot[setdiff(colnames(db.plot), "color.var")], .data$ID), mean
+    dplyr::group_by(db.plot[setdiff(colnames(db.plot), "color.var")], .data$ID),
+    mean
     )
   if(COL){
     mean.plot$color.var <-
@@ -179,7 +180,8 @@ plot_MIpca_all <-  function(data.list, obs.sel, pca.varsel = NULL,
 
   # Mean position
   mean.plot <- dplyr::summarise_all(
-    dplyr::group_by(db.plot[setdiff(colnames(db.plot), "color.var")], .data$ID), mean
+    dplyr::group_by(db.plot[setdiff(colnames(db.plot), "color.var")], .data$ID),
+    mean
   )
   if(COL){
     mean.plot$color.var <-
