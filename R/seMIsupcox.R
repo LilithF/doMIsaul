@@ -88,11 +88,13 @@
 #'                 USE.NAMES = TRUE, simplify = FALSE)
 #'
 #' ## 3 learning
-#' \donttest{res1 <- seMIsupcox(X = cancer.imp, Y = cancer[, c("time", "status")],
+#' \donttest{
+#' res1 <- seMIsupcox(X = cancer.imp, Y = cancer[, c("time", "status")],
 #'                    Impute = FALSE, center.init = inits, nfolds = 10,
 #'                    cleanup.partition = FALSE)
 #' res2 <- seMIsupcox(X = cancer.imp, Y = cancer[, c("time", "status")],
-#'                   center.init = inits, nfolds = 10) }
+#'                   center.init = inits, nfolds = 10)
+#' }
 seMIsupcox <- function(Impute = FALSE, Impute.m = 5,
                        center.init = TRUE, center.init.N = 500,
                        center.init.Ks = 2:7,

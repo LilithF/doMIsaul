@@ -126,9 +126,11 @@ inits <- sapply(1:length(cancer.imp), function(mi.i) {
                 USE.NAMES = TRUE, simplify = FALSE)
 
 ## 3 learning
-\donttest{res1 <- seMIsupcox(X = cancer.imp, Y = cancer[, c("time", "status")],
+\donttest{
+res1 <- seMIsupcox(X = cancer.imp, Y = cancer[, c("time", "status")],
                    Impute = FALSE, center.init = inits, nfolds = 10,
                    cleanup.partition = FALSE)
 res2 <- seMIsupcox(X = cancer.imp, Y = cancer[, c("time", "status")],
-                  center.init = inits, nfolds = 10) }
+                  center.init = inits, nfolds = 10)
+}
 }
