@@ -105,7 +105,7 @@ Unsupervised clustering for multiply imputed datasets using
 \code{MultiCons()} consensus (\code{Faucheux et al. 2021} procedure)
 }
 \examples{
-## With imputation included
+### With imputation included
 data(cancer, package = "survival")
 cancer$status <- cancer$status - 1
 res.0 <- unsupMI(data = list(cancer), Impute = "MImpute_surv",
@@ -123,8 +123,4 @@ summary(factor(res.1))
 ## 2.bis learning with several algorithms
 res.2 <- unsupMI(data = cancer.imp, algo = c("km", "hc"), comb.cons = TRUE,
                  plot.cons = TRUE)
-
-## Alternative: perform imputation within
-## not run ##
-# res <- unsupMI(Impute = "MImpute_surv", data = list(cancer))
 }

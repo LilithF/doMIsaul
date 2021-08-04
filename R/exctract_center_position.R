@@ -2,16 +2,14 @@
 #'
 #' @keywords internal
 #'
-#' @param data dataframe (\code{n * p}).
-#' @param Cluster vector (\code{n}) of cluster allocation.
-#' @param centPos Cluster: center is defined by mean (\code{colMeans()}) or
-#'   median of the cluster.
+#' @param data dataframe (of dimension \code{n * p}).
+#' @param Cluster vector (of length \code{n}) containing the cluster
+#'   allocations.
+#' @param centPos String, indicated whether the center position should be
+#'   defined by the mean (use "\code{colMeans}") or the median of the cluster
+#'   (use any other string).
 #'
 #' @return matrix (\code{k * p}) with center coordinates
-#' @examples
-#' doMIsaul:::exctract_center_position(iris[, 1:4],
-#'                                     as.numeric(iris[, 5]),
-#'                                     "colMeans")
 exctract_center_position <- function (data, Cluster, centPos){
   # Extracts cluster centers from a clustering result
 

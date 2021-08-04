@@ -4,7 +4,7 @@
 \alias{CritCF}
 \title{\code{CritCF} index}
 \usage{
-CritCF(data, k, method, distance)
+CritCF(data, k, method, distance, Seed = 1)
 }
 \arguments{
 \item{data}{dataframe for which the number of cluster should be estimated.}
@@ -14,8 +14,11 @@ CritCF(data, k, method, distance)
 \item{method}{string, clustering algorithm to use. Available values are
 "\code{kmeans}", "\code{hc}" (for \code{hclust()}) or "\code{mclust}".}
 
-\item{distance}{distance between the observations (either euclidean or
-manhattan).}
+\item{distance}{string, distance between the observations (either "euclidean"
+or "manhattan").}
+
+\item{Seed}{If not \code{null}, passed to \code{set.seed()} before generating
+the partition.}
 }
 \value{
 a list, containing the criterion value and the partition
@@ -23,8 +26,5 @@ a list, containing the criterion value and the partition
 \description{
 Computes \code{CritCF} index for the selected number of clusters and
 clustering algorithm.
-}
-\examples{
-doMIsaul:::CritCF(iris[, 1:4], 5, "hc", "euclidean")
 }
 \keyword{internal}

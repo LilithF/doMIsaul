@@ -13,10 +13,11 @@ CritCF.sel(data, min.nc, max.nc, method, distance)
 
 \item{max.nc}{integer (\code{>min.nc}): maximum number of clusters.}
 
-\item{method}{clustering algorithm to use.}
+\item{method}{string, clustering algorithm to use. Available values are
+"\code{kmeans}", "\code{hc}" (for \code{hclust()}) or "\code{mclust}".}
 
-\item{distance}{distance between the observations (either euclidean or
-manhattan).}
+\item{distance}{string, distance between the observations (either "euclidean"
+or "manhattan").}
 }
 \value{
 A list containing the selected number of clusters, the \code{CritCF}
@@ -25,8 +26,5 @@ values and the best partition.
 \description{
 Wrapper to estimate the best number of clusters according to \code{CritCF}
 index
-}
-\examples{
-doMIsaul:::CritCF.sel(iris[, 1:4], 2, 9, "kmeans", "euclidean")
 }
 \keyword{internal}

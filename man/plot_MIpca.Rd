@@ -55,13 +55,12 @@ plots all values for the selected observations.
 }
 \examples{
 data(cancer, package = "survival")
-cancer.imp <- MImpute(cancer[, -c(1:3)], 6)
+cancer.imp <- MImpute(cancer[, -c(1:3)], 4)
 plot_MIpca(cancer.imp, 1:10,
     pca.varsel = c("age", "sex", "ph.ecog", "meal.cal",  "wt.loss"))
 
-## not run ##
-# plot_MIpca(cancer.imp, obs.sel = NULL, color.var = factor(cancer$status),
-#     pca.varsel = c("age", "sex", "ph.ecog", "meal.cal",  "wt.loss"))
+plot_MIpca(cancer.imp, obs.sel = NULL, color.var = factor(cancer$status),
+           pca.varsel = c("age", "sex", "ph.ecog", "meal.cal",  "wt.loss"))
 data(cancer, package = "survival")
 cancer.imp <- MImpute(cancer[, -c(1:3)], 6)
 plot_MIpca_all(cancer.imp, 1:10,

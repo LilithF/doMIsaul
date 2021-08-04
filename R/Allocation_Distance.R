@@ -5,11 +5,10 @@
 #'
 #' @keywords internal
 #'
-#' @param Z dataset
-#' @param Xr Center coordinates
+#' @param Z dataset of dimension \code{n * p}.
+#' @param Xr Center coordinates of dimension \code{k * p}.
 #'
 #' @return List with distances to center and allocation matrix
-#' @examples doMIsaul:::Allocation_Distance(iris[, 1:4], iris[c(1,5, 10), 1:4])
 Allocation_Distance <- function(Z, Xr){
 
   Dis <- matrix(0, nrow = nrow(Z), ncol = nrow(Xr))

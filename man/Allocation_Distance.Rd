@@ -7,17 +7,14 @@
 Allocation_Distance(Z, Xr)
 }
 \arguments{
-\item{Z}{dataset}
+\item{Z}{dataset of dimension \code{n * p}.}
 
-\item{Xr}{Center coordinates}
+\item{Xr}{Center coordinates of dimension \code{k * p}.}
 }
 \value{
 List with distances to center and allocation matrix
 }
 \description{
 \code{Khorshidi et al., 2019}.
-}
-\examples{
-doMIsaul:::Allocation_Distance(iris[, 1:4], iris[c(1,5, 10), 1:4])
 }
 \keyword{internal}

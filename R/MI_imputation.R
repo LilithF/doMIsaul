@@ -117,7 +117,7 @@ MImpute_surv <- function(data, mi.m, time.status.names = c("time", "status"),
   } else {
     max.it <- 1
   }
-  # set.seed(1)
+
   res <- mice::mice(data, m = mi.m, method = my.method,
               predictorMatrix = my.predictorMatrix,
               maxit = max.it, printFlag = FALSE)

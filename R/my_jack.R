@@ -6,19 +6,13 @@
 #'
 #' @keywords internal
 #'
-#' @param data dataframe containing the partitions (factors)
-#' @param mcons.JAC.sel minimum required Jaccard index between partitions (0 =
-#'   all partitions kept)
+#' @param data dataframe containing the partitions (factors). Specifically, each
+#'  column must be a partition and must be a factor.
+#' @param mcons.JAC.sel Numeric (in (0, 1)), minimum \code{Jaccard index} value
+#'   between partitions to keep them (0 = all partitions kept).
 #'
 #' @return dataframe of partitions with only the partitions satisfying the
 #'   conditions kept.
-#' @examples
-#' partitions <- data.frame(factor(rep(c(1, 2), each = 100)),
-#'                          factor(rep(c(1, 2), times = c(120, 80))),
-#'                          factor(rep(c(2, 1), each = 100)),
-#'                          factor(rep(c(1, 2, 3, 4), each = 50)))
-#' dim(doMIsaul:::my_jack(partitions, 0))
-#' dim(doMIsaul:::my_jack(partitions, 0.5))
 my_jack <- function(data, mcons.JAC.sel = 0){
 
   x1 <- utils::combn(1:ncol(data), 2)

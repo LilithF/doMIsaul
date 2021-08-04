@@ -4,15 +4,18 @@
 \alias{CH}
 \title{\code{CH} index}
 \usage{
-CH(data, k, method)
+CH(data, k, method, Seed = 1)
 }
 \arguments{
 \item{data}{dataframe for which the number of cluster should be estimated.}
 
 \item{k}{integer, number of clusters.}
 
-\item{method}{string, clustering algorithm to use. Only available value for
-know is "\code{kmed}" for \code{K-medians} clustering.}
+\item{method}{string, clustering algorithm to use. The only available value
+for now is "\code{kmed}" for \code{K-medians} clustering.}
+
+\item{Seed}{If not \code{null}, passed to \code{set.seed()} before generating
+the partition.}
 }
 \value{
 a list, containing the criterion value and the partition.
@@ -20,8 +23,5 @@ a list, containing the criterion value and the partition.
 \description{
 Computes CH index for the selected number of clusters and clustering
 algorithm.
-}
-\examples{
-doMIsaul:::CH(iris[, 1:4], 5, "kmed")
 }
 \keyword{internal}

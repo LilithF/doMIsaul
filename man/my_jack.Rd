@@ -7,10 +7,11 @@
 my_jack(data, mcons.JAC.sel = 0)
 }
 \arguments{
-\item{data}{dataframe containing the partitions (factors)}
+\item{data}{dataframe containing the partitions (factors). Specifically, each
+column must be a partition and must be a factor.}
 
-\item{mcons.JAC.sel}{minimum required Jaccard index between partitions (0 =
-all partitions kept)}
+\item{mcons.JAC.sel}{Numeric (in (0, 1)), minimum \code{Jaccard index} value
+between partitions to keep them (0 = all partitions kept).}
 }
 \value{
 dataframe of partitions with only the partitions satisfying the
@@ -20,13 +21,5 @@ conditions kept.
 Evaluates if all partitions are the same (and thus no consensus algorithm
 needed) and may pre-select partitions depending on a threshold on the Jaccard
 index
-}
-\examples{
-partitions <- data.frame(factor(rep(c(1, 2), each = 100)),
-                         factor(rep(c(1, 2), times = c(120, 80))),
-                         factor(rep(c(2, 1), each = 100)),
-                         factor(rep(c(1, 2, 3, 4), each = 50)))
-dim(doMIsaul:::my_jack(partitions, 0))
-dim(doMIsaul:::my_jack(partitions, 0.5))
 }
 \keyword{internal}
