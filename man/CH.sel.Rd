@@ -13,7 +13,8 @@ CH.sel(data, min.nc, max.nc, method)
 
 \item{max.nc}{integer (\code{>min.nc}): maximum number of  clusters.}
 
-\item{method}{Clustering algorithm to use.}
+\item{method}{Clustering algorithm to use. The only available value for now
+is "\code{kmed}" for \code{K-medians} clustering.}
 }
 \value{
 A list containing the selected number of clusters, the CH values and
@@ -21,8 +22,5 @@ the best partition.
 }
 \description{
 Wrapper to estimate the best number of clusters according to \code{CH} index.
-}
-\examples{
- doMIsaul:::CH.sel(iris[, 1:4], 2, 5, "kmed")
 }
 \keyword{internal}

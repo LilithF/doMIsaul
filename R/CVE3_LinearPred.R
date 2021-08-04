@@ -3,16 +3,10 @@
 #' @keywords internal
 #'
 #' @param data data containing columns time and status.
-#' @param partition dataframe with 1 column.
+#' @param partition dataframe with 1 column containing the partition labels.
 #' @param nfolds number of fold for CV.
 #'
-#'
 #' @return numeric, cross-validation error
-#' @examples
-#' data(cancer, package = "survival")
-#' cancer$status <- cancer$status - 1
-#' part <- data.frame(Cl= factor(cancer[, "sex"]), stringsAsFactors = TRUE)
-#' doMIsaul:::cve_LinearPred(cancer,part, 10)
 cve_LinearPred <- function(data, partition, nfolds = 10) {
   X <- model.matrix(~part, data.frame(part = factor(partition[, 1])))
 

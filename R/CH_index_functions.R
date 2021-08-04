@@ -7,11 +7,11 @@
 #' @param data dataframe for which the number of cluster should be estimated.
 #' @param min.nc integer strictly higher than 1: minimum number of clusters.
 #' @param max.nc integer (\code{>min.nc}): maximum number of  clusters.
-#' @param method Clustering algorithm to use.
+#' @param method Clustering algorithm to use. The only available value for now
+#'    is "\code{kmed}" for \code{K-medians} clustering.
 #'
 #' @return A list containing the selected number of clusters, the CH values and
 #'   the best partition.
-#' @examples  doMIsaul:::CH.sel(iris[, 1:4], 2, 5, "kmed")
 CH.sel <- function(data, min.nc, max.nc, method){
 
   alls <- lapply(min.nc:max.nc, CH,
@@ -38,13 +38,14 @@ CH.sel <- function(data, min.nc, max.nc, method){
 #'
 #' @param data dataframe for which the number of cluster should be estimated.
 #' @param k integer, number of clusters.
-#' @param method string, clustering algorithm to use. Only available value for
-#'   know is "\code{kmed}" for \code{K-medians} clustering.
+#' @param method string, clustering algorithm to use. The only available value
+#'   for now is "\code{kmed}" for \code{K-medians} clustering.
+#' @param Seed If not \code{null}, passed to \code{set.seed()} before generating
+#'   the partition.
 #'
 #' @return a list, containing the criterion value and the partition.
-#' @examples doMIsaul:::CH(iris[, 1:4], 5, "kmed")
-CH <- function(data, k, method){
-  set.seed(1)
+CH <- function(data, k, method, Seed = 1){
+  if (!is.null(Seed)) {set.seed(Seed)}
   if (method == "kmed"){
     kmed <- suppressWarnings(Gmedian::kGmedian(X = data, ncenters = k))
     Classif <- kmed$cluster[, 1]

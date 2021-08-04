@@ -23,7 +23,10 @@ Description: Algorithms for (i) unsupervised learning for dataset with
     missing data and/or left-censored data, using multiple imputation and
     consensus clustering ; (ii) semi-supervised learning with a survival
     endpoint (right-censored) for complete or incomplete datasets, using
-    multiple imputation and consensus clustering in the latter case.
+    multiple imputation and consensus clustering in the latter case. The
+    methods are described in Faucheux et al. (2021)
+    <doi:10.1002/bimj.201900366> and Faucheux et al. (2021)
+    <doi:10.1002/bimj.202000365>, respectively.
 License: GPL (>= 3)
 URL: https://github.com/LilithF/doMIsaul
 BugReports: https://github.com/LilithF/doMIsaul/issues

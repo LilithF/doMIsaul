@@ -5,32 +5,21 @@
 #' @keywords internal
 #'
 #'
-#' @param list.part list of partitions with one element of the list corresponds
-#'   to the results of one imputed dataset. If more than one algorithm were
-#'   tester, each element if the list is a dataframe, as obtained by
-#'   \code{partition_generation()}.
-#' @param plot.MIclust should \code{MultiCons()} tree be plotted?
-#' @param comb.cons logical. Forced to \code{FALSE} if \code{length(algo)<2}.
-#'   Use \code{TRUE} to perform an additional consensus from all partitions.
-#' @param mcons.JAC.sel passed to internal function \code{my_jack()}. Minimum
-#'   \code{Jaccard index} value between partitions to keep them for the
-#'   consensus.
+#' @param list.part list of partitions, where one element of the list
+#'   corresponds to the clustering results for one imputed dataset. If more than
+#'   one clustering algorithm were used, each element if the list is a
+#'   dataframe, as obtained by \code{partition_generation()}.
+#' @param comb.cons Boolean, use \code{TRUE} to perform an additional consensus
+#'   from all partitions (ie. one consensus per clustering algorithm used, plus
+#'   one consensus of all partitions: mixing all clustering algorithms used).
+#'   This parameter is forced to \code{FALSE} if \code{length(algo)<2}.
+#' @param mcons.JAC.sel Numeric (in (0,1)) passed to internal function
+#'   \code{my_jack()}. Minimum \code{Jaccard index} value between partitions to
+#'   keep them for the consensus.
+#' @param plot.MIclust Boolean, should \code{MultiCons()} tree be plotted?
 #'
 #' @return a data frame with \code{ncol()} = number of algorithms (+1 if
 #'   \code{comb.cons == T}), containing the consensus partitions.
-#' @examples
-#' list.partitions <- list(
-#'         partition_generation(iris[, 1:4], LOG = FALSE,
-#'         clust.algo = c("km", "hc"),
-#'         k.crit = "ch"),
-#'         partition_generation(iris[, 1:2], LOG = FALSE,
-#'         clust.algo = c("km", "hc"),
-#'         k.crit = "ch"),
-#'         partition_generation(iris[, 2:4], LOG = FALSE,
-#'         clust.algo = c("km", "hc"),
-#'         k.crit = "ch"))
-#'
-#' doMIsaul:::MIclust_mpool(list.partitions, FALSE,0, FALSE)
 MIclust_mpool <- function(list.part, comb.cons,
                           mcons.JAC.sel = 0, plot.MIclust = FALSE) {
   algo <- colnames(list.part[[1]])

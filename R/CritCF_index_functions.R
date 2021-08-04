@@ -8,13 +8,13 @@
 #' @param data dataframe for which the number of cluster should be estimated.
 #' @param min.nc integer strictly higher than 1: minimum number of clusters.
 #' @param max.nc integer (\code{>min.nc}): maximum number of clusters.
-#' @param method clustering algorithm to use.
-#' @param distance distance between the observations (either euclidean or
-#' manhattan).
+#' @param method string, clustering algorithm to use. Available values are
+#'  "\code{kmeans}", "\code{hc}" (for \code{hclust()}) or "\code{mclust}".
+#' @param distance string, distance between the observations (either "euclidean"
+#'    or "manhattan").
 #'
 #' @return A list containing the selected number of clusters, the \code{CritCF}
 #'   values and the best partition.
-#' @examples doMIsaul:::CritCF.sel(iris[, 1:4], 2, 9, "kmeans", "euclidean")
 CritCF.sel <- function(data, min.nc, max.nc, method, distance){
 
   alls <- lapply(min.nc:max.nc, CritCF,
@@ -44,12 +44,13 @@ CritCF.sel <- function(data, min.nc, max.nc, method, distance){
 #' @param k integer, number of clusters.
 #' @param method string, clustering algorithm to use. Available values are
 #'  "\code{kmeans}", "\code{hc}" (for \code{hclust()}) or "\code{mclust}".
-#' @param distance distance between the observations (either euclidean or
-#' manhattan).
+#' @param distance string, distance between the observations (either "euclidean"
+#'    or "manhattan").
+#' @param Seed If not \code{null}, passed to \code{set.seed()} before generating
+#'   the partition.
 #'
 #' @return a list, containing the criterion value and the partition
-#' @examples doMIsaul:::CritCF(iris[, 1:4], 5, "hc", "euclidean")
-CritCF <- function(data, k, method, distance){
+CritCF <- function(data, k, method, distance, Seed = 1){
 
   if("mclust" %in% method) {
     requireNamespace("mclust", quietly = FALSE)
@@ -57,7 +58,7 @@ CritCF <- function(data, k, method, distance){
 
   p <- ncol(data)
   power <- switch(distance, euclidean = 2, manhattan = 1)
-  set.seed(1)
+  if (!is.null(Seed)) {set.seed(Seed)}
   if (method == "kmeans"){
     km <- stats::kmeans(data, centers = k)
     Classif <- km$cluster

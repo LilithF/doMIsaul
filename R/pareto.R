@@ -7,13 +7,10 @@
 #' @param bi.objective dataframe or matrix containing the objective values for
 #'   each case
 #' @param obj.names name of the two objectives (should be in
-#'   \code{colnames(bi.objetive)} )
+#'   \code{colnames(bi.objetive)}).
 #'
 #' @return the entry bi.objective with an additional column "Dominated" with 1
 #'   for non optimal solutions and 0 for optimal.
-#' @examples
-#' tab <- data.frame(A = rnorm(100, 10, 3), B = runif(100, 3,4))
-#' doMIsaul:::pareto(tab, c("A", "B"))
 pareto <- function(bi.objective, obj.names = c("Cluster", "Regression")){
   for (r in 1:nrow(bi.objective)) {
     Dominated <- 0

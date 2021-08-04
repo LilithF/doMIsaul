@@ -65,7 +65,7 @@
 #' @export
 #'
 #' @examples
-#' ## With imputation included
+#' ### With imputation included
 #' data(cancer, package = "survival")
 #' cancer$status <- cancer$status - 1
 #' res.0 <- unsupMI(data = list(cancer), Impute = "MImpute_surv",
@@ -83,10 +83,6 @@
 #' ## 2.bis learning with several algorithms
 #' res.2 <- unsupMI(data = cancer.imp, algo = c("km", "hc"), comb.cons = TRUE,
 #'                  plot.cons = TRUE)
-#'
-#' ## Alternative: perform imputation within
-#' ## not run ##
-#' # res <- unsupMI(Impute = "MImpute_surv", data = list(cancer))
 unsupMI <- function(Impute = FALSE, Impute.m = 5, cens.data.lod = NULL,
                     cens.standards = NULL, cens.mice.log = 10,
                     data, log.data = FALSE, algo = "km", k.crit = "ch",

@@ -11,7 +11,7 @@ pareto(bi.objective, obj.names = c("Cluster", "Regression"))
 each case}
 
 \item{obj.names}{name of the two objectives (should be in
-\code{colnames(bi.objetive)} )}
+\code{colnames(bi.objetive)}).}
 }
 \value{
 the entry bi.objective with an additional column "Dominated" with 1
@@ -19,9 +19,5 @@ for non optimal solutions and 0 for optimal.
 }
 \description{
 Find Pareto optimal and Pareto non optimal solutions
-}
-\examples{
-tab <- data.frame(A = rnorm(100, 10, 3), B = runif(100, 3,4))
-doMIsaul:::pareto(tab, c("A", "B"))
 }
 \keyword{internal}

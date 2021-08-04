@@ -9,7 +9,7 @@ cve_LinearPred(data, partition, nfolds = 10)
 \arguments{
 \item{data}{data containing columns time and status.}
 
-\item{partition}{dataframe with 1 column.}
+\item{partition}{dataframe with 1 column containing the partition labels.}
 
 \item{nfolds}{number of fold for CV.}
 }
@@ -18,11 +18,5 @@ numeric, cross-validation error
 }
 \description{
 Cross-validation for cox regression using the linear predictor estimator
-}
-\examples{
-data(cancer, package = "survival")
-cancer$status <- cancer$status - 1
-part <- data.frame(Cl= factor(cancer[, "sex"]), stringsAsFactors = TRUE)
-doMIsaul:::cve_LinearPred(cancer,part, 10)
 }
 \keyword{internal}
