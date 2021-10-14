@@ -45,6 +45,11 @@
 #'   \code{Impute == MImpute_lcens}
 #' @param cens.mice.log passed to \code{MImpute_lcens()} if
 #'   \code{Impute == MImpute_lcens}
+#' @param censsurv.var.log for \code{MImpute_lcenssurv imputation}: names of variables
+#'   to log if \code{mice.log} is numeric. If \code{NULL}, all variables but
+#'    those in\code{time.status.names} will be logged.
+#' @param censsurv.maxit for \code{MImpute_lcenssurv imputation:} passed to
+#'    \code{mice()}.
 #' @param cleanup.partition should the partition be trimmed of small clusters.
 #'   (The consensus may generate small clusters of observations for which there
 #'     is no consensus on the cluster assignation)
@@ -84,10 +89,10 @@
 #' res.2 <- unsupMI(data = cancer.imp, algo = c("km", "hc"), comb.cons = TRUE,
 #'                  plot.cons = TRUE)
 unsupMI <- function(Impute = FALSE, Impute.m = 5, cens.data.lod = NULL,
-                    cens.standards = NULL, cens.mice.log = 10,
-                    data, log.data = FALSE, algo = "km", k.crit = "ch",
-                    comb.cons = FALSE, plot.cons = FALSE, return.detail = FALSE,
-                    not.to.use = c("time", "status"),
+                    cens.standards = NULL, cens.mice.log = 10, censsurv.var.log = NULL,
+                    censsurv.maxit = 10, data, log.data = FALSE, algo = "km",
+                    k.crit = "ch", comb.cons = FALSE, plot.cons = FALSE,
+                    return.detail = FALSE, not.to.use = c("time", "status"),
                     cleanup.partition = TRUE, min.cluster.size = 10,
                     level.order = NULL, Unclassified = "Unclassified"){
 
@@ -103,6 +108,14 @@ unsupMI <- function(Impute = FALSE, Impute.m = 5, cens.data.lod = NULL,
     data.imp <-
       MImpute_lcens(data = data[[1]], mi.m = Impute.m, data.lod = cens.data.lod,
                     standards = cens.standards, mice.log = cens.mice.log)
+    X <- data.imp
+  }
+
+  if(Impute == "MImpute_lcenssurv"){
+    data.imp <-
+      MImpute_lcenssurv(data = data[[1]], mi.m = Impute.m, data.lod = cens.data.lod,
+                    standards = cens.standards, mice.log = cens.mice.log,
+                    var.log = censsurv.var.log, maxit = censsurv.maxit)
     X <- data.imp
   }
 
