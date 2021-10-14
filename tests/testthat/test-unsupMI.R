@@ -216,29 +216,31 @@ test_that("Plot works", {
 
 
 test_that("multiCOns",{
-  suppressWarnings(library(mclust, quietly = TRUE, verbose = FALSE))
-  expect_equal(
-    length(
-      MultiCons(iris[, 1:4],
-                Clustering_selection = c("kmeans", "pam", "OPTICS")
-      )), 2)
+  if (requireNamespace("mclust")){
+    suppressWarnings(library(mclust, quietly = TRUE, verbose = FALSE))
+    expect_equal(
+      length(
+        MultiCons(iris[, 1:4],
+                  Clustering_selection = c("kmeans", "pam", "OPTICS")
+        )), 2)
 
-  expect_equal(
-    length(
-      MultiCons(iris[, 1:4],
-                Clustering_selection = c("agghc",  "AGNES", "DIANA")
-      )), 2)
+    expect_equal(
+      length(
+        MultiCons(iris[, 1:4],
+                  Clustering_selection = c("agghc",  "AGNES", "DIANA")
+        )), 2)
 
-  expect_equal(
-    length(
-      MultiCons(iris[, 1:4],
-                Clustering_selection = c("MCLUST", "CMeans",
-                                         "FANNY", "BaggedClust"),
-                num_algo = 13
-      )), 2)
+    expect_equal(
+      length(
+        MultiCons(iris[, 1:4],
+                  Clustering_selection = c("MCLUST", "CMeans",
+                                           "FANNY", "BaggedClust"),
+                  num_algo = 13
+        )), 2)
 
-  expect_equal(
-    length(
-      MultiCons(iris[, 1:4], Plot = FALSE, returnAll = TRUE
-      )), 2)
+    expect_equal(
+      length(
+        MultiCons(iris[, 1:4], Plot = FALSE, returnAll = TRUE
+        )), 2)
+  }
 })

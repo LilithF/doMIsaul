@@ -10,6 +10,8 @@ unsupMI(
   cens.data.lod = NULL,
   cens.standards = NULL,
   cens.mice.log = 10,
+  censsurv.var.log = NULL,
+  censsurv.maxit = 10,
   data,
   log.data = FALSE,
   algo = "km",
@@ -42,6 +44,13 @@ imputations to perform}
 
 \item{cens.mice.log}{passed to \code{MImpute_lcens()} if
 \code{Impute == MImpute_lcens}}
+
+\item{censsurv.var.log}{for \code{MImpute_lcenssurv imputation}: names of variables
+to log if \code{mice.log} is numeric. If \code{NULL}, all variables but
+those in\code{time.status.names} will be logged.}
+
+\item{censsurv.maxit}{for \code{MImpute_lcenssurv imputation:} passed to
+\code{mice()}.}
 
 \item{data}{Data, in the form of a list of data.frame(s). The list should be
 one length 1 if data are complete or if Impute is not \code{FALSE}, it

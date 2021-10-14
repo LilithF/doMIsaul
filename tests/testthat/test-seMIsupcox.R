@@ -98,14 +98,15 @@ test_that("Evaluation of partitions", {
                      nfolds = 10,
                      center.init = TRUE)[[1]]
   library(survival, quietly = TRUE)
-
-  expect_equal(length(
-    evaluate_partition_semisup(part,
-                               part2,
-                               part,
-                               part,
-                               data.surv = diabetic[, c("time", "status")],
-                               TMIN = 50, TMAX = 60)), 22)
+    if (requireNamespace("CPE")) {
+      expect_equal(length(
+        evaluate_partition_semisup(part,
+                                   part2,
+                                   part,
+                                   part,
+                                   data.surv = diabetic[, c("time", "status")],
+                                   TMIN = 50, TMAX = 60)), 22)
+    }
 
 
 })

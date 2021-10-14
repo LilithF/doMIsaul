@@ -1,7 +1,7 @@
 Package: doMIsaul
 Title: Do Multiple Imputation-Based Semi-Supervised and Unsupervised
     Learning
-Version: 1.0.0
+Version: 1.0.1
 Authors@R: 
     c(person(given = "Lilith",
              family = "Faucheux",

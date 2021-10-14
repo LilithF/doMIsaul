@@ -38,24 +38,25 @@ test_that("mi impute for censored", {
 })
 
 test_that("partition generation", {
-  suppressWarnings(library(mclust, quietly = TRUE))
-  expect_equal(dim(
-    partition_generation(iris[, 1:4], LOG = FALSE,
-                         clust.algo = c("kmed", "mclust", "hc"),
-                         k.crit = "ch")),
-    c(dim(iris)[1], 3))
+  if (requireNamespace("mclust")){
+    suppressWarnings(library(mclust, quietly = TRUE))
+    expect_equal(dim(
+      partition_generation(iris[, 1:4], LOG = FALSE,
+                           clust.algo = c("kmed", "mclust", "hc"),
+                           k.crit = "ch")),
+      c(dim(iris)[1], 3))
 
-  expect_equal(dim(
-    partition_generation(iris[, 1:4], LOG = FALSE,
-                         clust.algo = c("km", "mclust", "hc"),
-                         k.crit = "CritCF")),
-    c(dim(iris)[1], 3))
-  expect_equal(dim(
-    partition_generation(iris[, 1:4], LOG = FALSE,
-                         clust.algo = c("mclust"),
-                         k.crit = "bic")),
-    c(dim(iris)[1], 1))
-
+    expect_equal(dim(
+      partition_generation(iris[, 1:4], LOG = FALSE,
+                           clust.algo = c("km", "mclust", "hc"),
+                           k.crit = "CritCF")),
+      c(dim(iris)[1], 3))
+    expect_equal(dim(
+      partition_generation(iris[, 1:4], LOG = FALSE,
+                           clust.algo = c("mclust"),
+                           k.crit = "bic")),
+      c(dim(iris)[1], 1))
+  }
 
 })
 
