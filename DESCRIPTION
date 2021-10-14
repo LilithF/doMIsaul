@@ -52,6 +52,7 @@ Imports:
 Suggests: 
     censReg,
     cluster,
+    clustMixType,
     CPE,
     dbscan,
     e1071,

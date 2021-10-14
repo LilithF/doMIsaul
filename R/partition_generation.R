@@ -51,6 +51,8 @@ partition_generation <- function(data, LOG, clust.algo, k.crit){
                                  index = "ch")$Best.partition,
                     kmed = CH.sel(data = data.tmp, min.nc = 2,
                                   max.nc = 7, method = "kmed")$Best.partition,
+                    kproto = CH.sel(data = data.tmp, min.nc = 2,
+                                  max.nc = 7, method = "kproto")$Best.partition,
                     mclust = mclust::Mclust(data.tmp,
                                             G = 1:7,
                                             verbose = FALSE)$classification),

@@ -13,8 +13,9 @@ CH.sel(data, min.nc, max.nc, method)
 
 \item{max.nc}{integer (\code{>min.nc}): maximum number of  clusters.}
 
-\item{method}{Clustering algorithm to use. The only available value for now
-is "\code{kmed}" for \code{K-medians} clustering.}
+\item{method}{string, clustering algorithm to use. The only available values
+for now are "\code{kmed}" for \code{K-medians} clustering and
+"\code{kproto}" for \code{clustMixType::kproto()} clustering.}
 }
 \value{
 A list containing the selected number of clusters, the CH values and

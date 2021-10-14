@@ -11,8 +11,9 @@ CH(data, k, method, Seed = 1)
 
 \item{k}{integer, number of clusters.}
 
-\item{method}{string, clustering algorithm to use. The only available value
-for now is "\code{kmed}" for \code{K-medians} clustering.}
+\item{method}{string, clustering algorithm to use. The only available values
+for now are "\code{kmed}" for \code{K-medians} clustering and
+"\code{kproto}" for \code{clustMixType::kproto()} clustering.}
 
 \item{Seed}{If not \code{null}, passed to \code{set.seed()} before generating
 the partition.}

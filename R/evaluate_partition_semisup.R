@@ -23,12 +23,16 @@
 #' library(survival) # survival should be loaded in the environment
 #' data(cancer, package = "survival")
 #' cancer$status <- cancer$status - 1
-#' res <- evaluate_partition_semisup (
-#'   partition = factor(rep(c(1,2,3), each = 50)),
-#'   ref.unsup = factor(rep(c(1,2,3), times = c(100, 25, 25))),
-#'   ref.sup = factor(rep(c(1,2), times = c(50, 100))),
-#'   ref.semisup = factor(rep(c(3, 2, 1), times = c(120, 10, 20))),
-#'   data.surv = cancer[1:150, c("time", "status")] )
+#' if (requireNamespace("CPE", quietly = TRUE)) {
+#'   res <- evaluate_partition_semisup (
+#'     partition = factor(rep(c(1,2,3), each = 50)),
+#'     ref.unsup = factor(rep(c(1,2,3), times = c(100, 25, 25))),
+#'     ref.sup = factor(rep(c(1,2), times = c(50, 100))),
+#'     ref.semisup = factor(rep(c(3, 2, 1), times = c(120, 10, 20))),
+#'     data.surv = cancer[1:150, c("time", "status")] )
+#' } else {
+#'   print("Partition evaluation skipped as CPE is not available")
+#' }
 evaluate_partition_semisup <-
   function(partition, ref.unsup, ref.sup, ref.semisup,
            data.surv, TMIN = 2, TMAX = 5){

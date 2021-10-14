@@ -42,6 +42,9 @@
 #'  unlogged data. Otherwise, number of decimal to save after taking the log of
 #'  data (should be 10 unless for specific reasons) ; in that case the data will
 #'  be unlogged after imputation.
+#' @param var.log names of variables to log if \code{mice.log} is numeric. If
+#'   \code{NULL}, all variables but those in  \code{time.status.names} will be
+#'    logged.
 #'
 #'
 #'
@@ -234,3 +237,157 @@ if(return.midsObject){
   }
 
 }
+
+
+#' @rdname MImpute
+#' @export
+#'
+#' @examples
+#' ## MImpute_lcenssurv
+#' data(cancer, package = "survival")
+#' cancer$status <- cancer$status - 1
+#' toy2 <- cancer[, -1]
+#' # censor on variables age and meal.cal, with LOD at quantile .1 and .2.
+#' LODs <- toy2[1, ]
+#' LODs[1, ] <-c(NA, NA, quantile(toy2[, "age"], .2, na.rm = TRUE), NA,  NA,
+#'               NA, NA, quantile(toy2[, "meal.cal"], .1, na.rm = TRUE), NA)
+#' # Censor indicator
+#' Censored <- data.frame(age = runif(nrow(toy2), 300,400),
+#'                        meal.cal = runif(nrow(toy2), 50,60))
+#' Censored[toy2[, "age"] < LODs[1, "age"], "age"] <- LODs[1, "age"]
+#' Censored[!is.na(toy2[, "meal.cal"]) &
+#'            toy2[, "meal.cal"] < LODs[1, "meal.cal"], "meal.cal"] <-
+#'  LODs[1, "meal.cal"]
+#' # NA for censored data
+#' toy2[toy2[, "age"] < LODs[1, "age"], "age"] <- NA
+#' toy2[!is.na(toy2[, "meal.cal"]) &
+#'       toy2[, "meal.cal"] < LODs[1, "meal.cal"],"meal.cal"] <- NA
+#' # Additional missing data
+#' toy2[sample(1:nrow(toy2), 30), 6] <- NA
+#' toy2[sample(1:nrow(toy2), 30), 3] <- NA
+#' toy2[sample(1:nrow(toy2), 30), 4] <- NA
+#' toy2$sex <- factor(toy2$sex)
+#' toy2$ph.ecog <- factor(toy2$ph.ecog)
+#'
+#' toy2.imp <- MImpute_lcenssurv(
+#'   data = toy2, mi.m = 3, data.lod = Censored, standards = LODs,
+#'   mice.log = FALSE)
+#'
+MImpute_lcenssurv <- function(
+  data, mi.m, time.status.names = c("time", "status"),
+  data.lod, standards, mice.log = 10, var.log = NULL, maxit = 10,
+  return.midsObject = FALSE){
+
+
+  # prepare data/parameters for censored imputation: log of not some data
+  if (is.numeric(mice.log)){
+    if(is.null(var.log)){
+      var.log <- setdiff(colnames(data), time.status.names)
+    }
+    if(sum(var.log %in% colnames(data)) < 1) {
+      stop("if 'mice.log' is numeric, 'var.log' must be either NULL or a vector
+           of names included in 'colnames(data)'")
+    }
+    data.cens <- data
+    data.cens[, var.log] <- log(data[, var.log])
+    elm <- "round(log("
+    elm2 <- paste("),", mice.log, ")")
+
+  } else {
+
+    data.cens <- data
+    elm2 <- elm <- ""
+
+  }
+
+  # generate nelsonaalen estimator
+  dtmp <- data.cens
+  dtmp$time <- data.cens[,  time.status.names[1]]
+  dtmp$status <- data.cens[,  time.status.names[2]]
+
+  data.cens$H0 <- mice::nelsonaalen(dtmp, "time", "status")
+
+
+  # include censor indicators
+  if (ncol(data.lod) > 0)
+    colnames(data.lod) <- paste0(colnames(data.lod), "lod")
+  data.to.imp <- data.frame(cbind(data.cens, data.lod))
+
+  tmp <-
+    suppressWarnings(mice::mice(data.to.imp, m = 1, maxit = 0, print = FALSE))
+
+  # Prepare method parameter
+  my.method <- tmp$method
+  my.method <- sapply(names(my.method), function(i){
+
+    if (is.element(paste0(i, "lod"), colnames(data.to.imp))){
+      "cens"
+    } else {
+      unname(my.method[i])
+    }
+
+  }, USE.NAMES = TRUE)
+  my.method[c(time.status.names, "H0")] <- ""
+
+  # Prepare blot parameter
+  my.blots <- sapply(names(my.method), function(i){
+    if (my.method[i] == "cens") {
+      list(lod.j = paste(elm, unname(standards[1, i]), elm2))
+    } else {
+      list()
+    }
+  }, USE.NAMES = TRUE, simplify = FALSE)
+
+  # Prepare predictorMatrix parameter
+  my.predictorMatrix <- tmp$predictorMatrix
+  my.predictorMatrix[, colnames(my.predictorMatrix) %in%
+                       time.status.names[1]] <- 0
+
+
+  #  maxit parameter
+  # If missing for >1 var maxit iterations, else 1 is enough
+  if(sum(sapply(data.to.imp, function(x){any(is.na(x))},
+                simplify = TRUE, USE.NAMES = TRUE)) > 1){
+    max.it <- maxit
+  } else {
+    max.it <- 1
+  }
+
+
+  # Impute
+  res <- mice::mice(data.to.imp, m = mi.m, method = my.method,
+                    predictorMatrix = my.predictorMatrix,
+                    maxit = max.it, blots = my.blots, printFlag = FALSE)
+
+  imp <- mice::complete(res, "all")
+
+  # unlog if necessary
+  if (is.numeric(mice.log)){
+    imp <- sapply(imp, function(x){
+      x[, var.log] <- exp(x[, var.log])
+      x
+    }, USE.NAMES = TRUE, simplify = FALSE)
+  }
+
+  # remove added colunms
+  imp <- sapply(imp, function(x){
+    x[, !colnames(x) %in% c("H0", paste0(colnames(data), "lod"))]
+  }, USE.NAMES = TRUE, simplify = FALSE)
+
+
+  if(return.midsObject){
+    imp2 <- mice::complete(res, "long", include = TRUE)
+    if (is.numeric(mice.log)){
+      imp2[, var.log] <- exp(imp2[, var.log])
+    }
+    imp2 <- imp2[, !colnames(imp2) %in% c("H0", paste0(colnames(data), "lod"))]
+    mids.obj <- mice::as.mids(imp2)
+
+    return(list(
+      imputed.data = imp,
+      mids.obj = mids.obj))
+  } else {
+    return(imp)
+  }
+}
+

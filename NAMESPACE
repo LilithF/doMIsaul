@@ -3,6 +3,7 @@
 export(CVE_LP)
 export(MImpute)
 export(MImpute_lcens)
+export(MImpute_lcenssurv)
 export(MImpute_surv)
 export(MultiCons)
 export(cleanUp_partition)
