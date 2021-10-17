@@ -57,7 +57,7 @@
 #'
 #' @examples
 #' data(cancer, package = "survival")
-#' cancer.imp <- MImpute(cancer[, -c(1:3)], 3)
+#' cancer.imp <- MImpute(cancer[, -c(1:3)], 2)
 #'
 MImpute <- function(data, mi.m, method = NULL, predMat = NULL, maxit = 10,
                     return.midsObject = FALSE){
@@ -96,7 +96,7 @@ MImpute <- function(data, mi.m, method = NULL, predMat = NULL, maxit = 10,
 #' ## MImpute_surv
 #' data(cancer, package = "survival")
 #' cancer$status <- cancer$status - 1
-#' cancer.imp <- MImpute_surv(cancer, 2)
+#' cancer.imp <- MImpute_surv(cancer, 1)
 #'
 MImpute_surv <- function(data, mi.m, time.status.names = c("time", "status"),
                          return.midsObject = FALSE){
@@ -169,7 +169,7 @@ MImpute_surv <- function(data, mi.m, time.status.names = c("time", "status"),
 #' toy[sample(1:nrow(toy), 30), 4] <- NA
 #'
 #' toy.imp <- MImpute_lcens(data = toy, data.lod = Censored, standards = LODs,
-#'                          mi.m = 2, mice.log = FALSE)
+#'                          mi.m = 1, mice.log = FALSE)
 MImpute_lcens <- function(data, data.lod, standards, mi.m, mice.log = 10,
                           maxit = 10, return.midsObject = FALSE){
 
@@ -270,7 +270,7 @@ if(return.midsObject){
 #' toy2$ph.ecog <- factor(toy2$ph.ecog)
 #'
 #' toy2.imp <- MImpute_lcenssurv(
-#'   data = toy2, mi.m = 2, data.lod = Censored, standards = LODs,
+#'   data = toy2, mi.m = 1, data.lod = Censored, standards = LODs,
 #'   mice.log = FALSE)
 #'
 MImpute_lcenssurv <- function(

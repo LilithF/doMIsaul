@@ -110,12 +110,12 @@ performed for variables not affected by left-censoring.
 }
 \examples{
 data(cancer, package = "survival")
-cancer.imp <- MImpute(cancer[, -c(1:3)], 3)
+cancer.imp <- MImpute(cancer[, -c(1:3)], 2)
 
 ## MImpute_surv
 data(cancer, package = "survival")
 cancer$status <- cancer$status - 1
-cancer.imp <- MImpute_surv(cancer, 2)
+cancer.imp <- MImpute_surv(cancer, 1)
 
 ## MImpute_lcens
 toy <- iris[, 1:4]
@@ -136,7 +136,7 @@ toy[sample(1:nrow(toy), 30), 3] <- NA
 toy[sample(1:nrow(toy), 30), 4] <- NA
 
 toy.imp <- MImpute_lcens(data = toy, data.lod = Censored, standards = LODs,
-                         mi.m = 2, mice.log = FALSE)
+                         mi.m = 1, mice.log = FALSE)
 ## MImpute_lcenssurv
 data(cancer, package = "survival")
 cancer$status <- cancer$status - 1
@@ -164,7 +164,7 @@ toy2$sex <- factor(toy2$sex)
 toy2$ph.ecog <- factor(toy2$ph.ecog)
 
 toy2.imp <- MImpute_lcenssurv(
-  data = toy2, mi.m = 2, data.lod = Censored, standards = LODs,
+  data = toy2, mi.m = 1, data.lod = Censored, standards = LODs,
   mice.log = FALSE)
 
 }
