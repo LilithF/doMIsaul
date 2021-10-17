@@ -115,7 +115,7 @@ cancer.imp <- MImpute(cancer[, -c(1:3)], 3)
 ## MImpute_surv
 data(cancer, package = "survival")
 cancer$status <- cancer$status - 1
-cancer.imp <- MImpute_surv(cancer, 3)
+cancer.imp <- MImpute_surv(cancer, 2)
 
 ## MImpute_lcens
 toy <- iris[, 1:4]
@@ -136,7 +136,7 @@ toy[sample(1:nrow(toy), 30), 3] <- NA
 toy[sample(1:nrow(toy), 30), 4] <- NA
 
 toy.imp <- MImpute_lcens(data = toy, data.lod = Censored, standards = LODs,
-                         mi.m = 3, mice.log = FALSE)
+                         mi.m = 2, mice.log = FALSE)
 ## MImpute_lcenssurv
 data(cancer, package = "survival")
 cancer$status <- cancer$status - 1
@@ -164,7 +164,7 @@ toy2$sex <- factor(toy2$sex)
 toy2$ph.ecog <- factor(toy2$ph.ecog)
 
 toy2.imp <- MImpute_lcenssurv(
-  data = toy2, mi.m = 3, data.lod = Censored, standards = LODs,
+  data = toy2, mi.m = 2, data.lod = Censored, standards = LODs,
   mice.log = FALSE)
 
 }
